@@ -3,7 +3,7 @@
     <view-box>
         <router-view></router-view>
     </view-box>
-    <tabbar>
+    <tabbar style="position:fixed">
       <tabbar-item selected link="/phome">
         <i slot="icon" class="fa fa-sign-language" aria-hidden="true"></i>
         <span slot="label">平台</span>

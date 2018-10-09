@@ -3,6 +3,8 @@
 import Vue from 'vue'
 import FastClick from 'fastclick'
 import VueRouter from 'vue-router'
+import Axios from 'axios'
+
 import App from './App'
 import 'font-awesome/css/font-awesome.css'
 
@@ -10,6 +12,7 @@ import PHome from './components/platform/PHome.vue';
 import PMessage from './components/platform/PMessage.vue';
 import PMine from './components/platform/PMine.vue';
 
+Vue.prototype.$axios = Axios
 Vue.use(VueRouter)
 
 const routes = [

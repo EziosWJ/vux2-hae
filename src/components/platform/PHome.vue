@@ -3,20 +3,10 @@
         <swiper :list="imgList" :auto="true"/>
         <group-title>3 columns</group-title>
         <grid :cols="3" :show-vertical-dividers="true">
-        <grid-item link="/component/cell" :label="t">
-            <i slot="icon" class="fa fa-cog" aria-hidden="true"></i>
-        </grid-item>
-        <grid-item :link="{ path: '/component/cell'}" :label="t">
-            <i slot="icon" class="fa fa-cog" aria-hidden="true"></i>
-        </grid-item>
-        <grid-item link="/component/cell" @on-item-click="a=1">
-            <i slot="icon" class="fa fa-cog" aria-hidden="true"></i>
-            <span slot="label">{{ t}}</span>
-        </grid-item>
-        <grid-item link="/component/cell" @on-item-click="a=1">
-            <i slot="icon" class="fa fa-cog" aria-hidden="true"></i>
-            <span slot="label">{{ t}}</span>
-        </grid-item>
+            <grid-item link="" :label="menu.mName"
+                v-for="(menu, index) in mainMenu" :key="index">
+                <i slot="icon" :class="'fa ' + menu.mFa" aria-hidden="true"></i>
+            </grid-item>
         </grid>
     </div>
     
@@ -42,7 +32,8 @@ export default {
                     title: '送你一次旅行',
                     fallbackImg: 'https://ww1.sinaimg.cn/large/663d3650gy1fq66vw50iwj20ff0aaaci.jpg'
                 }],
-            t:'Go to Cell'
+            t:'Go to Cell',
+            mainMenu:{},
         }
     },
   components: {
@@ -50,6 +41,16 @@ export default {
     Grid,
     GridItem,
     GroupTitle
+  },
+  mounted(){
+      this.$axios.get('/api/helpTeach/menu').then(resp=>{
+          console.log(resp.data)
+          this.mainMenu = resp.data.content.mainMenu
+      })
+        .catch(error=>{
+            console.log(error);
+            
+        })
   }
 }
 </script>
