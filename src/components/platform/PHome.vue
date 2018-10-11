@@ -3,7 +3,7 @@
         <swiper :list="imgList" :auto="true"/>
         <group-title>3 columns</group-title>
         <grid :cols="3" :show-vertical-dividers="true">
-            <grid-item link="" :label="menu.mName"
+            <grid-item :link="menu.mSrc" :label="menu.mName"
                 v-for="(menu, index) in mainMenu" :key="index">
                 <i slot="icon" :class="'fa ' + menu.mFa" aria-hidden="true"></i>
             </grid-item>
@@ -43,7 +43,7 @@ export default {
     GroupTitle
   },
   mounted(){
-      this.$axios.get('/api/helpTeach/menu').then(resp=>{
+      this.$axios.get('/api/menu').then(resp=>{
           console.log(resp.data)
           this.mainMenu = resp.data.content.mainMenu
       })
