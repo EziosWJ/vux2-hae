@@ -1,7 +1,7 @@
 <template>
     <div>
         <swiper :list="imgList" :auto="true"/>
-        <group-title>3 columns</group-title>
+        <group-title>平台菜单</group-title>
         <grid :cols="3" :show-vertical-dividers="true">
             <grid-item :link="menu.mSrc" :label="menu.mName"
                 v-for="(menu, index) in mainMenu" :key="index">

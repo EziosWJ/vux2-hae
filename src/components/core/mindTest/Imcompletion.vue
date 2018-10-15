@@ -11,13 +11,17 @@
             </tr>
             </thead>
             <tbody>
-            <router-link to="/phome/mindTest">
+            
                 <tr>
                     <td>Apple</td>
                     <td>10</td>
-                    <td><x-button text="测评"></x-button></td>
+                    <td>
+                        <router-link to="/phome/mindTest">
+                            <x-button text="测评"></x-button>
+                        </router-link>
+                    </td>
                 </tr>
-            </router-link>
+            
             <tr>
                 <td>Banana</td>
                 <td>2</td>
