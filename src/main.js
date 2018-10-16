@@ -23,11 +23,26 @@ import ApplyLead from './components/core/mindLead/ApplyLead.vue';
 //==============================
 import RiskEvalGrid from './components/core/riskEval/riskEvalGrid.vue';
 import Bygone from './components/core/riskEval/Bygone.vue';
+import Eval from './components/core/riskEval/Eval.vue';
 //============================
 import HelEducationGird from './components/core/helpEducation/HelEducationGird.vue';
 import Planning from './components/core/helpEducation/Planning.vue';
+//===========================
+import CheckIn from './components/core/manage/daily/CheckIn.vue';
+import CheckInGrid from './components/core/manage/daily/CheckInGrid.vue';
+import CheckInRecord from './components/core/manage/daily/CheckInRecord.vue';
+import GoOutGrid from './components/core/manage/daily/GoOutGrid.vue';
+import GoOutCheckIn from './components/core/manage/daily/GoOutCheckIn.vue';
+import GoOutRecord from './components/core/manage/daily/GoOutRecord.vue';
+//===========================
+import InterviewGrid from './components/core/manage/interview/InterviewGrid.vue';
+import Interview from './components/core/manage/interview/Interview.vue';
+import InterviewRecord from './components/core/manage/interview/Record.vue';
 Vue.prototype.$axios = Axios
 Vue.use(VueRouter)
+FastClick.attach(document.body)
+
+Vue.config.productionTip = false
 
 const routes = [
   {
@@ -83,18 +98,59 @@ const routes = [
   path: '/phome/riskEval/bygone',
   component: Bygone
   },
+  {
+  path: '/phome/riskEval/eval',
+  component: Eval
+  },
   //helpEducation
   {
   path: '/phome/helpEducationGrid',
   component: HelEducationGird,
-  children:[
-      {
-        path:'/phome/helpEducation/planning',
-        component: Planning
-      },
-    ]
+  },
+  {
+    path:'/phome/helpEducation/planning',
+    component: Planning
+  },
+  //daily
+  {
+    path:'/phome/checkInGrid',
+    component: CheckInGrid
+  },
+  {
+    path:'/phome/checkIn/checkIn',
+    component: CheckIn
+  },
+  {
+    path:'/phome/checkIn/checkInRecord',
+    component: CheckInRecord
+  },
+  {
+    path:'/phome/goOutGrid',
+    component: GoOutGrid
+  },
+  {
+    path:'/phome/goOut/goOutCheckIn',
+    component: GoOutCheckIn
+  },
+  {
+    path:'/phome/goOut/goOutRecord',
+    component: GoOutRecord
+  },
+  //Interview
+  {
+    path:'/phome/interviewGrid',
+    component: InterviewGrid
+  },
+  {
+    path:'/phome/interview/interview',
+    component: Interview
+  },
+  {
+    path:'/phome/interview/interviewRecord',
+    component: InterviewRecord
   },
   
+
 
 ]
 
@@ -102,9 +158,7 @@ const router = new VueRouter({
   routes
 })
 
-FastClick.attach(document.body)
 
-Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({

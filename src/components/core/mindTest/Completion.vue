@@ -5,18 +5,21 @@
         <x-table>
             <thead>
             <tr>
-                <th>评测名</th>
-                <th>分数</th>
+                <th>姓名</th>
+                <th>日期</th>
+                <th>结果</th>
             </tr>
             </thead>
             <tbody>
             <tr>
-                <td>Apple</td>
-                <td>$1.25</td>
+                <td>李杰</td>
+                <td>2018-09-30</td>
+                <td>查看</td>
             </tr>
             <tr>
-                <td>Banana</td>
-                <td>$1.20</td>
+                <td>孔庆官</td>
+                <td>2018-09-29</td>
+                <td>查看</td>
             </tr>
             </tbody>
         </x-table>

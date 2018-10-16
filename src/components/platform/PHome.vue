@@ -43,7 +43,7 @@ export default {
     GroupTitle
   },
   mounted(){
-      this.$axios.get('/api/menu').then(resp=>{
+      this.$axios.post('/api/menu',{role:'3'}).then(resp=>{
           console.log(resp.data)
           this.mainMenu = resp.data.content.mainMenu
       })

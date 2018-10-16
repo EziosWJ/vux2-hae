@@ -5,7 +5,7 @@
             <grid-item link="/phome/mindTestImcompletion" label="疏导进程">
                 <i slot="icon" class="fa fa-heart-o" aria-hidden="true"></i>
             </grid-item>
-            <grid-item link="/phome/mindLead/applyLead" label="申请疏导">
+            <grid-item link="/phome/mindLead/applyLead" label="进行疏导">
                 <i slot="icon" class="fa fa-hand-paper-o" aria-hidden="true"></i>
             </grid-item>
         </grid>

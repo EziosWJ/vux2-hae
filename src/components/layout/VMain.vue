@@ -1,7 +1,11 @@
 <template>
   <div>
     <view-box>
+      <!-- <transition> -->
+      <keep-alive>
         <router-view></router-view>
+      </keep-alive>
+      <!-- </transition> -->
     </view-box>
     <tabbar style="position:fixed">
       <tabbar-item selected link="/phome">

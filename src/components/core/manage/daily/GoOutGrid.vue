@@ -1,12 +1,12 @@
 <template>
     <div>
-        <group-title>帮教方案</group-title>
+        <group-title>外出请假</group-title>
         <grid :cols="2" :show-vertical-dividers="true">
-            <grid-item link="/phome/helpEducation/planning" label="制定方案">
+            <grid-item link="/phome/goOut/goOutCheckIn" label="请假登记">
                 <i slot="icon" class="fa fa-edit" aria-hidden="true"></i>
             </grid-item>
-            <grid-item link="/phome/mindTestCompletion" label="我的方案">
-                <i slot="icon" class="fa fa-file-text-o" aria-hidden="true"></i>
+            <grid-item link="/phome/goOut/goOutRecord" label="外出请假记录">
+                <i slot="icon" class="fa fa-edit" aria-hidden="true"></i>
             </grid-item>
         </grid>
     </div>

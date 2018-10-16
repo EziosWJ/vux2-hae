@@ -5,7 +5,7 @@
         <x-table>
             <thead>
             <tr>
-                <th>评测名</th>
+                <th>姓名</th>
                 <th>进度</th>
                 <th>操作</th>
             </tr>
@@ -13,8 +13,8 @@
             <tbody>
             
                 <tr>
-                    <td>Apple</td>
-                    <td>10</td>
+                    <td>李杰</td>
+                    <td>10%</td>
                     <td>
                         <router-link to="/phome/mindTest">
                             <x-button text="测评"></x-button>
@@ -23,8 +23,8 @@
                 </tr>
             
             <tr>
-                <td>Banana</td>
-                <td>2</td>
+                <td>孔庆官</td>
+                <td>88%</td>
                 <td><x-button text="测评"></x-button></td>
             </tr>
             </tbody>
