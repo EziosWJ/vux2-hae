@@ -38,6 +38,10 @@ import GoOutRecord from './components/core/manage/daily/GoOutRecord.vue';
 import InterviewGrid from './components/core/manage/interview/InterviewGrid.vue';
 import Interview from './components/core/manage/interview/Interview.vue';
 import InterviewRecord from './components/core/manage/interview/Record.vue';
+//===========================
+import WorkGrid from './components/core/manage/work/WorkGrid.vue';
+import Work from './components/core/manage/work/Work.vue';
+import WorkRecord from './components/core/manage/work/Record.vue';
 Vue.prototype.$axios = Axios
 Vue.use(VueRouter)
 FastClick.attach(document.body)
@@ -148,6 +152,19 @@ const routes = [
   {
     path:'/phome/interview/interviewRecord',
     component: InterviewRecord
+  },
+  //Work
+  {
+    path:'/phome/workGrid',
+    component: WorkGrid
+  },
+  {
+    path:'/phome/work/work',
+    component: Work
+  },
+  {
+    path:'/phome/work/record',
+    component: WorkRecord
   },
   
 
