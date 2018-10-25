@@ -1,6 +1,6 @@
 <template>
     
-<x-header :left-options="{showBack: true}">XX平台</x-header>
+<x-header :left-options="{showBack: true}">帮教平台</x-header>
 </template>
 
 <script>

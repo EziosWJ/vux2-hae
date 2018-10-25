@@ -10,25 +10,13 @@
             </cell>
         </group>
          <group>
-            <cell title="VUX">
-                <img slot="icon" src="../../assets/vux_logo.png" alt="">
+            <cell title="更改信息">
+                <i slot="icon" class="fa fa-edit"></i>
             </cell>
         </group>
         <group>
-            <cell title="VUX">
-                <img slot="icon" src="../../assets/vux_logo.png" alt="">
-            </cell>
-            <cell title="VUX">
-                <img slot="icon" src="../../assets/vux_logo.png" alt="">
-            </cell>
-            <cell title="VUX">
-                <img slot="icon" src="../../assets/vux_logo.png" alt="">
-            </cell>
-            <cell title="VUX">
-                <img slot="icon" src="../../assets/vux_logo.png" alt="">
-            </cell>
-            <cell title="VUX">
-                <img slot="icon" src="../../assets/vux_logo.png" alt="">
+            <cell title="退出">
+                <i slot="icon" class="fa fa-sign-out"></i>
             </cell>
         </group>
     </div>
@@ -61,6 +49,9 @@ img{
     overflow: hidden;
     white-space: nowrap;
     display: block;
+}
+i{
+    padding-right: 10px
 }
 </style>
 
