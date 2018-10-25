@@ -38,21 +38,21 @@ import WorkGrid from '../components/core/manage/work/WorkGrid.vue';
 import Work from '../components/core/manage/work/Work.vue';
 import WorkRecord from '../components/core/manage/work/Record.vue';
 //==========================
-import TalkGrid from './components/core/manage/talk/TalkGrid.vue';
-import Talk from './components/core/manage/talk/Talk.vue';
-import TalkRecord from './components/core/manage/talk/Record.vue';
+import TalkGrid from '../components/core/manage/talk/TalkGrid.vue';
+import Talk from '../components/core/manage/talk/Talk.vue';
+import TalkRecord from '../components/core/manage/talk/Record.vue';
 //==========================
-import Community from './components/core/manage/community/Community.vue';
-import CommunityGrid from './components/core/manage/community/CommunityGrid.vue';
-import CommunityRecord from './components/core/manage/community/Record.vue';
+import Community from '../components/core/manage/community/Community.vue';
+import CommunityGrid from '../components/core/manage/community/CommunityGrid.vue';
+import CommunityRecord from '../components/core/manage/community/Record.vue';
 //==========================
-import FoulGrid from './components/core/manage/foul/FoulGrid.vue';
-import Foul from './components/core/manage/foul/Foul.vue';
-import FoulRecord from './components/core/manage/foul/Record.vue';
+import FoulGrid from '../components/core/manage/foul/FoulGrid.vue';
+import Foul from '../components/core/manage/foul/Foul.vue';
+import FoulRecord from '../components/core/manage/foul/Record.vue';
 //==========================
-import OpinionGrid from './components/core/manage/opinion/OpinionGrid.vue';
-import Opinion from './components/core/manage/opinion/Opinion.vue';
-import OpinionRecord from './components/core/manage/opinion/Record.vue';
+import OpinionGrid from '../components/core/manage/opinion/OpinionGrid.vue';
+import Opinion from '../components/core/manage/opinion/Opinion.vue';
+import OpinionRecord from '../components/core/manage/opinion/Record.vue';
 
 Vue.use(VueRouter)
 
