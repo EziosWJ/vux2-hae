@@ -1,13 +1,15 @@
 <template>
     <div>
-        <group title="教育记录" label-width="5em">
+        <group title="社区服务" label-width="5em">
             <popup-picker title="被帮教人" :data="list1" v-model="value1" 
             @on-show="onShow" @on-hide="onHide" @on-change="onChange" 
             placeholder="请选择"></popup-picker>
-
+            <popup-picker title="目标单位" :data="list2" v-model="value2" 
+            @on-show="onShow" @on-hide="onHide" @on-change="onChange" 
+            placeholder="请选择"></popup-picker>
             <x-input title="登记人" placeholder="请输入"></x-input>
             <x-input title="日期" placeholder="请输入"></x-input>
-            <x-textarea title="谈话记录" placeholder="请输入"></x-textarea>
+            <x-textarea title="情况" placeholder="请输入"></x-textarea>
         </group>
         <group>
             <x-button type="primary" @click.native="'a'">提交</x-button>
