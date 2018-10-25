@@ -63,7 +63,7 @@ const routes = [
     },
     {
      path: '/',
-     redirect:'/phome'
+     redirect:'/login'
      },
     {
     path: '/V',
