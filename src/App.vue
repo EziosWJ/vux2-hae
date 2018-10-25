@@ -1,19 +1,13 @@
 <template>
   <div id="app">
-    <v-header/>
-    <v-main/>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import VHeader from './components/layout/VHeader';
-import VMain from './components/layout/VMain';
+
 export default {
   name: 'app',
-  components:{
-    VHeader,
-    VMain,
-  }
 }
 </script>
 
