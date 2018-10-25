@@ -1,16 +1,17 @@
 <template>
     <div>
-        <group-title>谈话教育</group-title>
+        <group-title>社区服务</group-title>
         <grid :cols="2" :show-vertical-dividers="true">
-            <grid-item link="/phome/talk/talk" label="登记">
+            <grid-item link="/phome/community/community" label="登记">
                 <i slot="icon" class="fa fa-edit" aria-hidden="true"></i>
             </grid-item>
-            <grid-item link="/phome/talk/record" label="谈话教育记录">
+            <grid-item link="/phome/community/record" label="社区服务记录">
                 <i slot="icon" class="fa fa-file-text-o" aria-hidden="true"></i>
             </grid-item>
         </grid>
     </div>
 </template>
+
 <script>
 import { Grid, GridItem ,GroupTitle} from 'vux'
 
@@ -19,7 +20,7 @@ export default {
     Grid,
     GridItem,
     GroupTitle
-  }
+  },
 }
 </script>
 

@@ -37,7 +37,22 @@ import InterviewRecord from '../components/core/manage/interview/Record.vue';
 import WorkGrid from '../components/core/manage/work/WorkGrid.vue';
 import Work from '../components/core/manage/work/Work.vue';
 import WorkRecord from '../components/core/manage/work/Record.vue';
-
+//==========================
+import TalkGrid from './components/core/manage/talk/TalkGrid.vue';
+import Talk from './components/core/manage/talk/Talk.vue';
+import TalkRecord from './components/core/manage/talk/Record.vue';
+//==========================
+import Community from './components/core/manage/community/Community.vue';
+import CommunityGrid from './components/core/manage/community/CommunityGrid.vue';
+import CommunityRecord from './components/core/manage/community/Record.vue';
+//==========================
+import FoulGrid from './components/core/manage/foul/FoulGrid.vue';
+import Foul from './components/core/manage/foul/Foul.vue';
+import FoulRecord from './components/core/manage/foul/Record.vue';
+//==========================
+import OpinionGrid from './components/core/manage/opinion/OpinionGrid.vue';
+import Opinion from './components/core/manage/opinion/Opinion.vue';
+import OpinionRecord from './components/core/manage/opinion/Record.vue';
 
 Vue.use(VueRouter)
 
@@ -166,9 +181,63 @@ const routes = [
           {
             path:'/phome/work/record',
             component: WorkRecord
-          },      
-      ]
-    },
+          },
+          //Talk
+          {
+            path:'/phome/talk/record',
+            component: TalkRecord
+          },
+
+          {
+            path:'/phome/talk/talk',
+            component: Talk
+          },
+          {
+            path:'/phome/talkGrid',
+            component: TalkGrid
+          },
+          //Community
+          {
+            path:'/phome/community/record',
+            component: CommunityRecord
+          },
+
+          {
+            path:'/phome/community/community',
+            component: Community
+          },
+          {
+            path:'/phome/communityGrid',
+            component: CommunityGrid
+          },
+          //Foul
+          {
+            path:'/phome/foulGrid',
+            component:FoulGrid
+          },
+          {
+            path:'/phome/foul/foul',
+            component:Foul
+          },
+          {
+            path:'/phome/foul/record',
+            component:FoulRecord
+          },
+          //Opinion
+          {
+            path:'/phome/opinionGrid',
+            component:OpinionGrid
+          },
+          {
+            path:'/phome/opinion/opinion',
+            component:Opinion
+          },
+          {
+            path:'/phome/opinion/record',
+            component:OpinionRecord
+          }   
+              ]
+            },
    
   
   

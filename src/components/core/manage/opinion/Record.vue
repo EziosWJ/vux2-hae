@@ -6,7 +6,7 @@
             <thead>
             <tr>
                 <th>姓名</th>
-                <th>日期</th>
+                <th>类别</th>
                 <th>结果</th>
             </tr>
             </thead>
@@ -14,7 +14,7 @@
             
                 <tr>
                     <td>李杰</td>
-                    <td>{{today}}</td>
+                    <td>{{score.you}}</td>
                     <td>
                         查看
                     </td>
@@ -22,7 +22,7 @@
             
             <tr>
                 <td>孔庆官</td>
-                <td>{{today}}</td>
+                <td>{{score.liang}}</td>
                 <td>
                     查看
                 </td>
@@ -42,22 +42,27 @@ export default {
     LoadMore,
     XButton
   },
-  computed:{
-      today(){
+ 
+      data(){
         //获取当前时间
-        let year = date.getFullYear();
-        let month = date.getMonth() + 1;
-        let day = date.getDate();
-        if (month < 10) {
-            month = "0" + month;
+        // let year = date.getFullYear();
+        // let month = date.getMonth() + 1;
+        // let day = date.getDate();
+        // if (month < 10) {
+        //     month = "0" + month;
+        // }
+        // if (day < 10) {
+        //     day = "0" + day;
+        // }
+        // let nowDate = year + "-" + month + "-" + day;
+        // return nowDate;
+        return {
+           
+            score:{you:'优',liang:'良'}
+            
         }
-        if (day < 10) {
-            day = "0" + day;
-        }
-        let nowDate = year + "-" + month + "-" + day;
-        return nowDate;
       }
-  }
+  
 }
 </script>
 

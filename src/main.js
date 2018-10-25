@@ -9,7 +9,6 @@ import store from './store'
 import App from './App'
 import 'font-awesome/css/font-awesome.css'
 
-
 Vue.prototype.$axios = Axios
 FastClick.attach(document.body)
 
