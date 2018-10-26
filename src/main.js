@@ -4,11 +4,16 @@ import Vue from 'vue'
 import FastClick from 'fastclick'
 import router from './router'
 import Axios from 'axios'
+import Qs from 'qs';
 import store from './store'
 
 import App from './App'
 import 'font-awesome/css/font-awesome.css'
-
+Axios.defaults.transformRequest = function (data) {
+  data = Qs.stringify(data);
+  return data;
+};
+Axios.defaults.headers = {'Content-Type': 'application/x-www-form-urlencoded'}
 Vue.prototype.$axios = Axios
 FastClick.attach(document.body)
 

@@ -43,7 +43,8 @@ export default {
           let name = this.ucName
           let psw = this.ucPassword
           this.$axios
-          .post("/api/userCase/login",{ucName:name,ucPassword:psw})
+          .post("/api/userCase/login",{ucName:name,ucPassword:psw},
+          )
           .then(resp => {
             let code = resp.data.code
             console.log(code);
