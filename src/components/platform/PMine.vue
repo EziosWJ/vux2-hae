@@ -29,11 +29,17 @@ export default {
         Cell,
         Group
     },
+<<<<<<< HEAD
     methods:{
+=======
+    methods:
+    {
+>>>>>>> dev
         logout(){
             this.$router.push('/login')
         }
     }
+
 }
 </script>
 
