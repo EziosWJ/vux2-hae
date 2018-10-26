@@ -15,7 +15,7 @@
             </cell>
         </group>
         <group>
-            <cell title="退出">
+            <cell title="退出" @click.native="logout">
                 <i slot="icon" class="fa fa-sign-out"></i>
             </cell>
         </group>
@@ -28,6 +28,11 @@ export default {
     components:{
         Cell,
         Group
+    },
+    methods:{
+        logout(){
+            this.$router.push('/login')
+        }
     }
 }
 </script>

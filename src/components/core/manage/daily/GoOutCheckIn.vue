@@ -4,9 +4,9 @@
             <popup-picker title="被帮教人" :data="list1" v-model="value1" 
             @on-show="onShow" @on-hide="onHide" @on-change="onChange" 
             placeholder="请选择"></popup-picker>
-            <x-input title="登记人" placeholder="请输入"></x-input>
-            <x-input title="日期" placeholder="请输入"></x-input>
-            <x-textarea title="缘由" placeholder="请输入"></x-textarea>
+            <x-input title="登记人" placeholder="请输入" v-model="bbjr"></x-input>
+            <x-input title="日期" placeholder="请输入" v-model="date"></x-input>
+            <x-textarea title="缘由" placeholder="请输入" v-model="reason"></x-textarea>
         </group>
         <group>
             <x-button type="primary" @click.native="'a'">提交</x-button>
@@ -30,7 +30,8 @@ export default {
   data(){
         return {
             list1:[['李杰','孔庆官','王坚']],
-            value1:['请选择']
+            value1:['请选择'],
+
         }
     },
     methods:{
