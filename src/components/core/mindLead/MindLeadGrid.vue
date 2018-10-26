@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import { Grid, GridItem ,GroupTitle,XTable} from 'vux'
+import { Grid, GridItem, GroupTitle, XTable } from "vux";
 
 export default {
   components: {
@@ -45,7 +45,24 @@ export default {
     GridItem,
     GroupTitle,
     XTable
+  },
+  methods: {
+    getMindLeadList() {
+      this.$axios
+        .post("/api/eduplan/getMindLeadList")
+        .then(resp => {
+          if (resp.data.code === 200) {
+            console.log(resp.data.content.mindLeadList);
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+  },
+  mounted(){
+      this.getMindLeadList()
   }
-}
+};
 </script>
 

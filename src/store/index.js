@@ -1,5 +1,13 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import axios from 'axios';
+import Qs from 'qs';
+axios.defaults.transformRequest = function (data) {
+  data = Qs.stringify(data);
+  return data;
+};
+axios.defaults.headers = {'Content-Type': 'application/x-www-form-urlencoded'}
+
 
 Vue.use(Vuex)
 
@@ -17,7 +25,7 @@ const mutations = {
 const actions = {
     setRole({commit},ucRole){
         commit('setUSER_ROLE',ucRole)
-    }
+    },
 }
 
 const getters = {
