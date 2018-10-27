@@ -4,8 +4,8 @@
         <group-title>平台菜单</group-title>
         <!-- <group-title>store:{{$store.state.USER_ROLE}}</group-title> -->
         <grid :cols="3" :show-vertical-dividers="true">
-            <grid-item :link="menu.mSrc" :label="menu.mName"
-                v-for="(menu, index) in mainMenu" :key="index">
+            <grid-item v-for="(menu, index) in mainMenu" :key="index"
+                 :link="menu.mSrc" :label="menu.mName" >
                 <i slot="icon" :class="'fa ' + menu.mFa" aria-hidden="true"></i>
             </grid-item>
         </grid>

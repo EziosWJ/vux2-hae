@@ -1,9 +1,15 @@
 <template>
     <div>
         <group title="心理疏导" label-width="5em">
-            <x-input title="被帮教人" placeholder="被帮教人" v-model="mindLead.mdReciver"></x-input>
-            <x-input title="疏导人" placeholder="疏导人" v-model="mindLead.mdLeader"></x-input>
-            <x-input title="日期" placeholder="日期" v-model="mindLead.mdLeadDate"></x-input>
+             <popup-picker title="被疏导人" :data="$store.state.reciverList" v-model="mindLead.mdReciver" 
+               placeholder="请选择" :show-name="true"  ></popup-picker>
+            <x-input title="疏导人" text-align="right" placeholder="疏导人" v-model="mindLead.mdLeader"></x-input>
+             <datetime
+             title="日期"
+        v-model="mindLead.mdLeadDate"
+       
+        
+       ></datetime>
             <x-textarea title="情况说明" v-model="mindLead.mdCondition"></x-textarea>
         </group>
         <group>
@@ -13,19 +19,22 @@
 </template>
 
 <script>
-import { XInput , Group , XTextarea ,XButton} from 'vux'
+import { XInput , Group , XTextarea ,XButton,PopupPicker,Datetime } from 'vux'
 
 export default {
   components: {
     XInput,
     Group,
     XTextarea ,
-    XButton
+    XButton,
+    PopupPicker ,
+    Datetime
   },
   data(){
       return {
         //   mindLead:{mdName:'',mdReciver:'',mdLeader:'',mdLeadDate:'',mdCondition:'',mdCustomer:''}
-        mindLead:{}
+        mindLead:{},
+        mdReciverList:[]
       }
   },
   methods:{
@@ -37,10 +46,45 @@ export default {
           }).catch(error => {
               console.log(error);
           })
+      },
+     getByTheHelperList(){
+         this.$store.dispatch('setByTheHelperList');
       }
+    //   getByTheHelperList(){
+    //       this.$axios.post('/api/com/getByTheHelperList').then(resp => {
+    //           console.log(resp.data);
+    //           let list = resp.data.content.byTheHelperList
+    //           for (let index = 0; index < list.length; index++) {
+    //               const element = list[index]
+    //               list[index].value = list[index].value.toString()
+    //           }
+    //           console.log(list);
+    //           this.mdReciverList.push(list)
+    //       }).catch(error => {
+    //           console.log(error);
+    //           alert(`发生内部错误${error}`)
+    //       })
+    //   },
+    //   putval(val){
+    //       console.log(val);
+    //       this.mindLead.mdReciver = val[0]
+    //   }
+
   },
   computed:{
     
+  },
+  watch:{
+    // mdReciverList:{
+    //     handler(a,b){
+    //         this.mdReciverList = a;
+    //        console.log(a ,b)
+    //     },
+    //     deep:true
+    //   },
+  },
+  mounted(){
+      this.getByTheHelperList();
   }
 }
 </script>

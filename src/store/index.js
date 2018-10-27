@@ -13,18 +13,37 @@ Vue.use(Vuex)
 
 const state = {
     USER_ROLE : '',
+    reciverList:[],
 
 }
 
 const mutations = {
     setUSER_ROLE(state,ucRole){
         state.USER_ROLE = ucRole
+    },
+    setByTheHelperList(state,list){
+        state.reciverList.push(list)
     }
 }
 
 const actions = {
     setRole({commit},ucRole){
         commit('setUSER_ROLE',ucRole)
+    },
+    setByTheHelperList({commit}){
+        axios.post('/api/com/getByTheHelperList').then(resp => {
+            console.log(resp.data);
+            let list = resp.data.content.byTheHelperList
+            for (let index = 0; index < list.length; index++) {
+                const element = list[index]
+                list[index].value = list[index].value.toString()
+            }
+            console.log(list);
+            commit('setByTheHelperList',list)
+        }).catch(error => {
+            console.log(error);
+            alert(`发生内部错误${error}`)
+        })
     },
 }
 

@@ -46,6 +46,9 @@ export default {
     GroupTitle,
     XTable
   },
+    data(){
+        return {}
+    },
   methods: {
     getMindLeadList() {
       this.$axios
