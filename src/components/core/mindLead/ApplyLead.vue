@@ -4,12 +4,7 @@
              <popup-picker title="被疏导人" :data="$store.state.reciverList" v-model="mindLead.mdReciver" 
                placeholder="请选择" :show-name="true"  ></popup-picker>
             <x-input title="疏导人" text-align="right" placeholder="疏导人" v-model="mindLead.mdLeader"></x-input>
-             <datetime
-             title="日期"
-        v-model="mindLead.mdLeadDate"
-       
-        
-       ></datetime>
+             <datetime title="日期" v-model="mindLead.mdLeadDate"></datetime>
             <x-textarea title="情况说明" v-model="mindLead.mdCondition"></x-textarea>
         </group>
         <group>

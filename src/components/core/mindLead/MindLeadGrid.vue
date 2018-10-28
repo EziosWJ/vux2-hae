@@ -20,15 +20,10 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>李杰</td>
-                    <td>2018-09-30</td>
-                    <td>好</td>
-                </tr>
-                <tr>
-                    <td>孔庆官</td>
-                    <td>2018-09-29</td>
-                    <td>好</td>
+                <tr v-for="item in mindLeadList" :key="item.id">
+                    <td>{{item.mdLeader}}</td>
+                    <td>{{item.mdLeadDate}}</td>
+                    <td>{{item.mdCondition}}</td>
                 </tr>
                 </tbody>
             </x-table>
@@ -47,7 +42,7 @@ export default {
     XTable
   },
     data(){
-        return {}
+        return {mindLeadList:[]}
     },
   methods: {
     getMindLeadList() {
@@ -56,6 +51,7 @@ export default {
         .then(resp => {
           if (resp.data.code === 200) {
             console.log(resp.data.content.mindLeadList);
+            this.mindLeadList = resp.data.content.mindLeadList
           }
         })
         .catch(error => {
