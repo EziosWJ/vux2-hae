@@ -11,16 +11,11 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>李杰</td>
-                    <td>2018-09-30</td>
-                    <td>无风险</td>
-                </tr>
-                <tr>
-                    <td>李杰</td>
-                    <td>2018-09-29</td>
-                    <td>无风险</td>
-                </tr>
+                    <tr v-for="(item, index) in riskList" :key="index">
+                        <td>{{item.rkReciver}}</td>
+                        <td>{{item.rkDate}}</td>
+                        <td>{{item.rkResult}}</td>
+                    </tr>
                 </tbody>
             </x-table>
         </div>
@@ -34,6 +29,28 @@ export default {
   components: {
     XTable,
     LoadMore
+  },
+  data(){
+      return {
+          riskList:[]
+      }
+  },
+  methods:{
+      getRiskList(){
+          this.$axios.get('/api/eduplan/getRiskList').then(resp => {
+              let data = resp.data
+              if(data.code === 200){
+                  this.riskList = data.content.riskList
+              }else if(data.code === 555){
+                 alert("发生错误") 
+              }
+          }).catch(error =>{
+              alert(`发生内部错误：${error}`)
+          })
+      }
+  },
+  mounted(){
+      this.getRiskList()
   }
 }
 </script>
