@@ -45,6 +45,19 @@ const actions = {
             alert(`发生内部错误${error}`)
         })
     },
+
+
+    putRiskForm({commit},risk){
+        axios.post('/api/eduplan/putRisk',risk).then(resp => {
+            let code = resp.data.code
+            if(code === 200){
+                alert('成功提交！')
+            }
+        }).catch(error=>{
+            console.log(error);
+            
+        })
+    }
 }
 
 const getters = {
