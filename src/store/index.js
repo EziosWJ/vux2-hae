@@ -24,7 +24,12 @@ const mutations = {
         state.USER_ROLE = ucRole
     },
     setByTheHelperList(state,list){
-        state.reciverList.push(list)
+        if(state.reciverList.length<1){
+            state.reciverList.push(list)
+        }else{
+            state.reciverList.pop()
+            state.reciverList.push(list)
+        }
     },
     setUc_Id(state,ucid){
         state.Uc_Id = ucid
