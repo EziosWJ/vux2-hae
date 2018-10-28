@@ -11,10 +11,12 @@ axios.defaults.headers = {'Content-Type': 'application/x-www-form-urlencoded'}
 
 Vue.use(Vuex)
 
+
 const state = {
     USER_ROLE : '',
     reciverList:[],
 
+    Uc_Id:'',
 }
 
 const mutations = {
@@ -23,6 +25,9 @@ const mutations = {
     },
     setByTheHelperList(state,list){
         state.reciverList.push(list)
+    },
+    setUc_Id(state,ucid){
+        state.Uc_Id = ucid
     }
 }
 
@@ -45,6 +50,9 @@ const actions = {
             alert(`发生内部错误${error}`)
         })
     },
+    setUcId({commit},ucid){
+        commit('setUc_Id',ucid)
+    }
 }
 
 const getters = {
