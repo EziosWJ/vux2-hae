@@ -46,8 +46,6 @@ export default {
   },
   components: {
     Swiper,
-
-    
     Grid,
     GridItem,
     GroupTitle

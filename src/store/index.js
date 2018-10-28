@@ -3,20 +3,27 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex)
 
+
 const state = {
     USER_ROLE : '',
-
+    Uc_Id:'',
 }
 
 const mutations = {
     setUSER_ROLE(state,ucRole){
         state.USER_ROLE = ucRole
+    },
+    setUc_Id(state,ucid){
+        state.Uc_Id = ucid
     }
 }
 
 const actions = {
     setRole({commit},ucRole){
         commit('setUSER_ROLE',ucRole)
+    },
+    setUcId({commit},ucid){
+        commit('setUc_Id',ucid)
     }
 }
 

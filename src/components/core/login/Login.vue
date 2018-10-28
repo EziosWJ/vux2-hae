@@ -47,10 +47,13 @@ export default {
           )
           .then(resp => {
             let code = resp.data.code
-            console.log(code);
+            
             let ucRole = resp.data.content.uc.ucRole
+            let ucId =   resp.data.content.uc.ucId
+            console.log(`ucid:${ucId}`);
             console.log(`权限为ucRole:${ucRole}`)
             this.$store.dispatch('setRole',ucRole)
+            this.$store.dispatch('setUcId',ucId)
             if(code === 200){
                 alert("欢迎！" + resp.data.content.uc.ucAccid + "!")
                 this.$router.push('/phome')
