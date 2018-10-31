@@ -58,7 +58,9 @@ import FoulRecord from '../components/core/manage/foul/Record.vue';
 import OpinionGrid from '../components/core/manage/opinion/OpinionGrid.vue';
 import Opinion from '../components/core/manage/opinion/Opinion.vue';
 import OpinionRecord from '../components/core/manage/opinion/Record.vue';
-
+//==========================帮教人
+import Process from '../components/core/reciver/process/process.vue';
+import education from '../components/core/reciver/education/education.vue';
 Vue.use(VueRouter)
 
 const routes = [
@@ -257,9 +259,19 @@ const routes = [
           {
             path:'/phome/opinion/record',
             component:OpinionRecord
-          }   
-              ]
-            },
+          },
+          //帮教进程
+          {
+            path:'/phome/process',
+            component:Process
+          },
+          //在线教育
+          {
+            path:'/phome/education',
+            component:education
+          },
+]
+},
    
   
   

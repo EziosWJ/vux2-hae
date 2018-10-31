@@ -12,21 +12,13 @@
             </thead>
             <tbody>
             
-                <tr>
-                    <td>李杰</td>
-                    <td>{{today}}</td>
+                <tr v-for="(record, index) in listrecord" :key="index">
+                    <td>{{record.irHelper}}</td>
+                    <td>{{record.irDate}}</td>
                     <td>
-                        查看
+                      {{record.irReason}}
                     </td>
                 </tr>
-            
-            <tr>
-                <td>孔庆官</td>
-                <td>{{today}}</td>
-                <td>
-                    查看
-                </td>
-            </tr>
             </tbody>
         </x-table>
         </div>
@@ -57,7 +49,23 @@ export default {
         let nowDate = year + "-" + month + "-" + day;
         return nowDate;
       }
-  }
+  },
+  data(){
+      return{
+          listrecord:{}
+      }
+  },
+  methods:{
+      getRecord(){
+        this.$axios.post("/api/record/getirterviewrecord",{ucId:this.$store.state.Uc_Id}).then(resp=>{
+            console.log(resp.data.content.list);
+            this.listrecord = resp.data.content.list;
+        })
+      },
+
+  },mounted() {
+          this.getRecord()
+    },
 }
 </script>
 

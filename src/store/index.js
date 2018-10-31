@@ -42,6 +42,9 @@ const actions = {
     setRole({commit},playload){
         commit('setUSER_ROLE',playload)
     },
+    setUcId({commit},ucId){
+        commit('setUc_Id',ucId)
+    },
     setByTheHelperList({commit}){
         axios.post('/api/com/getByTheHelperList').then(resp => {
             console.log(resp.data);
