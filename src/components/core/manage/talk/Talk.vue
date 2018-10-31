@@ -1,7 +1,7 @@
 <template>
     <div>
         <group title="教育记录" label-width="5em">
-            <popup-picker title="被帮教人" :data="list1" v-model="value1" 
+            <popup-picker title="被帮教人" :data="$store.state.reciverList" v-model="value1" 
             @on-show="onShow" @on-hide="onHide" @on-change="onChange" 
             placeholder="请选择"></popup-picker>
 
@@ -37,6 +37,22 @@ export default {
         }
     },
     methods:{
+        option(){
+            this.$store.dispatch('setByTheHelperList')
+        },
+        a(){
+            this.$axios
+            .post("/api/record/add",{reHelper:this.reHelper,reDate:this.reDate,reReason:this.reReason,ucId:this.value1[0]})
+            .then(resp=>{
+                let code = resp.data.code
+                if(code===200){
+                    alert('提交成功')
+                }else{
+                    alert('提交失败')
+                }
+                console.log(resp);
+            })
+        },
         onChange(){
             console.log('changed');
             
@@ -50,6 +66,8 @@ export default {
             
         }
 
+    },mounted(){
+        this.option();
     }
 }
 </script>
