@@ -28,6 +28,8 @@ import Revisit from '../components/core/eduResult/revisit/revisit.vue';
 import RevisitGrid from '../components/core/eduResult/revisit/revisitGrid.vue';
 import RevisitRecord from '../components/core/eduResult/revisit/revisitRecord.vue';
 //===========================
+// import moduleName from '../components/core/eduResult/rewardPunish';
+//===========================
 import CheckIn from '../components/core/manage/daily/CheckIn.vue';
 import CheckInGrid from '../components/core/manage/daily/CheckInGrid.vue';
 import CheckInRecord from '../components/core/manage/daily/CheckInRecord.vue';
@@ -155,6 +157,19 @@ const routes = [
             path:'/phome/revisit/revisitRecord',
             component: RevisitRecord
           },
+          //rewardpunish
+          // {
+          // path: '/phome/revisitGrid',
+          // component: RevisitGrid,
+          // },
+          // {
+          //   path:'/phome/revisit/revisit',
+          //   component: Revisit
+          // },
+          // {
+          //   path:'/phome/revisit/revisitRecord',
+          //   component: RevisitRecord
+          // },
           //daily
           {
             path:'/phome/checkInGrid',
