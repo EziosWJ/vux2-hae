@@ -14,6 +14,7 @@ import MindTestImcompletion from '../components/core/mindTest/Imcompletion.vue';
 import MindTestTest from '../components/core/mindTest/Test.vue';
 //============================
 import MindLeadGrid from '../components/core/mindLead/MindLeadGrid.vue';
+import LeadProgress from '../components/core/mindLead/LeadProgress.vue';
 import ApplyLead from '../components/core/mindLead/ApplyLead.vue';
 //==============================
 import RiskEvalGrid from '../components/core/riskEval/riskEvalGrid.vue';
@@ -108,6 +109,10 @@ const routes = [
           {
           path: '/phome/mindLeadGrid',
           component: MindLeadGrid
+          },
+          {
+          path: '/phome/leadProgress',
+          component: LeadProgress
           },
           {
           path: '/phome/mindLead/applyLead',

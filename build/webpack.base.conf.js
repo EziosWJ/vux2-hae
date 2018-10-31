@@ -62,8 +62,21 @@ let webpackConfig = {
         options: {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
+        },
+        
+      },
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /NIM_Web_SDK.*\.js/,
+        query: {
+          presets: [
+            // ...
+          ],
+          // ...
         }
-      }
+        // ...
+      },
     ]
   }
 }
