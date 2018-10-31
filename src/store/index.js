@@ -15,13 +15,15 @@ Vue.use(Vuex)
 const state = {
     USER_ROLE : '',
     reciverList:[],
-
-    Uc_Id:'',
+    USER_NAME:'',
+    USER_ID:'',
 }
 
 const mutations = {
-    setUSER_ROLE(state,ucRole){
-        state.USER_ROLE = ucRole
+    setUSER_ROLE(state,playload){
+        state.USER_ROLE = playload.ucRole
+        state.USER_ID = playload.ucId
+        state.USER_NAME = playload.ucAccid
     },
     setByTheHelperList(state,list){
         if(state.reciverList.length<1){
@@ -31,14 +33,14 @@ const mutations = {
             state.reciverList.push(list)
         }
     },
-    setUc_Id(state,ucid){
-        state.Uc_Id = ucid
-    }
+    // setUSER_ID(state,ucid){
+    //     state.USER_ID = ucid
+    // }
 }
 
 const actions = {
-    setRole({commit},ucRole){
-        commit('setUSER_ROLE',ucRole)
+    setRole({commit},playload){
+        commit('setUSER_ROLE',playload)
     },
     setUcId({commit},ucId){
         commit('setUc_Id',ucId)
@@ -70,7 +72,23 @@ const actions = {
             console.log(error);
             
         })
+    },
+    putForm({commit},playload){
+        axios.put(playload.url,playload.formData).then(resp => {
+            let data = resp.data
+            if(data.code === 200){
+                alert("提交成功！")
+            }else if(data.code === 555){
+               alert("发生错误！") 
+            }
+        }).catch(error =>{
+            alert(`发生内部错误：${error}`)
+        })
     }
+
+    // setUSER_ID({commit},ucid){
+    //     commit('setUSER_ID',ucid)
+    // }
 }
 
 const getters = {
