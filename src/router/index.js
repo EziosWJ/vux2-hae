@@ -23,6 +23,10 @@ import Eval from '../components/core/riskEval/Eval.vue';
 import HelEducationGird from '../components/core/helpEducation/HelEducationGird.vue';
 import Planning from '../components/core/helpEducation/Planning.vue';
 //===========================
+import Revisit from '../components/core/eduResult/revisit/revisit.vue';
+import RevisitGrid from '../components/core/eduResult/revisit/revisitGrid.vue';
+import RevisitRecord from '../components/core/eduResult/revisit/revisitRecord.vue';
+//===========================
 import CheckIn from '../components/core/manage/daily/CheckIn.vue';
 import CheckInGrid from '../components/core/manage/daily/CheckInGrid.vue';
 import CheckInRecord from '../components/core/manage/daily/CheckInRecord.vue';
@@ -130,6 +134,19 @@ const routes = [
           {
             path:'/phome/helpEducation/planning',
             component: Planning
+          },
+          //revisit
+          {
+          path: '/phome/revisitGrid',
+          component: RevisitGrid,
+          },
+          {
+            path:'/phome/revisit/revisit',
+            component: Revisit
+          },
+          {
+            path:'/phome/revisit/revisitRecord',
+            component: RevisitRecord
           },
           //daily
           {
