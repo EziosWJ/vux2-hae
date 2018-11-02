@@ -53,10 +53,6 @@ export default {
             console.log(`ucid:${ucId}`);
             console.log(`权限为ucRole:${ucRole}${ucAccid}`)
             this.$store.dispatch('setRole',{ucRole,ucId,ucAccid})
-<<<<<<< HEAD
-             this.$store.dispatch('setUSER_ID',ucId)
-=======
->>>>>>> 1052d6a655de9bf12e509fbca46d4369ddd37958
             if(code === 200){
                 alert("欢迎！" + resp.data.content.uc.ucAccid + "!")
                 this.$router.push('/phome')
