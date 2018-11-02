@@ -13,7 +13,7 @@
             <tbody>
             
                 <tr v-for="(record, index) in listrecord" :key="index">
-                    <td>{{record.irHelper}}</td>
+                    <td>{{record.ucAccid}}</td>
                     <td>{{record.irDate}}</td>
                     <td>
                       {{record.irReason}}
@@ -57,9 +57,9 @@ export default {
   },
   methods:{
       getRecord(){
-        this.$axios.post("/api/record/getirterviewrecord",{ucId:this.$store.state.Uc_Id}).then(resp=>{
-            console.log(resp.data.content.list);
-            this.listrecord = resp.data.content.list;
+        this.$axios.post("/api/record/getInterviewRecord",{ucId:this.$store.state.USER_ID}).then(resp=>{
+            console.log(resp.data.content.interviewRecordList);
+            this.listrecord = resp.data.content.interviewRecordList;
         })
       },
 

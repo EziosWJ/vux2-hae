@@ -6,27 +6,19 @@
             <thead>
             <tr>
                 <th>姓名</th>
-                <th>日期</th>
+                <th>服务地点</th>
                 <th>结果</th>
             </tr>
             </thead>
             <tbody>
             
-                <tr>
-                    <td>李杰</td>
-                    <td>{{today}}</td>
+                 <tr v-for="(record, index) in listrecord" :key="index">
+                    <td>{{record.ucAccid}}</td>
+                    <td>{{record.csPlace}}</td>
                     <td>
-                        查看
+                      {{record.csReason}}
                     </td>
                 </tr>
-            
-            <tr>
-                <td>孔庆官</td>
-                <td>{{today}}</td>
-                <td>
-                    查看
-                </td>
-            </tr>
             </tbody>
         </x-table>
         </div>
@@ -57,7 +49,23 @@ export default {
         let nowDate = year + "-" + month + "-" + day;
         return nowDate;
       }
-  }
+  },
+  data(){
+      return{
+          listrecord:{}
+      }
+  },
+  methods:{
+      getRecord(){
+        this.$axios.post("/api/record/getCommunityRecord",{ucId:this.$store.state.USER_ID}).then(resp=>{
+            console.log(resp.data.content.communityRecordList);
+            this.listrecord = resp.data.content.communityRecordList;
+        })
+      },
+
+  },mounted() {
+          this.getRecord()
+    },
 }
 </script>
 

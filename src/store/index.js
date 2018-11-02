@@ -33,9 +33,9 @@ const mutations = {
             state.reciverList.push(list)
         }
     },
-    // setUSER_ID(state,ucid){
-    //     state.USER_ID = ucid
-    // }
+     setUSER_ID(state,ucid){
+         state.USER_ID = ucid
+     }
 }
 
 const actions = {
@@ -84,11 +84,10 @@ const actions = {
         }).catch(error =>{
             alert(`发生内部错误：${error}`)
         })
-    }
-
-    // setUSER_ID({commit},ucid){
-    //     commit('setUSER_ID',ucid)
-    // }
+    },
+     setUSER_ID({commit},ucid){
+         commit('setUSER_ID',ucid)
+     }
 }
 
 const getters = {

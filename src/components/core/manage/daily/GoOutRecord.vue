@@ -13,7 +13,7 @@
             <tbody>
             
                 <tr v-for="(record, index) in listrecord" :key="index">
-                    <td>{{record.reUsername}}</td>
+                    <td>{{record.ucAccid}}</td>
                     <td>{{record.reDate}}</td>
                     <td>
                       {{record.reReason}}
@@ -57,9 +57,9 @@ export default {
   },
   methods:{
       getRecord(){
-        this.$axios.post("/api/record/getrecord",{ucId:this.$store.state.Uc_Id}).then(resp=>{
-            console.log(resp.data.content.list);
-            this.listrecord = resp.data.content.list;
+        this.$axios.post("/api/record/getLeaveRecord",{ucId:this.$store.state.USER_ID}).then(resp=>{
+            console.log(resp.data.content.leaveRecordList);
+            this.listrecord = resp.data.content.leaveRecordList;
         })
       },
 

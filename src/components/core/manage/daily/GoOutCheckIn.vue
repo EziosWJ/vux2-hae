@@ -2,7 +2,7 @@
     <div>
         <group title="登记" label-width="5em">
             <popup-picker title="被帮教人" :data="$store.state.reciverList" v-model="value1" 
-            @on-show="onShow" @on-hide="onHide" @on-change="onChange" 
+            @on-show="onShow" @on-hide="onHide" @on-change="onChange" show-name="true"
             placeholder="请选择"></popup-picker>
             <x-input title="登记人" placeholder="请输入" v-model="reHelper"></x-input>
           
@@ -47,7 +47,7 @@ export default {
         },
         a(){
             this.$axios
-            .post("/api/record/add",{reHelper:this.reHelper,reDate:this.reDate,reReason:this.reReason,ucId:this.value1[0]})
+            .post("/api/record/putLeaveRecord",{reHelper:this.reHelper,reDate:this.reDate,reReason:this.reReason,ucId:this.value1[0]})
             .then(resp=>{
                 let code = resp.data.code
                 if(code===200){

@@ -12,27 +12,18 @@
             </thead>
             <tbody>
             
-                <tr>
-                    <td>李杰</td>
-                    <td>{{score.you}}</td>
+                <tr v-for="(record, index) in listrecord" :key="index">
+                    <td>{{record.ucAccid}}</td>
+                    <td>{{record.orDate}}</td>
                     <td>
-                        查看
+                      {{record.orReason}}
                     </td>
                 </tr>
-            
-            <tr>
-                <td>孔庆官</td>
-                <td>{{score.liang}}</td>
-                <td>
-                    查看
-                </td>
-            </tr>
             </tbody>
         </x-table>
         </div>
     </div>
 </template>
-
 <script>
 import { XTable, LoadMore,XButton } from 'vux'
 const date = new Date()
@@ -42,8 +33,7 @@ export default {
     LoadMore,
     XButton
   },
- 
-      data(){
+  data(){
         //获取当前时间
         // let year = date.getFullYear();
         // let month = date.getMonth() + 1;
@@ -58,10 +48,20 @@ export default {
         // return nowDate;
         return {
            
-            score:{you:'优',liang:'良'}
-            
+            score:{you:'优',liang:'良'},
+             listrecord:{}
         }
-      }
+      } ,methods:{
+      getRecord(){
+        this.$axios.post("/api/record/getOpinionRecord",{ucId:this.$store.state.USER_ID}).then(resp=>{
+            console.log(resp.data.content.opinionRecordList);
+            this.listrecord = resp.data.content.opinionRecordList;
+        })
+      },
+
+  },mounted() {
+          this.getRecord()
+    },
   
 }
 </script>

@@ -1,8 +1,8 @@
 <template>
     <div>
-        <group title="教育记录" label-width="5em">
+        <group title="劳动记录" label-width="5em">
             <popup-picker title="被帮教人" :data="$store.state.reciverList" v-model="value1" 
-            @on-show="onShow"  @on-hide="onHide" @on-change="onChange" 
+            @on-show="onShow"  @on-hide="onHide" @on-change="onChange" :show-name="true"
             placeholder="请选择"></popup-picker>
             <popup-picker title="目标单位" :data="list2" v-model="value2" 
             @on-show="onShow" @on-hide="onHide" @on-change="onChange" 
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { Group,XInput,XTextarea,XButton,PopupPicker} from 'vux'
+import { Group,XInput,XTextarea,XButton,PopupPicker,Datetime} from 'vux'
 
 export default {
   components: {
@@ -28,14 +28,18 @@ export default {
     XInput,
     XTextarea,
     XButton,
-    PopupPicker
+    PopupPicker,
+    Datetime
   },
   data(){
         return {
             list1:[['李杰','孔庆官','王坚']],
             list2:[['纺织厂','富士康','煤炭机械']],
             value1:['请选择'],
-            value2:['请选择']
+            value2:['请选择'],
+            leHelper:"",
+            leReason:"",
+            leDate:""
         }
     },
     methods:{
@@ -44,7 +48,7 @@ export default {
         },
         a(){
             this.$axios
-            .post("/api/record/add",{reHelper:this.reHelper,reDate:this.reDate,reReason:this.reReason,ucId:this.value1[0]})
+            .post("/api/record/putLabourEducation",{leHelper:this.leHelper,leDate:this.leDate,leReason:this.leReason,ucId:this.value1[0],lePlace:this.value2[0]})
             .then(resp=>{
                 let code = resp.data.code
                 if(code===200){

@@ -2,7 +2,7 @@
     <div>
         <group title="走访登记" label-width="5em">
              <popup-picker title="被帮教人" :data="$store.state.reciverList" v-model="value1" 
-            @on-show="onShow" @on-hide="onHide" @on-change="onChange" 
+            @on-show="onShow" @on-hide="onHide" @on-change="onChange"  show-name="true"
             placeholder="请选择"></popup-picker>
             <x-input title="登记人" placeholder="请输入" v-model="irHelper"></x-input>
             <datetime v-model="irDate" format="YYYY-MM-DD HH:mm" :minute-list="['00', '15', '30', '45']" title="日期" ></datetime>
@@ -43,7 +43,7 @@ export default {
         },
         a(){
             this.$axios
-            .post("/api/record/interviewadd",{irHelper:this.irHelper,irDate:this.irDate,irReason:this.irReason,ucId:this.value1[0]})
+            .post("/api/record/putInterviewRecord",{irHelper:this.irHelper,irDate:this.irDate,irReason:this.irReason,ucId:this.value1[0]})
             .then(resp=>{
                 let code = resp.data.code
                 if(code===200){

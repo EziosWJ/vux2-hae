@@ -11,22 +11,13 @@
             </tr>
             </thead>
             <tbody>
-            
-                <tr>
-                    <td>李杰</td>
-                    <td>{{today}}</td>
+             <tr v-for="(record, index) in listrecord" :key="index">
+                    <td>{{record.ucAccid}}</td>
+                    <td>{{record.frDate}}</td>
                     <td>
-                        查看
+                      {{record.frReason}}
                     </td>
                 </tr>
-            
-            <tr>
-                <td>孔庆官</td>
-                <td>{{today}}</td>
-                <td>
-                    查看
-                </td>
-            </tr>
             </tbody>
         </x-table>
         </div>
@@ -57,7 +48,21 @@ export default {
         let nowDate = year + "-" + month + "-" + day;
         return nowDate;
       }
-  }
+  },data(){
+      return{
+          listrecord:{}
+      }
+  } , methods:{
+      getRecord(){
+        this.$axios.post("/api/record/getFoulRecord",{ucId:this.$store.state.USER_ID}).then(resp=>{
+            console.log(resp.data.content.foulRecordList);
+            this.listrecord = resp.data.content.foulRecordList;
+        })
+      },
+
+  },mounted() {
+          this.getRecord()
+    },
 }
 </script>
 
