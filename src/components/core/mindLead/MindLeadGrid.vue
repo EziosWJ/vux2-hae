@@ -2,7 +2,7 @@
     <div>
         <group-title>心理疏导</group-title>
         <grid :cols="2" :show-vertical-dividers="true">
-            <grid-item link="/phome/mindTestImcompletion" label="疏导进程">
+            <grid-item link="/phome/leadProgress" label="疏导进程">
                 <i slot="icon" class="fa fa-heart-o" aria-hidden="true"></i>
             </grid-item>
             <grid-item link="/phome/mindLead/applyLead" label="进行疏导">

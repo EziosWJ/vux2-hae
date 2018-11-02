@@ -65,9 +65,7 @@ export default {
     width: 44px;
     float:left;
 }
-.user-name{
 
-}
 .user-msg{
     font-size: 12px;
     color: gray;

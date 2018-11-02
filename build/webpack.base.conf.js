@@ -38,7 +38,8 @@ let webpackConfig = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test')]
+        include: [resolve('src'), resolve('test')],
+        exclude: /NIM_Web_SDK.*\.js/
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -62,8 +63,9 @@ let webpackConfig = {
         options: {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
-        }
-      }
+        },
+        
+      },
     ]
   }
 }

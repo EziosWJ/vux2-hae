@@ -14,6 +14,7 @@ import MindTestImcompletion from '../components/core/mindTest/Imcompletion.vue';
 import MindTestTest from '../components/core/mindTest/Test.vue';
 //============================
 import MindLeadGrid from '../components/core/mindLead/MindLeadGrid.vue';
+import LeadProgress from '../components/core/mindLead/LeadProgress.vue';
 import ApplyLead from '../components/core/mindLead/ApplyLead.vue';
 //==============================
 import RiskEvalGrid from '../components/core/riskEval/riskEvalGrid.vue';
@@ -26,6 +27,14 @@ import Planning from '../components/core/helpEducation/Planning.vue';
 import Revisit from '../components/core/eduResult/revisit/revisit.vue';
 import RevisitGrid from '../components/core/eduResult/revisit/revisitGrid.vue';
 import RevisitRecord from '../components/core/eduResult/revisit/revisitRecord.vue';
+//===========================
+import RewardPunish from '../components/core/eduResult/rewardPunish/rewardPunish.vue';
+import RewardPunishGrid from '../components/core/eduResult/rewardPunish/rewardPunishGrid.vue';
+import RewardPunishRecord from '../components/core/eduResult/rewardPunish/rewardPunishRecord.vue';
+//===========================
+import InvOption from '../components/core/eduResult/invOption/invOption.vue';
+import InvOptionGrid from '../components/core/eduResult/invOption/invOptionGrid.vue';
+import InvRecord from '../components/core/eduResult/invOption/invRecord.vue';
 //===========================
 import CheckIn from '../components/core/manage/daily/CheckIn.vue';
 import CheckInGrid from '../components/core/manage/daily/CheckInGrid.vue';
@@ -112,6 +121,10 @@ const routes = [
           component: MindLeadGrid
           },
           {
+          path: '/phome/leadProgress',
+          component: LeadProgress
+          },
+          {
           path: '/phome/mindLead/applyLead',
           component: ApplyLead
           },
@@ -149,6 +162,32 @@ const routes = [
           {
             path:'/phome/revisit/revisitRecord',
             component: RevisitRecord
+          },
+          //rewardpunish
+          {
+          path: '/phome/rewardPunishGrid',
+          component: RewardPunishGrid,
+          },
+          {
+            path:'/phome/rewardPunish/rewardPunish',
+            component: RewardPunish
+          },
+          {
+            path:'/phome/rewardPunish/rewardPunishRecord',
+            component: RewardPunishRecord
+          },
+          //invOption
+          {
+          path: '/phome/invOptionGrid',
+          component: InvOptionGrid,
+          },
+          {
+            path:'/phome/invOption/invOption',
+            component: InvOption
+          },
+          {
+            path:'/phome/invOption/invRecord',
+            component: InvRecord
           },
           //daily
           {
