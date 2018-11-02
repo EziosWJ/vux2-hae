@@ -13,7 +13,7 @@
             <tbody>
             
                 <tr v-for="(record, index) in listrecord" :key="index">
-                    <td>{{record.irHelper}}</td>
+                    <td>{{record.ucId}}</td>
                     <td>{{record.irDate}}</td>
                     <td>
                       {{record.irReason}}

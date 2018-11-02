@@ -13,7 +13,7 @@
             <tbody>
             
                 <tr v-for="(record, index) in listrecord" :key="index">
-                    <td>{{record.reUsername}}</td>
+                    <td>{{record.reId}}</td>
                     <td>{{record.reDate}}</td>
                     <td>
                       {{record.reReason}}

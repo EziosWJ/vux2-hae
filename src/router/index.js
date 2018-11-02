@@ -28,7 +28,13 @@ import Revisit from '../components/core/eduResult/revisit/revisit.vue';
 import RevisitGrid from '../components/core/eduResult/revisit/revisitGrid.vue';
 import RevisitRecord from '../components/core/eduResult/revisit/revisitRecord.vue';
 //===========================
-// import moduleName from '../components/core/eduResult/rewardPunish';
+import RewardPunish from '../components/core/eduResult/rewardPunish/rewardPunish.vue';
+import RewardPunishGrid from '../components/core/eduResult/rewardPunish/rewardPunishGrid.vue';
+import RewardPunishRecord from '../components/core/eduResult/rewardPunish/rewardPunishRecord.vue';
+//===========================
+import InvOption from '../components/core/eduResult/invOption/invOption.vue';
+import InvOptionGrid from '../components/core/eduResult/invOption/invOptionGrid.vue';
+import InvRecord from '../components/core/eduResult/invOption/invRecord.vue';
 //===========================
 import CheckIn from '../components/core/manage/daily/CheckIn.vue';
 import CheckInGrid from '../components/core/manage/daily/CheckInGrid.vue';
@@ -158,18 +164,31 @@ const routes = [
             component: RevisitRecord
           },
           //rewardpunish
-          // {
-          // path: '/phome/revisitGrid',
-          // component: RevisitGrid,
-          // },
-          // {
-          //   path:'/phome/revisit/revisit',
-          //   component: Revisit
-          // },
-          // {
-          //   path:'/phome/revisit/revisitRecord',
-          //   component: RevisitRecord
-          // },
+          {
+          path: '/phome/rewardPunishGrid',
+          component: RewardPunishGrid,
+          },
+          {
+            path:'/phome/rewardPunish/rewardPunish',
+            component: RewardPunish
+          },
+          {
+            path:'/phome/rewardPunish/rewardPunishRecord',
+            component: RewardPunishRecord
+          },
+          //invOption
+          {
+          path: '/phome/invOptionGrid',
+          component: InvOptionGrid,
+          },
+          {
+            path:'/phome/invOption/invOption',
+            component: InvOption
+          },
+          {
+            path:'/phome/invOption/invRecord',
+            component: InvRecord
+          },
           //daily
           {
             path:'/phome/checkInGrid',

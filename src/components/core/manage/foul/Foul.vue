@@ -2,7 +2,7 @@
     <div>
        <group title="违规违纪" label-width="5em">
             <popup-picker title="被帮教人" :data="list1" v-model="value1" 
-            @on-show="onShow" @on-hide="onHide" @on-change="onChange" 
+            @on-show="onShow" @on-hide="onHide" @on-change="onChange" :show-name="true"
             placeholder="请选择"></popup-picker>
             <popup-picker title="目标单位" :data="list2" v-model="value2" 
             @on-show="onShow" @on-hide="onHide" @on-change="onChange" 

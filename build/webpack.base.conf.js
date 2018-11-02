@@ -38,7 +38,8 @@ let webpackConfig = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test')]
+        include: [resolve('src'), resolve('test')],
+        exclude: /NIM_Web_SDK.*\.js/
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -64,18 +65,6 @@ let webpackConfig = {
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         },
         
-      },
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        exclude: /NIM_Web_SDK.*\.js/,
-        query: {
-          presets: [
-            // ...
-          ],
-          // ...
-        }
-        // ...
       },
     ]
   }
