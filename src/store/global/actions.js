@@ -1,5 +1,3 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
 import axios from 'axios';
 import Qs from 'qs';
 axios.defaults.transformRequest = function (data) {
@@ -8,37 +6,7 @@ axios.defaults.transformRequest = function (data) {
 };
 axios.defaults.headers = {'Content-Type': 'application/x-www-form-urlencoded'}
 
-
-Vue.use(Vuex)
-
-
-const state = {
-    USER_ROLE : '',
-    reciverList:[],
-    USER_NAME:'',
-    USER_ID:'',
-}
-
-const mutations = {
-    setUSER_ROLE(state,playload){
-        state.USER_ROLE = playload.ucRole
-        state.USER_ID = playload.ucId
-        state.USER_NAME = playload.ucAccid
-    },
-    setByTheHelperList(state,list){
-        if(state.reciverList.length<1){
-            state.reciverList.push(list)
-        }else{
-            state.reciverList.pop()
-            state.reciverList.push(list)
-        }
-    },
-    // setUSER_ID(state,ucid){
-    //     state.USER_ID = ucid
-    // }
-}
-
-const actions = {
+export default {
     setRole({commit},playload){
         commit('setUSER_ROLE',playload)
     },
@@ -85,21 +53,4 @@ const actions = {
             alert(`发生内部错误：${error}`)
         })
     }
-
-    // setUSER_ID({commit},ucid){
-    //     commit('setUSER_ID',ucid)
-    // }
 }
-
-const getters = {
-
-}
-
-
-
-export default new Vuex.Store({
-    state,//状态对象
-    mutations,//包含多个更新state函数的对象
-    actions,//包含多个事件回调函数的对象
-    getters, //包含多个getter计算属性函数的对象
-})
