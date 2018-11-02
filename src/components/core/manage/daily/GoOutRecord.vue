@@ -13,11 +13,7 @@
             <tbody>
             
                 <tr v-for="(record, index) in listrecord" :key="index">
-<<<<<<< HEAD
                     <td>{{record.ucAccid}}</td>
-=======
-                    <td>{{record.reId}}</td>
->>>>>>> 1052d6a655de9bf12e509fbca46d4369ddd37958
                     <td>{{record.reDate}}</td>
                     <td>
                       {{record.reReason}}

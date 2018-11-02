@@ -5,7 +5,7 @@ import FastClick from 'fastclick'
 import router from './router'
 import Axios from 'axios'
 import Qs from 'qs';
-import store from './store'
+import store from './store/store'
 
 import App from './App'
 import 'font-awesome/css/font-awesome.css'
@@ -19,7 +19,7 @@ FastClick.attach(document.body)
 
 Vue.config.productionTip = false
 
-
+store.dispatch('im/initNimSDK')
 /* eslint-disable no-new */
 new Vue({
   router,
