@@ -69,6 +69,10 @@ import OpinionRecord from '../components/core/manage/opinion/Record.vue';
 //==========================帮教人
 import Process from '../components/core/reciver/process/process.vue';
 import education from '../components/core/reciver/education/education.vue';
+import Result from '../components/core/reciver/result/result.vue';
+import FeedbackGrid from '../components/core/reciver/feedback/FeedbackGrid.vue';
+import Feedback from '../components/core/reciver/feedback/Feedback.vue';
+import FeedbackRecord from '../components/core/reciver/feedback/Record.vue';
 Vue.use(VueRouter)
 
 const routes = [
@@ -315,6 +319,24 @@ const routes = [
             path:'/phome/education',
             component:education
           },
+          //帮教结果
+          {
+            path:'/phome/result',
+            component:Result
+          },
+          //帮教反馈
+          {
+            path:'/phome/feedbackGrid',
+            component:FeedbackGrid
+          },
+          {
+            path:'/phome/feedback/feedback',
+            component:Feedback
+          },
+          {
+            path:'/phome/feedback/record',
+            component:FeedbackRecord
+          }
 ]
 },
    

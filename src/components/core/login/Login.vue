@@ -6,7 +6,11 @@
                 <img src="../../../assets/xy.gif" style="" alt="">
             </div> -->
             <!-- </group> -->
-            <div style="margin:180px"></div>
+
+             <blur :blur-amount=40 url="../../../assets/login.jpg">
+                <p class="center"><img src="../../../assets/login.jpg"></p>
+            </blur>
+            <div style="margin:50px"></div>
             <group>
                 <x-input placeholder="用户名" v-model="ucName">
                     <i slot="label" class="fa fa-user"></i>
@@ -23,19 +27,21 @@
 </template>
 
 <script>
-import { ViewBox,Group,XInput,XButton } from 'vux'
+import { ViewBox,Group,XInput,XButton,Blur } from 'vux'
 
 export default {
   components: {
     ViewBox,
     Group,
     XInput,
-    XButton
+    XButton,
+    Blur
   },
   data(){
       return {
           ucName:"",
-          ucPassword:""
+          ucPassword:"",
+         
       }
   },
   methods:{
@@ -50,11 +56,13 @@ export default {
             let ucRole = resp.data.content.uc.ucRole
             let ucId =   resp.data.content.uc.ucId
             let ucAccid = resp.data.content.uc.ucAccid
+            let ucCustom = resp.data.content.uc.ucCustom
             let ucToken = resp.data.content.uc.ucToken
             console.log(`ucid:${ucId}`);
             console.log(`权限为ucRole:${ucRole}${ucAccid}`)
-            this.$store.dispatch('setRole',{ucRole,ucId,ucAccid,ucToken})
+            this.$store.dispatch('setRole',{ucRole,ucId,ucAccid,ucToken,ucCustom})
             if(code === 200){
+                console.log(``)
                 alert("欢迎！" + resp.data.content.uc.ucAccid + "!")
                 this.$store.dispatch('im/initNimSDK')
                 this.$router.push('/phome')
@@ -83,6 +91,18 @@ export default {
             width:133px;
             height: 192px;   
     } */
+    .center {
+  text-align: center;
+  padding-top: 20px;
+  color: #fff;
+  font-size: 18px;
+}
+.center img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid #ececec;
+}
 </style>
 
 

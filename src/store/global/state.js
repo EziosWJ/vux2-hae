@@ -5,5 +5,6 @@ export default{
     USER_NAME:'',
     USER_ID:'',
     USER_TOKEN:'',
+    UC_CUSTOM:''
     
 }
