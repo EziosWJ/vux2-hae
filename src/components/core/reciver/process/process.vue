@@ -3,9 +3,9 @@
     <br>
     <div>
       <step v-model="step1" background-color='#fbf9fe'>
-        <step-item title="步骤一" description="步骤一"></step-item>
-        <step-item title="步骤二" description="步骤二"></step-item>
-        <step-item title="步骤三" description="步骤三"></step-item>
+        <step-item title="开始疏导" description="开始疏导"></step-item>
+        <step-item title="疏导中" description="疏导中"></step-item>
+        <step-item title="疏导完成" description="疏导完成"></step-item>
       </step>
     </div>
     <x-hr></x-hr>
@@ -33,8 +33,8 @@ export default {
   },
   data () {
     return {
-      step1: 1,
-      step2: 0
+      step1: 0,
+      step2: 1
     }
   },
   methods: {

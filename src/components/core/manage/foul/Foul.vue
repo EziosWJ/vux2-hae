@@ -19,6 +19,7 @@
 <script>
 import { Group, XInput,XTextarea,XButton,PopupPicker,Datetime} from 'vux'
 export default {
+    
     components:{
         Group,
         XInput,
