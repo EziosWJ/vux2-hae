@@ -6,43 +6,7 @@ axios.defaults.transformRequest = function (data) {
 };
 axios.defaults.headers = {'Content-Type': 'application/x-www-form-urlencoded'}
 
-<<<<<<< HEAD:src/store/global/actions.js
 export default {
-=======
-
-Vue.use(Vuex)
-
-
-const state = {
-    USER_ROLE : '',
-    reciverList:[],
-    USER_NAME:'',
-    USER_ID:'',
-    UC_CUSTOM:''
-}
-
-const mutations = {
-    setUSER_ROLE(state,playload){
-        state.USER_ROLE = playload.ucRole
-        state.USER_ID = playload.ucId
-        state.USER_NAME = playload.ucAccid
-        state.UC_CUSTOM = playload.ucCustom
-    },
-    setByTheHelperList(state,list){
-        if(state.reciverList.length<1){
-            state.reciverList.push(list)
-        }else{
-            state.reciverList.pop()
-            state.reciverList.push(list)
-        }
-    },
-     setUSER_ID(state,ucid){
-         state.USER_ID = ucid
-     }
-}
-
-const actions = {
->>>>>>> lijie:src/store/index.js
     setRole({commit},playload){
         commit('setUSER_ROLE',playload)
     },
