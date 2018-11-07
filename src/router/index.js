@@ -81,6 +81,12 @@ const routes = [
      redirect:'/login'
      },
     {
+     path: '/pchat/:who',
+     component: ()=>import ('../components/platform/PChat.vue'),
+     props: true
+
+     },
+    {
     path: '/V',
     component:V,
       children:[
@@ -97,6 +103,11 @@ const routes = [
           path: '/pmine',
           component: PMine
           },
+          {
+          path: '/pperson',
+          component: ()=>import ('../components/platform/PPerson.vue')
+          },
+
           //=================================core============================
           //mindTest
           {

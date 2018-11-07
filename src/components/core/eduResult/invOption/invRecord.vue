@@ -5,14 +5,14 @@
             <x-table>
                 <thead>
                 <tr>
-                    <th>考察名称</th>
+                    <th>考察对象</th>
                     <th>创建日期</th>
                     <th>内容</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr v-for="item in invOptionList" :key="item.id">
-                    <td>{{item.ioName}}</td>
+                    <td>{{item.ioReciver}}</td>
                     <td>{{item.ioCreateDate}}</td>
                     <td>{{item.ioResult}}</td>
                 </tr>

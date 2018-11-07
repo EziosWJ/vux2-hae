@@ -3,6 +3,7 @@ export default{
         state.USER_ROLE = playload.ucRole
         state.USER_ID = playload.ucId
         state.USER_NAME = playload.ucAccid
+        state.USER_TOKEN = playload.ucToken
     },
     setByTheHelperList(state,list){
         if(state.reciverList.length<1){

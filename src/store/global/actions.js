@@ -13,8 +13,9 @@ export default {
     setUcId({commit},ucId){
         commit('setUc_Id',ucId)
     },
-    setByTheHelperList({commit}){
-        axios.post('/api/com/getByTheHelperList').then(resp => {
+    setByTheHelperList({state,commit}){
+        let ucId = state.USER_ID
+        axios.post('/api/com/getByTheHelperList',{ucId}).then(resp => {
             console.log(resp.data);
             let list = resp.data.content.byTheHelperList
             for (let index = 0; index < list.length; index++) {

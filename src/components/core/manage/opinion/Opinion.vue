@@ -2,8 +2,7 @@
     <div>
        <group title="评定意见" label-width="5em">
             <popup-picker title="被帮教人" :data="$store.state.reciverList" v-model="value1" 
-            @on-show="onShow" @on-hide="onHide" @on-change="onChange" :show-name="true"
-            placeholder="请选择"></popup-picker>
+            @on-show="onShow" @on-hide="onHide" :show-name="true"></popup-picker>
            
             <x-input title="登记人" v-model="orHelper" placeholder="请输入"></x-input>
             <datetime v-model="orDate" format="YYYY-MM-DD HH:mm" :minute-list="['00', '15', '30', '45']" title="日期"></datetime>

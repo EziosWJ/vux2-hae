@@ -16,7 +16,7 @@
         <i slot="icon" class="fa fa-commenting-o" aria-hidden="true"></i>
         <span slot="label">消息</span>
       </tabbar-item>
-      <tabbar-item>
+      <tabbar-item link="/pperson">
         <i slot="icon" class="fa fa-address-book-o" aria-hidden="true"></i>
         <span slot="label">通讯录</span>
       </tabbar-item>

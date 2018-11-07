@@ -19,7 +19,7 @@ FastClick.attach(document.body)
 
 Vue.config.productionTip = false
 
-store.dispatch('im/initNimSDK')
+
 /* eslint-disable no-new */
 new Vue({
   router,

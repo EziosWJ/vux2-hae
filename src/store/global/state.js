@@ -4,5 +4,6 @@ export default{
     reciverList:[],
     USER_NAME:'',
     USER_ID:'',
+    USER_TOKEN:'',
     
 }

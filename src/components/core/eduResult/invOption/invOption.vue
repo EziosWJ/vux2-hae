@@ -1,9 +1,10 @@
 <template>
     <div>
         <group>
-            <x-input title="考察名称" placeholder="请输入" v-model="invOption.ioName" text-align="right"></x-input>
+            <popup-picker title="被考察对象" :data="this.ioReciverList" v-model="invOption.ioReciver" 
+               placeholder="请选择" :show-name="true"  ></popup-picker>
             <datetime title="考察日期" v-model="invOption.ioCreateDate" text-align="right"></datetime>
-            <x-input title="考察主题" placeholder="请输入" v-model="invOption.ioTitle" text-align="right"></x-input>
+            <x-input title="考察名称" placeholder="请输入" v-model="invOption.ioTitle" text-align="right"></x-input>
             <x-textarea title="考察结果" placeholder="请输入" v-model="invOption.ioResult"></x-textarea>
         </group>
         <group>
@@ -15,7 +16,7 @@
 </template>
 
 <script>
-import { Group,XInput,XTextarea,XButton,Datetime} from 'vux'
+import { Group,XInput,XTextarea,XButton,Datetime,PopupPicker} from 'vux'
 
 export default {
   components: {
@@ -23,11 +24,12 @@ export default {
     XInput,
     XTextarea,
     XButton
-    ,Datetime
+    ,Datetime,PopupPicker
   },
   data(){
       return {
-          invOption:{}
+          invOption:{},
+          ioReciverList:[]
       }
   },
   methods:{
@@ -46,7 +48,25 @@ export default {
           for (let index = 0; index < this.invOption.length; index++) {
               this.invOption[index] = "";
           }
-      }
+      },
+     getByTheHelperList(){
+          this.$axios.post('/api/com/getByTheHelperOptionedList').then(resp => {
+              console.log(resp.data);
+              let list = resp.data.content.byTheHelperList
+              for (let index = 0; index < list.length; index++) {
+                  const element = list[index]
+                  list[index].value = list[index].value.toString()
+              }
+              console.log(list);
+              this.ioReciverList.push(list)
+          }).catch(error => {
+              console.log(error);
+              alert(`发生内部错误${error}`)
+          })
+      },
+  },
+  mounted(){
+      this.getByTheHelperList()
   }
 }
 </script>

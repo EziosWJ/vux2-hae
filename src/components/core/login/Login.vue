@@ -50,11 +50,13 @@ export default {
             let ucRole = resp.data.content.uc.ucRole
             let ucId =   resp.data.content.uc.ucId
             let ucAccid = resp.data.content.uc.ucAccid
+            let ucToken = resp.data.content.uc.ucToken
             console.log(`ucid:${ucId}`);
             console.log(`权限为ucRole:${ucRole}${ucAccid}`)
-            this.$store.dispatch('setRole',{ucRole,ucId,ucAccid})
+            this.$store.dispatch('setRole',{ucRole,ucId,ucAccid,ucToken})
             if(code === 200){
                 alert("欢迎！" + resp.data.content.uc.ucAccid + "!")
+                this.$store.dispatch('im/initNimSDK')
                 this.$router.push('/phome')
             }else{
                 alert("登录失败，请重新登录！")

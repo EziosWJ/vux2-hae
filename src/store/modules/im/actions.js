@@ -14,14 +14,14 @@ export default{
         dispatch('connect')
     },
 
-    connect({state,commit,dispatch}){
+    connect({state,commit,dispatch,rootState}){
         console.log("connect");
         
         window.nim = state.nim = SDK.NIM.getInstance({
             // debug: true,
             appKey: '358259c12ef46fa86bb83e62ef763b83',
-            account: 'wangjian',
-            token: '56667eba809c0c093cca9ed441f7d433',
+            account: rootState.USER_NAME, //state.USER_NAME
+            token: rootState.USER_TOKEN,//state.USER_TOKEN
             // privateConf: {}, // 私有化部署方案所需的配置
             onconnect: onConnect,
             onwillreconnect: onWillReconnect,
@@ -30,7 +30,8 @@ export default{
 
             onroamingmsgs: onRoamingMsgs,
             onofflinemsgs: onOfflineMsgs,
-            onmsg: onMsg
+            onmsg: onMsg,
+            onSendMsgDone:onSendMsgDone
           })
             function onConnect() {
                 console.log('连接成功');
@@ -67,15 +68,16 @@ export default{
 
             function onRoamingMsgs(obj) {
                 console.log('收到漫游消息', obj);
-                pushMsg(obj.msgs);
+                // pushMsg(obj.msgs);
             }
             function onOfflineMsgs(obj) {
                 console.log('收到离线消息', obj);
-                pushMsg(obj.msgs);
+                // pushMsg(obj.msgs);
             }
             function onMsg(msg) {
                 console.log('收到消息', msg.scene, msg.type, msg);
                 // pushMsg(msg);
+                commit('pushMsg',{msg})
                 switch (msg.type) {
                 case 'custom':
                     onCustomMsg(msg);
@@ -89,17 +91,71 @@ export default{
                     break;
                 }
             }
-            function pushMsg(msgs) {
-                if (!Array.isArray(msgs)) { msgs = [msgs]; }
-                var sessionId = msg[0].scene + '-' + msgs[0].account;
-                data.msgs = data.msgs || {};
-                data.msgs[sessionId] = nim.mergeMsgs(data.msgs[sessionId], msgs);
-            }
+            function onSendMsgDone (error, msg) {
+                // store.dispatch('hideLoading')
+                if (error) {
+                  // 被拉黑
+                  if (error.code === 7101) {
+                    msg.status = 'success'
+                    alert(error.message)
+                  } else {
+                    alert(error.message)
+                  }
+                }
+                onMsg(msg)
+              }
+            // function pushMsg(msg) {
+            //     if (!Array.isArray(msg)) { msg = [msg]; }
+            //     var sessionId = msg[0].scene + '-' + msg[0].account;
+            //     state.msgs = state.msgs || {};
+            //     state.msgs[sessionId] = nim.mergeMsgs(state.msgs[sessionId], msg);
+            // }
             function onCustomMsg(msg) {
                 // 处理自定义消息
             }
-        }
+        },
         
+    sendMsg ({state, commit,rootState}, obj) {
+        const nim = state.nim
+        obj = obj || {}
+        let type = obj.type || ''
+        // store.dispatch('showLoading')
+        switch (type) {
+            case 'text':
+            window.nim.sendText({
+                scene: obj.scene,
+                to: obj.to,
+                text: obj.text,
+                done: onSendMsgDone,
+                needMsgReceipt: obj.needMsgReceipt || false
+            })
+            break
+            case 'custom':
+            nim.sendCustomMsg({
+                scene: obj.scene,
+                to: obj.to,
+                pushContent: obj.pushContent,
+                content: JSON.stringify(obj.content),
+                done: onSendMsgDone
+            })
+        }
+        function onSendMsgDone (error, msg) {
+            // store.dispatch('hideLoading')
+            if (error) {
+              // 被拉黑
+              if (error.code === 7101) {
+                msg.status = 'success'
+                alert(error.message)
+              } else {
+                alert(error.message)
+              }
+            }
+            console.log(msg);
+            
+            commit('pushMsg',{msg})
+          }
+    }
+
 
   
 }
