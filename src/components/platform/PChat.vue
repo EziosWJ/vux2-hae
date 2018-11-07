@@ -2,26 +2,33 @@
     <div>
         <v-header/>
         <group v-for="(messages, index) in $store.state.im.msgs['p2p-'+ who +'']" :key="index">
-            {{messages.text}}  --- {{messages.time}}
+            <p v-if="messages.from != who" style="text-align:right">
+                {{messages.text}} 
+            </p>
+            <p v-else>
+                {{messages.text}} 
+            </p>
         </group>
-        <group class="weui-tabbar">
-            <x-input  v-model="sendObj.text">
+        <tabbar style="position:fixed">
+            <group>
+                <x-input  v-model="sendObj.text">
                 <span slot="right" @click="sendMsg()">
                     发送
                 </span>
             </x-input>
-        </group>
+            </group>
+        </tabbar>
     </div>
 </template>
 
 <script>
 import VHeader from '../layout/VHeader'
-import {XInput ,Group} from 'vux';
+import {XInput ,Group,Tabbar} from 'vux';
 export default {
     components:{
         VHeader,
         XInput,
-        Group
+        Group,Tabbar
     },
     props:['who'],
     data(){
