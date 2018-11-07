@@ -17,6 +17,7 @@ const state = {
     reciverList:[],
     USER_NAME:'',
     USER_ID:'',
+    UC_CUSTOM:''
 }
 
 const mutations = {
@@ -24,6 +25,7 @@ const mutations = {
         state.USER_ROLE = playload.ucRole
         state.USER_ID = playload.ucId
         state.USER_NAME = playload.ucAccid
+        state.UC_CUSTOM = playload.ucCustom
     },
     setByTheHelperList(state,list){
         if(state.reciverList.length<1){

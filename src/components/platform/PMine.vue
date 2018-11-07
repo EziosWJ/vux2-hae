@@ -4,8 +4,8 @@
             <cell>
                 <img class="user-img" slot="icon" src="../../assets/vux_logo.png" alt="">
                 <div slot="after-title">
-                    <span>李杰</span>
-                    <span class="user-cool">我是风一般的男孩子....</span>
+                    <span>{{this.$store.state.USER_NAME}}</span>
+                    <span class="user-cool">{{this.$store.state.UC_CUSTOM}}</span>
                 </div>
             </cell>
         </group>
@@ -31,6 +31,7 @@ export default {
     },
     methods:
     {
+       
         logout(){
             this.$router.push('/login')
         }

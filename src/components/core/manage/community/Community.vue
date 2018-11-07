@@ -1,13 +1,8 @@
 <template>
     <div>
         <group title="社区服务" label-width="5em">
-<<<<<<< HEAD
-            <popup-picker title="被帮教人" :data="$store.state.reciverList" v-model="value1" 
-            @on-show="onShow" @on-hide="onHide" @on-change="onChange" show-name="true"
-=======
             <popup-picker title="被帮教人" :data="list1" v-model="value1" 
             @on-show="onShow" @on-hide="onHide" @on-change="onChange" :show-name="true"
->>>>>>> 1052d6a655de9bf12e509fbca46d4369ddd37958
             placeholder="请选择"></popup-picker>
             <popup-picker title="目标单位" :data="list2" v-model="value2" 
             @on-show="onShow" @on-hide="onHide" @on-change="onChange" 

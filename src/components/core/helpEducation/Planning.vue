@@ -6,6 +6,7 @@
             <x-input title="测评周期" placeholder="请输入" v-model="eduplan.epContinuing" text-align="right"></x-input>
             <x-input title="风险预警" placeholder="请输入" v-model="eduplan.epTitle" text-align="right"></x-input>
             <x-textarea title="方案内容" placeholder="请输入" v-model="eduplan.epContent"></x-textarea>
+            <x-input  v-model="eduplan.ucId"></x-input>
         </group>
         <group>
             <x-button type="primary" @click.native="putEduplan">提交</x-button>
@@ -23,12 +24,13 @@ export default {
     Group,
     XInput,
     XTextarea,
-    XButton
-    ,Datetime
+    XButton,
+    Datetime
   },
   data(){
       return {
-          eduplan:{}
+          eduplan:{},
+          eduplan:[{ucId:this.$store.state.USER_ID}]
       }
   },
   methods:{
@@ -51,4 +53,9 @@ export default {
   }
 }
 </script>
+<style scoped>
+.hidden{
+    display:none;
+}
+</style>
 
