@@ -5,7 +5,7 @@
             <x-table>
                 <thead>
                 <tr>
-                    <th>评测人</th>
+                    <th>被评测人</th>
                     <th>日期</th>
                     <th>结果</th>
                 </tr>

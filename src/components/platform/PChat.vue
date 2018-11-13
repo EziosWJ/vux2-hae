@@ -1,13 +1,14 @@
 <template>
     <div>
         <v-header/>
-        <group v-for="(messages, index) in $store.state.im.msgs['p2p-'+ who +'']" :key="index">
-            <p v-if="messages.from != who" style="text-align:right">
+        <group v-for="(messages, index) in $store.state.im.msgs['p2p-'+ who +'']" :key="index" :title="localDate(messages.time)">
+            <cell primary="content" :title="messages.from+'：'" :value="messages.text"></cell>
+            <!-- <cell v-if="messages.from != who" style="text-align:right">
                 {{messages.text}} 
-            </p>
-            <p v-else>
+            </cell>
+            <cell v-else>
                 {{messages.text}} 
-            </p>
+            </cell> -->
         </group>
         <tabbar style="position:fixed">
             <group>
@@ -23,12 +24,12 @@
 
 <script>
 import VHeader from '../layout/VHeader'
-import {XInput ,Group,Tabbar} from 'vux';
+import {XInput ,Group,Tabbar,Cell } from 'vux';
 export default {
     components:{
         VHeader,
         XInput,
-        Group,Tabbar
+        Group,Tabbar,Cell 
     },
     props:['who'],
     data(){
@@ -51,8 +52,14 @@ export default {
             this.$store.dispatch('im/sendMsg',this.sendObj).then(()=>{
                 this.sendObj.text = ''
             })
+        },
+        localDate(date){
+            return new Date(date).toLocaleString().replace(/\//g, "-")
         }
     },
+    computed:{
+        
+    }
 
 }
 </script>

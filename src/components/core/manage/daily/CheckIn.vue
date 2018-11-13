@@ -13,7 +13,7 @@
             <tbody>
             
                 <tr v-for="(item, index) in dailyCheckInConditionList" :key="index">
-                    <td>{{item.ucAccid}}</td>
+                    <td>{{item.urName}}</td>
                     <td>{{today}}</td>
                     <td v-if="item.diState === null || item.diState === ''">
                        <x-button @click.native="checkIn(item,'1')" text="报到"></x-button>
