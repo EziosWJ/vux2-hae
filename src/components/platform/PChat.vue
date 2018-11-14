@@ -1,27 +1,35 @@
 <template>
     <div>
         <v-header/>
-        <group v-for="(messages, index) in $store.state.im.msgs['p2p-'+ who +'']" :key="index">
-            {{messages.text}}  --- {{messages.time}}
+        <group v-for="(messages, index) in $store.state.im.msgs['p2p-'+ who +'']" :key="index" :title="localDate(messages.time)">
+            <cell primary="content" :title="messages.from+'：'" :value="messages.text"></cell>
+            <!-- <cell v-if="messages.from != who" style="text-align:right">
+                {{messages.text}} 
+            </cell>
+            <cell v-else>
+                {{messages.text}} 
+            </cell> -->
         </group>
-        <group class="weui-tabbar">
-            <x-input  v-model="sendObj.text">
+        <tabbar style="position:fixed">
+            <group>
+                <x-input  v-model="sendObj.text">
                 <span slot="right" @click="sendMsg()">
                     发送
                 </span>
             </x-input>
-        </group>
+            </group>
+        </tabbar>
     </div>
 </template>
 
 <script>
 import VHeader from '../layout/VHeader'
-import {XInput ,Group} from 'vux';
+import {XInput ,Group,Tabbar,Cell } from 'vux';
 export default {
     components:{
         VHeader,
         XInput,
-        Group
+        Group,Tabbar,Cell 
     },
     props:['who'],
     data(){
@@ -44,8 +52,14 @@ export default {
             this.$store.dispatch('im/sendMsg',this.sendObj).then(()=>{
                 this.sendObj.text = ''
             })
+        },
+        localDate(date){
+            return new Date(date).toLocaleString().replace(/\//g, "-")
         }
     },
+    computed:{
+        
+    }
 
 }
 </script>

@@ -34,7 +34,7 @@
 </template>
  
 <script>
-import { Swipeout, SwipeoutItem, SwipeoutButton , ViewBox , Flexbox, FlexboxItem , Badge} from 'vux'
+import { Swipeout, SwipeoutItem, SwipeoutButton , ViewBox , Flexbox, FlexboxItem , Badge,Tabbar} from 'vux'
 
 export default {
     data(){
@@ -74,7 +74,8 @@ export default {
     ViewBox,
     Flexbox, 
     FlexboxItem,
-    Badge
+    Badge,
+    Tabbar
   }
 }
 </script>

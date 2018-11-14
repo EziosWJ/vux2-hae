@@ -29,7 +29,7 @@ export default {
   data(){
       return {
           invOption:{},
-          ioReciverList:[]
+          ioReciverList:[],
       }
   },
   methods:{

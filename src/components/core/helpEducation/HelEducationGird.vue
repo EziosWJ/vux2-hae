@@ -1,15 +1,15 @@
 <template>
     <div>
         <group-title>帮教方案</group-title>
-        <grid :cols="2" :show-vertical-dividers="true">
+        <!-- <grid :cols="2" :show-vertical-dividers="true">
             <grid-item link="/phome/helpEducation/planning" label="制定方案">
                 <i slot="icon" class="fa fa-edit" aria-hidden="true"></i>
             </grid-item>
             <grid-item link="/phome/mindTestCompletion" label="我的方案">
                 <i slot="icon" class="fa fa-file-text-o" aria-hidden="true"></i>
             </grid-item>
-        </grid>
-        <group-title>疏导记录</group-title>
+        </grid> -->
+        <!-- <group-title>方案记录</group-title> -->
         <div style="padding:0 15px;">    
             <x-table>
                 <thead>

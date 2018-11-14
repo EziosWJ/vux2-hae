@@ -7,7 +7,7 @@
         <group>
             <cell-box>
                 <p>总分数为：{{score}}</p>
-                <x-button type="primary" @click.native="caculation">计算得分</x-button>
+                <x-button type="primary" @click.native="caculation">提交</x-button>
             </cell-box>
         </group>
     </div>
@@ -45,7 +45,13 @@ export default {
       caculation(){
         console.log("count:" + this.countScore);
         this.score = this.countScore  
-        
+        this.$axios.post('/api/mindTest/putMindTestResult',{urId:this.$store.USER_ID,mtName:'基础测评',mtType:10001,mtScore:this.score}).then(resp=>{
+            let data = resp.data
+            if(data.code === 200){}
+            alert('提交成功')
+        }).catch(error =>{
+            console.log(error);
+        })
       }
   },
   components: {

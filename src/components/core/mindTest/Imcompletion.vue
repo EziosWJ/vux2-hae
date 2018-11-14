@@ -5,16 +5,16 @@
         <x-table>
             <thead>
             <tr>
-                <th>姓名</th>
-                <th>进度</th>
+                <th>测评名称</th>
+                <!-- <th>进度</th> -->
                 <th>操作</th>
             </tr>
             </thead>
             <tbody>
             
                 <tr>
-                    <td>李杰</td>
-                    <td>10%</td>
+                    <td>基础测评</td>
+                    <!-- <td>10%</td> -->
                     <td>
                         <router-link to="/phome/mindTest">
                             <x-button text="测评"></x-button>
@@ -22,11 +22,11 @@
                     </td>
                 </tr>
             
-            <tr>
+            <!-- <tr>
                 <td>孔庆官</td>
                 <td>88%</td>
                 <td><x-button text="测评"></x-button></td>
-            </tr>
+            </tr> -->
             </tbody>
         </x-table>
         </div>
