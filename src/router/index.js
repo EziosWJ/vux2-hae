@@ -73,6 +73,10 @@ import Result from '../components/core/reciver/result/result.vue';
 import FeedbackGrid from '../components/core/reciver/feedback/FeedbackGrid.vue';
 import Feedback from '../components/core/reciver/feedback/Feedback.vue';
 import FeedbackRecord from '../components/core/reciver/feedback/Record.vue';
+//==========================详情表
+import Detail from '../components/core/details/Details.vue';
+//==========================修改用户信息
+import Editinfo from '../components/platform/Editinfo.vue';
 Vue.use(VueRouter)
 
 const routes = [
@@ -336,6 +340,16 @@ const routes = [
           {
             path:'/phome/feedback/record',
             component:FeedbackRecord
+          },
+          //详情表
+          {
+            path:'/phome/detail',
+            component:Detail
+          },
+          //修改信息
+          {
+            path:'/phome/edituserinfo',
+            component:Editinfo
           }
 ]
 },

@@ -2,11 +2,7 @@
     <div>
         <group title="走访登记" label-width="5em">
              <popup-picker title="被帮教人" :data="$store.state.reciverList" v-model="value1" 
-<<<<<<< HEAD
-            @on-show="onShow" @on-hide="onHide" @on-change="onChange"  show-name="true"
-=======
             @on-show="onShow" @on-hide="onHide" @on-change="onChange" :show-name="true"
->>>>>>> lijie
             placeholder="请选择"></popup-picker>
             <x-input title="登记人" placeholder="请输入" v-model="irHelper"></x-input>
             <datetime v-model="irDate" format="YYYY-MM-DD HH:mm" :minute-list="['00', '15', '30', '45']" title="日期" ></datetime>
@@ -39,6 +35,7 @@ export default {
             irHelper:"",
             irReason:"",
             irDate:""
+            
         }
     },
     methods:{

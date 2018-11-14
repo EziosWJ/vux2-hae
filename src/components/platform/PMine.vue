@@ -10,8 +10,8 @@
             </cell>
         </group>
          <group>
-            <cell title="更改信息">
-                <i slot="icon" class="fa fa-edit"></i>
+            <cell title="更改信息" @click.native="edituserinfo">
+                <i slot="icon" class="fa fa-edit" ></i>
             </cell>
         </group>
         <group>
@@ -34,6 +34,9 @@ export default {
        
         logout(){
             this.$router.push('/login')
+        },
+        edituserinfo(){
+            this.$router.push('/phome/edituserinfo')
         }
     }
 
