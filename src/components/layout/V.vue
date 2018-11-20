@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-header/>
+        <!--<v-header/>-->
         <v-main/>
     </div>
 </template>
