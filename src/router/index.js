@@ -79,287 +79,286 @@ import Detail from '../components/core/details/Details.vue';
 import Editinfo from '../components/platform/Editinfo.vue';
 Vue.use(VueRouter)
 
-const routes = [
-    {
-    path: '/login',
-    component:Login
-    },
-    {
-     path: '/',
-     redirect:'/login'
-     },
-    {
-     path: '/pchat/:who',
-     component: ()=>import ('../components/platform/PChat.vue'),
-     props: true
+const routes = [{
+		path: '/login',
+		component: Login
+	},
+	{
+		path: '/',
+		redirect: '/login'
+	},
+	{
+		path: '/pchat/:who',
+		component: () =>
+			import('../components/platform/PChat.vue'),
+		props: true
 
-     },
-    {
-    path: '/V',
-    component:V,
-      children:[
-          //=================================tarbar============================
-          {
-          path: '/phome',
-          component: PHome
-          },
-          {
-          path: '/pmessage',
-          component: PMessage
-          },
-          {
-          path: '/pmine',
-          component: PMine
-          },
-          {
-          path: '/pperson',
-          component: ()=>import ('../components/platform/PPerson.vue')
-          },
+	},
+	{
+		path: '/V',
+		component: V,
+		children: [
+			//=================================tarbar============================
+			{
+				path: '/phome',
+				component: PHome
+			},
+			{
+				path: '/pmessage',
+				component: PMessage
+			},
+			{
+				path: '/pmine',
+				component: PMine
+			},
+			{
+				path: '/pperson',
+				component: () =>
+					import('../components/platform/PPerson.vue')
+			},
 
-          //=================================core============================
-          //mindTest
-          {
-          path: '/phome/mindTestGrid',
-          component: MindTestGrid
-          },
-          {
-          path: '/phome/mindTestCompletion',
-          component: MindTestCompletion
-          },
-          {
-          path: '/phome/mindTestImcompletion',
-          component: MindTestImcompletion
-          },
-          {
-          path: '/phome/mindTest',
-          component: MindTestTest
-          },
-          //mindLead
-          {
-          path: '/phome/mindLeadGrid',
-          component: MindLeadGrid
-          },
-          {
-          path: '/phome/leadProgress',
-          component: LeadProgress
-          },
-          {
-          path: '/phome/mindLead/applyLead',
-          component: ApplyLead
-          },
-          //riskEval
-          {
-          path: '/phome/riskEvalGrid',
-          component: RiskEvalGrid
-          },
-          {
-          path: '/phome/riskEval/bygone',
-          component: Bygone
-          },
-          {
-          path: '/phome/riskEval/eval',
-          component: Eval
-          },
-          //helpEducation
-          {
-          path: '/phome/helpEducationGrid',
-          component: HelEducationGird,
-          },
-          {
-            path:'/phome/helpEducation/planning',
-            component: Planning
-          },
-          //revisit
-          {
-          path: '/phome/revisitGrid',
-          component: RevisitGrid,
-          },
-          {
-            path:'/phome/revisit/revisit',
-            component: Revisit
-          },
-          {
-            path:'/phome/revisit/revisitRecord',
-            component: RevisitRecord
-          },
-          //rewardpunish
-          {
-          path: '/phome/rewardPunishGrid',
-          component: RewardPunishGrid,
-          },
-          {
-            path:'/phome/rewardPunish/rewardPunish',
-            component: RewardPunish
-          },
-          {
-            path:'/phome/rewardPunish/rewardPunishRecord',
-            component: RewardPunishRecord
-          },
-          //invOption
-          {
-          path: '/phome/invOptionGrid',
-          component: InvOptionGrid,
-          },
-          {
-            path:'/phome/invOption/invOption',
-            component: InvOption
-          },
-          {
-            path:'/phome/invOption/invRecord',
-            component: InvRecord
-          },
-          //daily
-          {
-            path:'/phome/checkInGrid',
-            component: CheckInGrid
-          },
-          {
-            path:'/phome/checkIn/checkIn',
-            component: CheckIn
-          },
-          {
-            path:'/phome/checkIn/checkInRecord',
-            component: CheckInRecord
-          },
-          {
-            path:'/phome/goOutGrid',
-            component: GoOutGrid
-          },
-          {
-            path:'/phome/goOut/goOutCheckIn',
-            component: GoOutCheckIn
-          },
-          {
-            path:'/phome/goOut/goOutRecord',
-            component: GoOutRecord
-          },
-          //Interview
-          {
-            path:'/phome/interviewGrid',
-            component: InterviewGrid
-          },
-          {
-            path:'/phome/interview/interview',
-            component: Interview
-          },
-          {
-            path:'/phome/interview/interviewRecord',
-            component: InterviewRecord
-          },
-          //Work
-          {
-            path:'/phome/workGrid',
-            component: WorkGrid
-          },
-          {
-            path:'/phome/work/work',
-            component: Work
-          },
-          {
-            path:'/phome/work/record',
-            component: WorkRecord
-          },
-          //Talk
-          {
-            path:'/phome/talk/record',
-            component: TalkRecord
-          },
+			//=================================core============================
+			//mindTest
+			{
+				path: '/phome/mindTestGrid',
+				component: MindTestGrid
+			},
+			{
+				path: '/phome/mindTestCompletion',
+				component: MindTestCompletion
+			},
+			{
+				path: '/phome/mindTestImcompletion',
+				component: MindTestImcompletion
+			},
+			{
+				path: '/phome/mindTest',
+				component: MindTestTest
+			},
+			//mindLead
+			{
+				path: '/phome/mindLeadGrid',
+				component: MindLeadGrid
+			},
+			{
+				path: '/phome/leadProgress',
+				component: LeadProgress
+			},
+			{
+				path: '/phome/mindLead/applyLead',
+				component: ApplyLead
+			},
+			//riskEval
+			{
+				path: '/phome/riskEvalGrid',
+				component: RiskEvalGrid
+			},
+			{
+				path: '/phome/riskEval/bygone',
+				component: Bygone
+			},
+			{
+				path: '/phome/riskEval/eval',
+				component: Eval
+			},
+			//helpEducation
+			{
+				path: '/phome/helpEducationGrid',
+				component: HelEducationGird,
+			},
+			{
+				path: '/phome/helpEducation/planning',
+				component: Planning
+			},
+			//revisit
+			{
+				path: '/phome/revisitGrid',
+				component: RevisitGrid,
+			},
+			{
+				path: '/phome/revisit/revisit',
+				component: Revisit
+			},
+			{
+				path: '/phome/revisit/revisitRecord',
+				component: RevisitRecord
+			},
+			//rewardpunish
+			{
+				path: '/phome/rewardPunishGrid',
+				component: RewardPunishGrid,
+			},
+			{
+				path: '/phome/rewardPunish/rewardPunish',
+				component: RewardPunish
+			},
+			{
+				path: '/phome/rewardPunish/rewardPunishRecord',
+				component: RewardPunishRecord
+			},
+			//invOption
+			{
+				path: '/phome/invOptionGrid',
+				component: InvOptionGrid,
+			},
+			{
+				path: '/phome/invOption/invOption',
+				component: InvOption
+			},
+			{
+				path: '/phome/invOption/invRecord',
+				component: InvRecord
+			},
+			//daily
+			{
+				path: '/phome/checkInGrid',
+				component: CheckInGrid
+			},
+			{
+				path: '/phome/checkIn/checkIn',
+				component: CheckIn
+			},
+			{
+				path: '/phome/checkIn/checkInRecord',
+				component: CheckInRecord
+			},
+			{
+				path: '/phome/goOutGrid',
+				component: GoOutGrid
+			},
+			{
+				path: '/phome/goOut/goOutCheckIn',
+				component: GoOutCheckIn
+			},
+			{
+				path: '/phome/goOut/goOutRecord',
+				component: GoOutRecord
+			},
+			//Interview
+			{
+				path: '/phome/interviewGrid',
+				component: InterviewGrid
+			},
+			{
+				path: '/phome/interview/interview',
+				component: Interview
+			},
+			{
+				path: '/phome/interview/interviewRecord',
+				component: InterviewRecord
+			},
+			//Work
+			{
+				path: '/phome/workGrid',
+				component: WorkGrid
+			},
+			{
+				path: '/phome/work/work',
+				component: Work
+			},
+			{
+				path: '/phome/work/record',
+				component: WorkRecord
+			},
+			//Talk
+			{
+				path: '/phome/talk/record',
+				component: TalkRecord
+			},
 
-          {
-            path:'/phome/talk/talk',
-            component: Talk
-          },
-          {
-            path:'/phome/talkGrid',
-            component: TalkGrid
-          },
-          //Community
-          {
-            path:'/phome/community/record',
-            component: CommunityRecord
-          },
+			{
+				path: '/phome/talk/talk',
+				component: Talk
+			},
+			{
+				path: '/phome/talkGrid',
+				component: TalkGrid
+			},
+			//Community
+			{
+				path: '/phome/community/record',
+				component: CommunityRecord
+			},
 
-          {
-            path:'/phome/community/community',
-            component: Community
-          },
-          {
-            path:'/phome/communityGrid',
-            component: CommunityGrid
-          },
-          //Foul
-          {
-            path:'/phome/foulGrid',
-            component:FoulGrid
-          },
-          {
-            path:'/phome/foul/foul',
-            component:Foul
-          },
-          {
-            path:'/phome/foul/record',
-            component:FoulRecord
-          },
-          //Opinion
-          {
-            path:'/phome/opinionGrid',
-            component:OpinionGrid
-          },
-          {
-            path:'/phome/opinion/opinion',
-            component:Opinion
-          },
-          {
-            path:'/phome/opinion/record',
-            component:OpinionRecord
-          },
-          //帮教进程
-          {
-            path:'/phome/process',
-            component:Process
-          },
-          //在线教育
-          {
-            path:'/phome/education',
-            component:education
-          },
-          //帮教结果
-          {
-            path:'/phome/result',
-            component:Result
-          },
-          //帮教反馈
-          {
-            path:'/phome/feedbackGrid',
-            component:FeedbackGrid
-          },
-          {
-            path:'/phome/feedback/feedback',
-            component:Feedback
-          },
-          {
-            path:'/phome/feedback/record',
-            component:FeedbackRecord
-          },
-          //详情表
-          {
-            path:'/phome/detail',
-            component:Detail
-          },
-          //修改信息
-          {
-            path:'/phome/edituserinfo',
-            component:Editinfo
-          }
+			{
+				path: '/phome/community/community',
+				component: Community
+			},
+			{
+				path: '/phome/communityGrid',
+				component: CommunityGrid
+			},
+			//Foul
+			{
+				path: '/phome/foulGrid',
+				component: FoulGrid
+			},
+			{
+				path: '/phome/foul/foul',
+				component: Foul
+			},
+			{
+				path: '/phome/foul/record',
+				component: FoulRecord
+			},
+			//Opinion
+			{
+				path: '/phome/opinionGrid',
+				component: OpinionGrid
+			},
+			{
+				path: '/phome/opinion/opinion',
+				component: Opinion
+			},
+			{
+				path: '/phome/opinion/record',
+				component: OpinionRecord
+			},
+			//帮教进程
+			{
+				path: '/phome/process',
+				component: Process
+			},
+			//在线教育
+			{
+				path: '/phome/education',
+				component: education
+			},
+			//帮教结果
+			{
+				path: '/phome/result',
+				component: Result
+			},
+			//帮教反馈
+			{
+				path: '/phome/feedbackGrid',
+				component: FeedbackGrid
+			},
+			{
+				path: '/phome/feedback/feedback',
+				component: Feedback
+			},
+			{
+				path: '/phome/feedback/record',
+				component: FeedbackRecord
+			},
+			//详情表
+			{
+				path: '/phome/detail',
+				component: Detail
+			},
+			//修改信息
+			{
+				path: '/phome/edituserinfo',
+				component: Editinfo
+			}
+		]
+	},
+
 ]
-},
-   
-  
-  
-  ]
-  
-  const router = new VueRouter({
-    routes
-  })
 
-  export default router
+const router = new VueRouter({
+	routes
+})
+
+export default router

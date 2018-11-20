@@ -14,7 +14,7 @@
 @import '~vux/src/styles/reset.less';
 
 body {
-  background-color: #f4f4f4;
+  background-color: #f7f7f7;
   font-size: 0.24rem;
   color: #333;
 }
