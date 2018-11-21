@@ -23,7 +23,7 @@
 					</router-link>
 				</li>
 				<li>
-					<router-link to="">
+					<router-link to="/phome/mindLeadGrid">
 						<div class="menu_img"><img src="../../assets/nav_icon2.png" /></div>
 						<div class="menu_text">心理疏导</div>
 					</router-link>
@@ -85,7 +85,7 @@
 			<div class="block_title">工作室介绍</div>
 
 			<div class="introduction_box">
-				<router-link to="">
+				<router-link to="/PHomeDetails">
 					<div class="introduction_img">
 						<img src="../../assets/introduction_img.png" />
 					</div>
@@ -104,9 +104,40 @@
 					</ul>
 				</div>
 			</div>
-
 		</div>
 		<!--E 工作室介绍-->
+		<!--S 底部导航-->
+		<div class="foot_out">
+			<div class="foot_box">
+				<ul>
+					<li>
+						<router-link to="/phome">
+							<div class="foot_icon">
+								<img src="../../assets/foot_icon1_2.png" />
+							</div>
+							<div class="foot_text active">首页</div>
+						</router-link>
+					</li>
+					<li>
+						<router-link to="/pperson">
+							<div class="foot_icon">
+								<img src="../../assets/foot_icon2.png" />
+							</div>
+							<div class="foot_text">通讯</div>
+						</router-link>
+					</li>
+					<li>
+						<router-link to="/pmine">
+							<div class="foot_icon">
+								<img src="../../assets/foot_icon3.png" />
+							</div>
+							<div class="foot_text">我的</div>
+						</router-link>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!--E 底部导航-->
 	</div>
 </template>
 
@@ -364,4 +395,39 @@
 		}
 	}
 	/*E 工作室介绍*/
+</style>
+<style lang="less" scoped>
+.foot_out{
+	height: 0.9rem;
+}	
+.foot_box{
+	position: fixed;
+	z-index: 100;
+	width: 100%;
+	background-color: #fff;
+	left: 0;
+	bottom: 0;
+	border-top: 1px solid #F4F4F4;
+	ul{
+		overflow: hidden;
+		li{
+			float: left;
+			width: 33.3%;
+			text-align: center;
+			padding: 0.07rem 0;
+			font-size: 0.2rem;
+			line-height: 0.3rem;
+			.foot_icon{
+				width: 0.45rem;
+				margin: 0 auto;
+				img{
+					width: 100%;
+				};
+			}
+			.foot_text.active{
+				color: #19d5d7;
+			}
+		}
+	}
+}
 </style>

@@ -119,7 +119,7 @@
 	border-top: 1px solid #eee;
 	z-index: 20;
 	left: 0;
-	bottom: 0.89rem;
+	bottom: 0;
 	background-color: #fff;
 	line-height: 0.8rem;
 	font-size: 0.26rem;

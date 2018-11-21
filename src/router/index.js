@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import PHome from '../components/platform/PHome.vue';
+import PHomeDetails from '../components/platform/PHomeDetails.vue';
 import PMessage from '../components/platform/PMessage.vue';
 import PMine from '../components/platform/PMine.vue';
 import Login from '../components/core/login/Login.vue';
@@ -103,6 +104,10 @@ const routes = [{
 			{
 				path: '/phome',
 				component: PHome
+			},
+			{
+				path: '/PHomeDetails',
+				component: PHomeDetails
 			},
 			{
 				path: '/pmessage',
