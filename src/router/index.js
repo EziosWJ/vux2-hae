@@ -12,6 +12,7 @@ import MindTestGrid from '../components/core/mindTest/MindTestGrid.vue';
 import MindTestCompletion from '../components/core/mindTest/Completion.vue';
 import MindTestImcompletion from '../components/core/mindTest/Imcompletion.vue';
 import MindTestTest from '../components/core/mindTest/Test.vue';
+import MindTestResult from '../components/core/mindTest/TestResult.vue';
 //============================
 import MindLeadGrid from '../components/core/mindLead/MindLeadGrid.vue';
 import LeadProgress from '../components/core/mindLead/LeadProgress.vue';
@@ -134,6 +135,10 @@ const routes = [{
 			{
 				path: '/phome/mindTest',
 				component: MindTestTest
+			},
+			{
+				path: '/phome/mindTestResult',
+				component: MindTestResult
 			},
 			//mindLead
 			{

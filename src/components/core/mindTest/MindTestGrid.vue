@@ -16,34 +16,44 @@
 			<div class="evaluation_list">
 				<ul>
 					<li>
-						<div class="evaluation_list_main">
-							<div class="evaluation_list_title">测试一：基础测评</div>
-							<span>55人已完成</span>
-						</div>
+						<router-link to="/phome/mindTest">
+							<div class="evaluation_list_main">
+								<div class="evaluation_list_title">测试一：基础测评</div>
+								<span>55人已完成</span>
+							</div>
+						</router-link>
 					</li>
 					<li>
-						<div class="evaluation_list_main">
-							<div class="evaluation_list_title">测试一：基础测评</div>
-							<span>55人已完成</span>
-						</div>
+						<router-link to="/phome/mindTest">
+							<div class="evaluation_list_main">
+								<div class="evaluation_list_title">测试一：基础测评</div>
+								<span>55人已完成</span>
+							</div>
+						</router-link>
 					</li>
 					<li>
-						<div class="evaluation_list_main">
-							<div class="evaluation_list_title">测试一：基础测评</div>
-							<span>55人已完成</span>
-						</div>
+						<router-link to="/phome/mindTest">
+							<div class="evaluation_list_main">
+								<div class="evaluation_list_title">测试一：基础测评</div>
+								<span>55人已完成</span>
+							</div>
+						</router-link>
 					</li>
 					<li>
-						<div class="evaluation_list_main">
-							<div class="evaluation_list_title">测试一：基础测评</div>
-							<span>55人已完成</span>
-						</div>
+						<router-link to="/phome/mindTest">
+							<div class="evaluation_list_main">
+								<div class="evaluation_list_title">测试一：基础测评</div>
+								<span>55人已完成</span>
+							</div>
+						</router-link>
 					</li>
 					<li>
-						<div class="evaluation_list_main">
-							<div class="evaluation_list_title">测试一：基础测评</div>
-							<span>55人已完成</span>
-						</div>
+						<router-link to="/phome/mindTest">
+							<div class="evaluation_list_main">
+								<div class="evaluation_list_title">测试一：基础测评</div>
+								<span>55人已完成</span>
+							</div>
+						</router-link>
 					</li>
 				</ul>
 			</div>
@@ -55,7 +65,7 @@
 			<div class="adjusted_list">
 				<ul>
 					<li>
-						<router-link to="">
+						<router-link to="/phome/mindTestResult">
 							<div class="adjusted_icon"><img src="../../../assets/by_icon.png" /></div>
 							<div class="adjusted_main">
 								<div class="adjusted_text">测试一：基础测试</div>
@@ -68,7 +78,7 @@
 						</router-link>
 					</li>
 					<li>
-						<router-link to="">
+						<router-link to="/phome/mindTestResult">
 							<div class="adjusted_icon"><img src="../../../assets/by_no_icon.png" /></div>
 							<div class="adjusted_main">
 								<div class="adjusted_text">测试一：基础测试</div>
@@ -81,7 +91,7 @@
 						</router-link>
 					</li>
 					<li>
-						<router-link to="">
+						<router-link to="/phome/mindTestResult">
 							<div class="adjusted_icon"><img src="../../../assets/by_icon.png" /></div>
 							<div class="adjusted_main">
 								<div class="adjusted_text">测试一：基础测试</div>
@@ -127,6 +137,7 @@ export default {
 		}
 	},
 	mounted() {
+		document.title="心理测评";
 //		this.getMindLeadList()
 	}
 };
@@ -251,7 +262,7 @@ export default {
 				position: relative;
 				.adjusted_icon{
 					position: absolute;
-					left: -0.1rem;
+					left: -0.12rem;
 					top: 0.2rem;
 					img{
 						width: 1.2rem;

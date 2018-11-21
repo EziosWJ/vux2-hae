@@ -1,74 +1,143 @@
 <template>
-    <div>
-        <group :title="index+1+'.'+item.mtqTitle" v-for="(item, index) in result" :key="index">
-            <radio title="title" v-model="checktions[index]" :options="[{key:getKey(item.mtqOP1),value:getValue(item.mtqOP1)},{key:getKey(item.mtqOP2),value:getValue(item.mtqOP2)}]"></radio>
-            <!-- <radio title="title" :options="[{key:getKey(item.mtqOP2),value:getValue(item.mtqOP2)}]"></radio> -->
-        </group>
-        <group>
-            <cell-box>
-                <p>总分数为：{{score}}</p>
-                <x-button type="primary" @click.native="caculation">提交</x-button>
-            </cell-box>
-        </group>
-    </div>
+<!--S 测试题-->
+	<div>
+		<div class="answer_box">
+			<ul>
+				<li>
+					<div class="answer_title">1.我很喜欢参加社交活动，我感到这是交朋友的好机会。</div>
+					<div class="answer_btn">
+						<label class="active"><input type="radio" name="1" />A.是	</label>
+						<label><input type="radio" name="1" />B.不确定	</label>
+					</div>
+				</li>
+				<li>
+					<div class="answer_title">2.我很喜欢参加社交活动，我感到这是交朋友的好机会。</div>
+					<div class="answer_btn">
+						<label><input type="radio" name="1" />A.是	</label>
+						<label class="active"><input type="radio" name="1" />B.不确定	</label>
+					</div>
+				</li>
+				<li>
+					<div class="answer_title">3.我很喜欢参加社交活动，我感到这是交朋友的好机会。</div>
+					<div class="answer_btn">
+						<label class="active"><input type="radio" name="1" />A.是	</label>
+						<label><input type="radio" name="1" />B.不确定	</label>
+					</div>
+				</li>
+				<li>
+					<div class="answer_title">4.我很喜欢参加社交活动，我感到这是交朋友的好机会。</div>
+					<div class="answer_btn">
+						<label><input type="radio" name="1" />A.是	</label>
+						<label class="active"><input type="radio" name="1" />B.不确定	</label>
+					</div>
+				</li>
+				<li>
+					<div class="answer_title">5.我很喜欢参加社交活动，我感到这是交朋友的好机会。</div>
+					<div class="answer_btn">
+						<label class="active"><input type="radio" name="1" />A.是	</label>
+						<label><input type="radio" name="1" />B.不确定	</label>
+					</div>
+				</li>
+				
+			</ul>
+		</div>
+		<div class="answer_foot">
+			<div class="answer_foot_mian">
+				<div class="answer_foot_branch">总分数为：99分</div>
+				<div class="answer_foot_btn">提交</div>
+			</div>
+		</div>
+	</div>
 </template>
-
+<!--S 测试题-->
 <script>
-import { CellBox , Group ,Radio ,XButton} from 'vux'
+	export default {
+		data() {
+			return {
 
-export default {
-  data(){
-      return {
-          result:{},
-          checktions:[],
-          score:0,
-      }
-  },
-  computed:{
-      countScore(){
-            let count = 0
-            this.checktions.forEach((item,index)=>{
-                count += parseInt(item)
-            })
-            return count
-      }
-  },
-  methods:{
-      getKey(item){
-          const rtn =  (''+item).split('%')
-          return rtn[1]
-      },
-      getValue(item){
-        const rtn =  (''+item).split('%')
-          return rtn[0]
-      },
-      caculation(){
-        console.log("count:" + this.countScore);
-        this.score = this.countScore  
-        this.$axios.post('/api/mindTest/putMindTestResult',{urId:this.$store.USER_ID,mtName:'基础测评',mtType:10001,mtScore:this.score}).then(resp=>{
-            let data = resp.data
-            if(data.code === 200){}
-            alert('提交成功')
-        }).catch(error =>{
-            console.log(error);
-        })
-      }
-  },
-  components: {
-    CellBox,
-    Group,
-    Radio,
-    XButton
-  },
-  mounted(){
-      this.$axios.get('/api/mindTest/getMindTestQstList').then((result) => {
-          console.log(result.data)
-          this.result = result.data.content.qst
-          
-      }).catch((err) => {
-          
-      });
-  }
-}
+			}
+		},
+		mounted() {
+			document.title = "基础测试";
+		},
+		methods: {
+			
+		},
+	}
 </script>
 
+<style lang="less" scoped>
+.answer_box{
+	padding: 0 0.25rem;
+	padding-bottom: 0.3rem;
+	ul{
+		li{
+			box-shadow: 0 0 5px #ccc;
+			background-color: #fff;
+			margin-top: 0.25rem;
+			padding: 0.2rem;
+			border-radius: 0.1rem;
+			.answer_title{
+				font-size: 0.24rem;
+			}
+			.answer_btn{
+				text-align: center;
+				margin-top: 0.2rem;
+				label{
+					display: inline-block;
+					margin: 0 0.1rem;
+					width: 1.8rem;
+					line-height: 0.52rem;
+					text-align: center;
+					border-radius: 0.3rem;
+					border: 1px solid #666;
+					position: relative;
+					input{
+						position: absolute;
+						width: 100%;
+						height: 100%;
+					}
+				}
+				label.active{
+					border-color: #2AE0A7;
+					color: #fff;
+					background-color: #2AE0A7;
+				}
+			}
+		}
+	}
+}
+.answer_foot{
+	height: 0.8rem;
+}
+.answer_foot_mian{
+	position: fixed;
+	padding: 0 0.2rem;
+	padding-right: 2rem;
+	box-sizing: border-box;
+	width: 100%;
+	border-top: 1px solid #eee;
+	z-index: 20;
+	left: 0;
+	bottom: 0.89rem;
+	background-color: #fff;
+	line-height: 0.8rem;
+	font-size: 0.26rem;
+	.answer_foot_btn{
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 2rem;
+		text-align: center;
+		color: #fff;
+		background: -webkit-linear-gradient(left,#2ae0a7, #17d7d1); 
+	  background: -o-linear-gradient(right,#2ae0a7, #17d7d1);
+	  background: -moz-linear-gradient(right,#2ae0a7, #17d7d1); 
+	  background: linear-gradient(to right,#2ae0a7, #17d7d1);
+	  a{
+	  	display: block;
+	  	width: 100%;
+	  }
+	}
+}
+</style>

@@ -66,8 +66,9 @@
 			float: left;
 			width: 33.3%;
 			text-align: center;
-			padding: 0.05rem 0;
+			padding: 0.07rem 0;
 			font-size: 0.2rem;
+			line-height: 0.3rem;
 			.foot_icon{
 				width: 0.45rem;
 				margin: 0 auto;
