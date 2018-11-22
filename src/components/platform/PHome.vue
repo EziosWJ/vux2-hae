@@ -14,7 +14,7 @@
 		<!--E 轮播-->
 
 		<!--S 导航按钮-->
-		<div class="menu_list">
+		<div class="menu_list"  v-if="userData.ucRole==2 || userData.ucRole==3">
 			<ul>
 				<li>
 					<router-link to="/phome/mindTestGrid">
@@ -54,12 +54,34 @@
 				</li>
 			</ul>
 		</div>
+		<div class="menu_list"  v-else-if="userData.ucRole==4 || userData.ucRole==5">
+			<ul>
+				<li>
+					<router-link to="/phome/mindTestGrid">
+						<div class="menu_img"><img src="../../assets/nav_icon1.png" /></div>
+						<div class="menu_text">心理评测</div>
+					</router-link>
+				</li>
+				<li>
+					<router-link to="">
+						<div class="menu_img"><img src="../../assets/nav_icon7.png" /></div>
+						<div class="menu_text">在线教育</div>
+					</router-link>
+				</li>
+				<li>
+					<router-link to="">
+						<div class="menu_img"><img src="../../assets/nav_icon3.png" /></div>
+						<div class="menu_text">帮教方案</div>
+					</router-link>
+				</li>
+			</ul>
+		</div>
 		<!--E 导航按钮-->
 
 		<!--S 其他服务-->
 		<div class="block_box">
 			<div class="block_title">其他服务</div>
-			<div class="other_main">
+			<div class="other_main" v-if="userData.ucRole==2 || userData.ucRole==3">
 				<ul>
 					<li v-for="(item,index) in otherList" v-if="index<otherNum">
 						<div class="other_list">
@@ -77,13 +99,32 @@
 					</li>
 				</ul>
 			</div>
+			<div class="other_main" v-else-if="userData.ucRole==4 || userData.ucRole==5">
+				<ul>
+					<li v-for="item in otherListBy">
+						<div class="other_list">
+							<router-link :to="item.path">
+								<div class="other_icon"><img :src="item.icon" /></div>
+								<div class="other_text">{{item.name}}</div>
+							</router-link>
+						</div>
+					</li>
+				</ul>
+			</div>
 		</div>
 		<!--E 其他服务-->
-
+		
+		<!--S 联系检察官-->
+		<div class="prosecution_phone" v-if="userData.ucRole==4 || userData.ucRole==5">
+			<a href="tel:0351-9999999">
+				<p>联系检察官</p>
+			</a>
+		</div>
+		<!--E 联系检察官-->
+		
 		<!--S 工作室介绍-->
 		<div class="block_box">
 			<div class="block_title">工作室介绍</div>
-
 			<div class="introduction_box">
 				<router-link to="/PHomeDetails">
 					<div class="introduction_img">
@@ -146,23 +187,8 @@
 	export default {
 		data() {
 			return {
-				imgList: [{ //轮播图列表
-						url: "javascript:",
-						img: "https://ww1.sinaimg.cn/large/663d3650gy1fq66vvsr72j20p00gogo2.jpg",
-						title: ""
-					},
-					{
-						url: "javascript:",
-						img: "https://ww1.sinaimg.cn/large/663d3650gy1fq66vw1k2wj20p00goq7n.jpg",
-						title: ""
-					},
-					{
-						url: "javascript:",
-						img: "https://ww1.sinaimg.cn/large/663d3650gy1fq66vw50iwj20ff0aaaci.jpg", // 404
-						title: ""
-					}
-				],
-				mainMenu: [], //导航按钮
+				userData:{},//ucRole2检察官  ucRole3帮教人  ucRole4被帮教人  ucRole5家长
+				imgList: [],//轮播列表
 				otherNum: 7, //其他服务显示数量
 				otherList: [{
 					name: '帮教回访',
@@ -204,7 +230,40 @@
 					name: '反馈处理',
 					path: '',
 					icon: require('../../assets/other_icon11.png')
-				}], //其他服务列表
+				}], //其他服务2检察官3帮教人列表
+				otherListBy: [{//其他服务4被帮教人5家长列表
+					name: '心理疏导',
+					path: '',
+					icon: require('../../assets/other_icon6.png')
+				}, {
+					name: '奖惩管理',
+					path: '',
+					icon: require('../../assets/other_icon2.png')
+				}, {
+					name: '考察意见',
+					path: '',
+					icon: require('../../assets/other_icon3.png')
+				}, {
+					name: '帮教回访',
+					path: '',
+					icon: require('../../assets/other_icon1.png')
+				},{
+					name: '违规违纪',
+					path: '',
+					icon: require('../../assets/other_icon10.png')
+				}, {
+					name: '报到请假',
+					path: '',
+					icon: require('../../assets/other_icon7.png')
+				}, {
+					name: '帮教反馈',
+					path: '',
+					icon: require('../../assets/other_icon11.png')
+				}, {
+					name: '帮教结果',
+					path: '',
+					icon: require('../../assets/other_icon9.png')
+				}],
 			};
 		},
 		components: {
@@ -212,32 +271,31 @@
 		},
 		mounted() {
 			document.title = "静芳工作室";
-			this.bannerSwiper();
+			this.getBannerList();//获取banner列表
+			
+			let userData=JSON.parse(localStorage.getItem("userData"));
+			this.userData = userData;
 		},
 		methods: {
-			getMenu() {
-				this.$axios
-					.post(this.Url + "/api/menu", {
-						role: this.$store.state.USER_ROLE
-					})
-					.then(resp => {
-						console.log(resp.data);
-						this.mainMenu = resp.data.content.mainMenu;
-					})
-					.catch(error => {
-						console.log(error);
-					});
-			},
 			bannerSwiper() {
 				new Swiper('.J_banner_swiper', {
 					loop: true,
-					//			    pagination: {
-					//		        el: '.J_banner_pagination',
-					//		      },
+					observer:true,
+    			observeParents:true,
 					autoplay: {
 						delay: 2500,
 						disableOnInteraction: false,
 					},
+				})
+			},
+			getBannerList(){
+				this.$axios.post("/api/com/getCarouselList").then(res=>{
+					if (res.data.code==200 && res.data.content) {
+						this.imgList = res.data.content.imgList || [];
+						this.$nextTick(()=>{
+							this.bannerSwiper();//初始化swiper
+						})
+					}
 				})
 			}
 		},
@@ -343,6 +401,24 @@
 		}
 	}
 	/*E 其他服务*/
+	
+	.prosecution_phone{
+		border-top: 1px dashed #eee;
+		line-height: 0.8rem;
+		font-size: 0.26rem;
+		text-align:center ;
+		background-color: #fff;
+		a{
+			display: block;
+		}
+		p{
+			display: inline-block;
+			padding-left: 0.4rem;
+			background: url(../../assets/phone.png) no-repeat left center;
+			background-size: 0.26rem auto;
+		}
+	}
+	
 	/*S 工作室介绍*/
 	
 	.introduction_box {
