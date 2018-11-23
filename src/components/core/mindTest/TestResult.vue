@@ -101,8 +101,8 @@
 			margin: 0 auto;
 			margin-top: 0.4rem;
 			line-height: 0.6rem;
-			border: 1px solid #fff;
-			color: #fff;
+			background-color: #fff;
+			color: #2AE0A7;
 			font-size: 0.28rem;
 			text-align: center;
 			a{

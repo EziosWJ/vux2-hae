@@ -112,7 +112,7 @@ export default {
 		}
 	},
 	mounted() {
-		
+		document.title="心理疏导"
 	},
 	methods: {
 		
