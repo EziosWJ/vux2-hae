@@ -76,6 +76,28 @@
 				</li>
 			</ul>
 		</div>
+		<div class="menu_list"  v-else-if="userData.ucRole==4 || userData.ucRole==5">
+			<ul>
+				<li>
+					<router-link to="/phome/mindTestGrid">
+						<div class="menu_img"><img src="../../assets/nav_icon1.png" /></div>
+						<div class="menu_text">心理评测</div>
+					</router-link>
+				</li>
+				<li>
+					<router-link to="">
+						<div class="menu_img"><img src="../../assets/nav_icon7.png" /></div>
+						<div class="menu_text">在线教育</div>
+					</router-link>
+				</li>
+				<li>
+					<router-link to="">
+						<div class="menu_img"><img src="../../assets/nav_icon3.png" /></div>
+						<div class="menu_text">帮教方案</div>
+					</router-link>
+				</li>
+			</ul>
+		</div>
 		<!--E 导航按钮-->
 
 		<!--S 其他服务-->
@@ -283,6 +305,16 @@
 					observer:true,
     			observeParents:true,
 					autoplay: 2000,
+				})
+			},
+			getBannerList(){
+				this.$axios.post("/api/com/getCarouselList").then(res=>{
+					if (res.data.code==200 && res.data.content) {
+						this.imgList = res.data.content.imgList || [];
+						this.$nextTick(()=>{
+							this.bannerSwiper();//初始化swiper
+						})
+					}
 				})
 			},
 			getBannerList(){
