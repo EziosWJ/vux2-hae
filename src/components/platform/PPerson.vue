@@ -111,7 +111,6 @@
 	}
 	
 	.message_list {
-		padding: ;
 		border-bottom: 1px solid #eee;
 		position: relative;
 		padding: 0.2rem;
