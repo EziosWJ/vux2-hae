@@ -2,12 +2,31 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import PHome from '../components/platform/PHome.vue';
+import inquisitorHome from '../components/platform/inquisitorHome.vue';//检察官首页
+import educationHome from '../components/platform/educationHome.vue';//帮教人首页
+import byEducationHome from '../components/platform/byEducationHome.vue';//被帮教人首页
 import PHomeDetails from '../components/platform/PHomeDetails.vue';
 import PMessage from '../components/platform/PMessage.vue';
 import PMine from '../components/platform/PMine.vue';
 import Login from '../components/core/login/Login.vue';
 import V from '../components/layout/V.vue';
 import MindTestList from '../components/core/MindTestList.vue';
+
+//新增
+import helpersInfo from '../components/prosecution/helpersInfo.vue';//查看帮教人
+import seeProgramme from '../components/prosecution/seeProgramme.vue';//查看被帮教人方案
+import fixedScheme from '../components/prosecution/fixedScheme.vue';//制定被帮教人方案
+import commentsScheme from '../components/prosecution/commentsScheme.vue';//点评方案
+import helpersMore from '../components/prosecution/helpersMore.vue';//点评方案
+import myProgramme from '../components/prosecution/myProgramme.vue';//我的方案
+import uploadJob from '../components/prosecution/uploadJob.vue';//被帮教人上传作业
+import seeResult from '../components/prosecution/seeResult.vue';//查看方案详情
+import esultsVisit from '../components/prosecution/esultsVisit.vue';//查看回访结果
+import testResult2 from '../components/prosecution/testResult2.vue';//被帮教人提交测试结果
+import byParentsHome from '../components/platform/byParentsHome.vue';//家长首页
+import adminHome from '../components/platform/adminHome.vue';//管理员首页
+import inspectInfo from '../components/prosecution/inspectInfo.vue';//管理员首页
+
 //===========================
 import MindTestGrid from '../components/core/mindTest/MindTestGrid.vue';
 import MindTestCompletion from '../components/core/mindTest/Completion.vue';
@@ -24,6 +43,7 @@ import Bygone from '../components/core/riskEval/Bygone.vue';
 import Eval from '../components/core/riskEval/Eval.vue';
 //============================
 import HelEducationGird from '../components/core/helpEducation/HelEducationGird.vue';
+import HelEducationGirdDetails from '../components/core/helpEducation/HelEducationGirdDetails.vue';
 import Planning from '../components/core/helpEducation/Planning.vue';
 //===========================
 import Revisit from '../components/core/eduResult/revisit/revisit.vue';
@@ -71,10 +91,19 @@ import OpinionRecord from '../components/core/manage/opinion/Record.vue';
 //==========================帮教人
 import Process from '../components/core/reciver/process/process.vue';
 import education from '../components/core/reciver/education/education.vue';
+import educationList from '../components/core/reciver/education/educationList.vue';
 import Result from '../components/core/reciver/result/result.vue';
 import FeedbackGrid from '../components/core/reciver/feedback/FeedbackGrid.vue';
 import Feedback from '../components/core/reciver/feedback/Feedback.vue';
 import FeedbackRecord from '../components/core/reciver/feedback/Record.vue';
+import persuasion from '../components/core/reciver/persuasion/persuasion.vue';//心理疏导
+import rewardsPenalties from '../components/core/reciver/rewardsPenalties/rewardsPenalties.vue';//奖惩管理
+import examination from '../components/core/reciver/examination/examination.vue';//考察意见
+import visit from '../components/core/reciver/visit/visit.vue';//帮教回访
+import violation from '../components/core/reciver/violation/violation.vue';//违规违纪
+import leave from '../components/core/reciver/leave/leave.vue';//报到请假
+import helpFeedback from '../components/core/reciver/helpFeedback/helpFeedback.vue';//报到请假
+
 //==========================详情表
 import Detail from '../components/core/details/Details.vue';
 //==========================修改用户信息
@@ -104,6 +133,18 @@ const routes = [{
 			{
 				path: '/phome',
 				component: PHome
+			},
+			{
+				path: '/inquisitorHome',//检察官首页
+				component: inquisitorHome
+			},
+			{
+				path: '/educationHome',//帮教人首页
+				component: educationHome
+			},
+			{
+				path: '/byEducationHome',//被帮教人首页
+				component: byEducationHome
 			},
 			{
 				path: '/PHomeDetails',
@@ -175,6 +216,10 @@ const routes = [{
 			{
 				path: '/phome/helpEducationGrid',
 				component: HelEducationGird,
+			},
+			{
+				path: '/phome/HelEducationGirdDetails',
+				component: HelEducationGirdDetails
 			},
 			{
 				path: '/phome/helpEducation/planning',
@@ -334,6 +379,10 @@ const routes = [{
 				path: '/phome/education',
 				component: education
 			},
+			{
+				path: '/phome/educationList',
+				component: educationList
+			},
 			//帮教结果
 			{
 				path: '/phome/result',
@@ -352,6 +401,34 @@ const routes = [{
 				path: '/phome/feedback/record',
 				component: FeedbackRecord
 			},
+			{
+				path: '/phome/persuasion/persuasion',
+				component: persuasion
+			},
+			{
+				path: '/phome/rewardsPenalties/rewardsPenalties',
+				component: rewardsPenalties
+			},
+			{
+				path: '/phome/examination/examination',
+				component: examination
+			},
+			{
+				path: '/phome/visit/visit',
+				component: visit
+			},
+			{
+				path: '/phome/violation/violation',
+				component: violation
+			},
+			{
+				path: '/phome/leave/leave',
+				component: leave
+			},
+			{
+				path: '/phome/helpFeedback/helpFeedback',
+				component: helpFeedback
+			},
 			//详情表
 			{
 				path: '/phome/detail',
@@ -361,7 +438,63 @@ const routes = [{
 			{
 				path: '/phome/edituserinfo',
 				component: Editinfo
-			}
+			},
+			,
+			//查看帮教人
+			{
+				path: '/helpersInfo',
+				component: helpersInfo
+			},
+			//查看被帮教人方案
+			{
+				path: '/seeProgramme',
+				component: seeProgramme
+			},
+			//制定方案
+			{
+				path: '/fixedScheme',
+				component: fixedScheme
+			},
+			{//点评方案
+				path: '/commentsScheme',
+				component: commentsScheme
+			},
+			{//更多被帮教人
+				path: '/helpersMore',
+				component: helpersMore
+			},
+			{//我的方案
+				path: '/myProgramme',
+				component: myProgramme
+			},
+			{//上传作业
+				path: '/uploadJob',
+				component: uploadJob
+			},
+			{//查看帮教结果
+				path: '/seeResult',
+				component: seeResult
+			},
+			{//查看回访结果
+				path: '/esultsVisit',
+				component: esultsVisit
+			},
+			{//被帮教人提交测试结果
+				path: '/testResult2',
+				component: testResult2
+			},
+			{//家长首页
+				path: '/byParentsHome',
+				component: byParentsHome
+			},
+			{//管理员首页
+				path: '/adminHome',
+				component: adminHome
+			},
+			{//检察官帮教信息
+				path: '/inspectInfo',
+				component: inspectInfo
+			},
 		]
 	},
 

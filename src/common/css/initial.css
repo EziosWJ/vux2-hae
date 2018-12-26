@@ -146,65 +146,6 @@ hr {
 	overflow: hidden;
 }
 
-.m0 {
-	margin: 0;
-}
-
-.ma {
-	margin: 0 auto;
-}
-
-.m {
-	margin: 10px;
-}
-
-.mt {
-	margin-top: 15px;
-}
-
-.mt2 {
-	margin-top: 10px;
-}
-
-.mr {
-	margin-right: 10px;
-}
-
-.mb {
-	margin-bottom: 10px;
-}
-
-.ml {
-	margin-left: 10px;
-}
-
-.p {
-	padding: 10px;
-}
-
-.pt {
-	padding-top: 10px;
-}
-
-.pb {
-	padding-bottom: 10px;
-}
-
-.pl {
-	padding-left: 10px;
-}
-
-.mt20 {
-	margin-top: 20px;
-}
-
-.mb20 {
-	margin-bottom: 20px;
-}
-
-.ml20 {
-	margin-left: 20px;
-}
 
 .show {
 	display: block;
@@ -240,4 +181,293 @@ hr {
 
 .ps {
 	position: static;
+}
+
+.text_center{
+	text-align: center;	
+}
+.text_right{
+	text-align: right;
+}
+
+.small_btn{
+	width: 1.5rem;
+	line-height: 0.44rem;
+	color: #28DFA6;
+	border: 1px solid #28DFA6;
+	font-size: 0.26rem;
+	border-radius: 0.22rem;
+	text-align: center;
+}
+.port{
+	padding-left: 0.2rem;
+	position: relative;
+}
+.port:before{
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 0.12rem;
+	height: 0.12rem;
+	margin-top: -0.06rem;
+	border-radius: 50%;
+	background-color: #28DFA6;
+}
+.b_bom{
+	border-bottom: 1px solid #eee;
+}
+.b_bom_x{
+	border-bottom: 1px dashed #eee;
+}
+.f20{
+	font-size: 0.20rem;
+}
+.f22{
+	font-size: 0.22rem;
+}
+.f24{
+	font-size: 0.24rem;
+}
+.f26{
+	font-size: 0.26rem;
+}
+.f28{
+	font-size: 0.28rem;
+}
+
+.f30{
+	font-size: 0.30rem;
+}
+.f32{
+	font-size: 0.32rem;
+}
+.f34{
+	font-size: 0.34rem;
+}
+.f36{
+	font-size: 0.36rem;
+}
+.f38{
+	font-size: 0.38rem;
+}
+.f40{
+	font-size: 0.40rem;
+}
+
+.pd30{
+	padding: 0.3rem;
+}
+
+.pd20{
+	padding: 0.2rem;
+}
+
+.pd10{
+	padding: 0.1rem;
+}
+
+.pdlr30{
+	padding:0 0.3rem;
+}
+.pdtb30{
+	padding:0.3rem 0;
+}
+.pdt30{
+	padding-top:0.3rem;
+}
+.pdb30{
+	padding-bottom:0.3rem;
+}
+.pdl30{
+	padding-left:0.3rem;
+}
+.pdr30{
+	padding-right:0.3rem;
+}
+.pdlr20{
+	padding:0 0.2rem;
+}
+.pdtb20{
+	padding:0.2rem 0;
+}
+.pdt20{
+	padding-top:0.2rem;
+}
+.pdb20{
+	padding-bottom:0.2rem;
+}
+.pdl20{
+	padding-left:0.2rem;
+}
+.pdr20{
+	padding-right:0.2rem;
+}
+.pdlr10{
+	padding:0 0.1rem;
+}
+.pdtb10{
+	padding:0.1rem 0;
+}
+.pdt10{
+	padding-top:0.1rem;
+}
+.pdb10{
+	padding-bottom:0.1rem;
+}
+.pdl10{
+	padding-left:0.1rem;
+}
+.pdr10{
+	padding-right:0.1rem;
+}.ma{
+	margin: 0 auto;
+}
+.mt40{
+	margin-top: 0.4rem;
+}
+.ml40{
+	margin-left: 0.4rem;
+}
+.mr40{
+	margin-right: 0.4rem;
+}
+.mb40{
+	margin-bottom: 0.4rem;
+}
+.mt30{
+	margin-top: 0.3rem;
+}
+.ml30{
+	margin-left: 0.3rem;
+}
+.mr30{
+	margin-right: 0.3rem;
+}
+.mb30{
+	margin-bottom: 0.3rem;
+}
+
+.mt20{
+	margin-top: 0.2rem;
+}
+.ml20{
+	margin-left: 0.2rem;
+}
+.mr20{
+	margin-right: 0.2rem;
+}
+.mb20{
+	margin-bottom: 0.2rem;
+}
+.mt10{
+	margin-top: 0.1rem;
+}
+.ml10{
+	margin-left: 0.1rem;
+}
+.mr10{
+	margin-right: 0.1rem;
+}
+.mb10{
+	margin-bottom: 0.1rem;
+}
+.main_color{
+	color: #28DFA6;
+}
+.radius10{
+	border-radius: 0.1rem;
+}
+.box_shadow{
+	box-shadow: 0 0 10px #ccc;
+}
+.bg_fff{
+	background-color: #fff;
+}
+.c_999{
+	color: #999;
+}
+.c_666{
+	color: #666;
+}
+.wid100{
+	width: 100%;
+}
+
+
+.line10{
+	line-height: 0.1rem;
+}
+.line20{
+	line-height: 0.2rem;
+}
+.line30{
+	line-height: 0.3rem;
+}
+.line40{
+	line-height: 0.4rem;
+}
+.line50{
+	line-height: 0.5rem;
+}
+.line60{
+	line-height: 0.6rem;
+}
+.line70{
+	line-height: 0.7rem;
+}
+.line80{
+	line-height: 0.8rem;
+}
+.c_orange{
+	color: #ffa439;
+}
+.c_red{
+	color: #fd6164;
+}
+.ellipsis{
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+
+.main_linear{
+	background: -webkit-linear-gradient(left, #2ae0a7 , #18d7d0);
+  background: -o-linear-gradient(right, #2ae0a7 , #18d7d0);
+  background: -moz-linear-gradient(right, #2ae0a7 , #18d7d0);
+  background: linear-gradient(to right,#2ae0a7 , #18d7d0); 
+}
+
+.bom_btn_out{
+	height: 0.8rem;
+}
+.bom_btn{
+	line-height: 0.8rem;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+	font-size: 0.3rem;
+	color: #fff;
+	background: -webkit-linear-gradient(left, #2ae0a7 , #18d7d0);
+  background: -o-linear-gradient(right, #2ae0a7 , #18d7d0);
+  background: -moz-linear-gradient(right, #2ae0a7 , #18d7d0);
+  background: linear-gradient(to right,#2ae0a7 , #18d7d0); 
+}
+
+
+.no_data_img{
+	width: 50%;
+}
+.no_data_btn{
+	width: 2.7rem;
+	line-height: 0.7rem;
+	font-size: 0.28rem;
+	border-radius:0.35rem ;
+	text-align: center;
+	margin: 0 auto;
+	margin-top: 0.4rem;
+	color: #fff;
+	text-align: center;
 }

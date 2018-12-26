@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="dredge_out">
 		<group label-width="5em">
 			<popup-picker title="被疏导人" :data="tutoredPersonsList" v-model="tutoredPersons" placeholder="请选择" ></popup-picker>
 			<popup-picker title="疏导人" :data="channelPeopleList" v-model="channelPeople" placeholder="请选择" ></popup-picker>
@@ -54,25 +54,24 @@
 
 		},
 		mounted() {
+			document.title="新建疏导活动";
 		}
 	}
 </script>
 <style lang="less" scoped>
 .diversion_results{
 	padding: 10px 15px;
-	font-size: 17px;
-	
+	font-size: 0.26rem;
+	line-height: 0.5rem;
 	.diversion_results_list{
-		line-height: 26px;
 		ul{
 			li{
 				float: left;
-				font-size: 15px;
 				padding: 0 10px;
 				margin-left:10px;
 				background-color: #f2f2f2;
 				color: #999999;
-				border-radius: 13px;
+				border-radius: 0.25rem;
 			}
 			li.active{
 				background-color: #2AE0A7;
@@ -113,6 +112,13 @@
 	  a{
 	  	display: block;
 	  }
+	}
+}
+</style>
+<style lang="less">
+.dredge_out{
+	.weui-cells{
+		font-size: 0.26rem;
 	}
 }
 </style>

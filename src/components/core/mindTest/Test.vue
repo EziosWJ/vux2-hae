@@ -3,48 +3,20 @@
 	<div>
 		<div class="answer_box">
 			<ul>
-				<li>
-					<div class="answer_title">1.我很喜欢参加社交活动，我感到这是交朋友的好机会。</div>
+				<li v-for="(el,index) in dataList">
+					<div class="answer_title">{{index+1}}、{{el.name}}</div>
 					<div class="answer_btn">
-						<label class="active"><input type="radio" name="1" />A.是	</label>
-						<label><input type="radio" name="1" />B.不确定	</label>
+						<label v-for="item in el.list" :class="{'active':el.curr==item.value}" @click="el.curr=item.value">{{item.text}}</label>
 					</div>
-				</li>
-				<li>
-					<div class="answer_title">2.我很喜欢参加社交活动，我感到这是交朋友的好机会。</div>
-					<div class="answer_btn">
-						<label><input type="radio" name="1" />A.是	</label>
-						<label class="active"><input type="radio" name="1" />B.不确定	</label>
-					</div>
-				</li>
-				<li>
-					<div class="answer_title">3.我很喜欢参加社交活动，我感到这是交朋友的好机会。</div>
-					<div class="answer_btn">
-						<label class="active"><input type="radio" name="1" />A.是	</label>
-						<label><input type="radio" name="1" />B.不确定	</label>
-					</div>
-				</li>
-				<li>
-					<div class="answer_title">4.我很喜欢参加社交活动，我感到这是交朋友的好机会。</div>
-					<div class="answer_btn">
-						<label><input type="radio" name="1" />A.是	</label>
-						<label class="active"><input type="radio" name="1" />B.不确定	</label>
-					</div>
-				</li>
-				<li>
-					<div class="answer_title">5.我很喜欢参加社交活动，我感到这是交朋友的好机会。</div>
-					<div class="answer_btn">
-						<label class="active"><input type="radio" name="1" />A.是	</label>
-						<label><input type="radio" name="1" />B.不确定	</label>
-					</div>
-				</li>
-				
+				</li>				
 			</ul>
 		</div>
 		<div class="answer_foot">
 			<div class="answer_foot_mian">
-				<div class="answer_foot_branch">总分数为：99分</div>
-				<div class="answer_foot_btn">提交</div>
+				<div class="answer_foot_branch">总分数为：100分</div>
+				<div class="answer_foot_btn">
+					<router-link to="/testResult2">提交</router-link>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -54,11 +26,18 @@
 	export default {
 		data() {
 			return {
-
+				dataList:[
+					{name:'我很喜欢参加社交活动，我感到这是交朋友的好机会。',list:[{text:'A、是',value:'0'},{text:'B、不确定',value:'1'}],curr:''},
+					{name:'每到一个新地方，我第一天总数睡不好，就是在家里，只要换一张床，有时也会失眠。',list:[{text:'A、是',value:'0'},{text:'B、不确定',value:'1'}],curr:''},
+					{name:'我情绪波动很大，常常被周围的人或事情影响心情。',list:[{text:'A、是',value:'0'},{text:'B、不确定',value:'1'}],curr:''},
+					{name:'我最怕转学或转班级，每到一个新环境，我总要经过很长一段时间才能适应。',list:[{text:'A、是',value:'0'},{text:'B、不确定',value:'1'}],curr:''},
+					{name:'在陌生人面前，我常无话可说，以至感到尴尬',list:[{text:'A、是',value:'0'},{text:'B、不确定',value:'1'}],curr:''},
+					{name:'当被人攻击时，我不惜任何方法和代价令对方退缩。',list:[{text:'A、是',value:'0'},{text:'B、不确定',value:'1'}],curr:''}
+				],//题列表
 			}
 		},
 		mounted() {
-			document.title = "基础测试";
+			document.title = "心理测评";
 		},
 		methods: {
 			
@@ -85,8 +64,8 @@
 				margin-top: 0.2rem;
 				label{
 					display: inline-block;
-					margin: 0 0.1rem;
-					width: 1.8rem;
+					width: 1.4rem;
+					margin: 0 0.03rem;
 					line-height: 0.52rem;
 					text-align: center;
 					border-radius: 0.3rem;

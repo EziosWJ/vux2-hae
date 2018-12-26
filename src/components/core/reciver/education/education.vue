@@ -1,48 +1,121 @@
 <template>
-  <div>
-   
-    <panel :header="heaher" :footer="footer" :list="list" :type="type" @on-img-error="onImgError"></panel>
-  </div>
+	<!--S 在线教育-->
+	<div class="evaluation_out">
+		<div class="evaluation_banner">
+			<img src="../../../../assets/persuasion_img.jpg" />
+		</div>
+		<div class="evaluation_content">
+			<div class="scheme_list">
+				<ul>
+					<li>
+						<router-link to="/phome/educationList">
+							<div class="scheme_img"><img src="../../../../assets/line_img.png" /></div>
+							<div class="scheme_title">在线学习</div>
+							<div class="scheme_text">在线学习是一个很好的渠道，大家都取得了很好的成绩。点击查看在线课</div>
+						</router-link>
+					</li>
+					<li>
+						<router-link to="/phome/educationList">
+							<div class="scheme_img"><img src="../../../../assets/line_img.png" /></div>
+							<div class="scheme_title">在线学习</div>
+							<div class="scheme_text">在线学习是一个很好的渠道，大家都取得了很好的成绩。点击查看在线课</div>
+						</router-link>
+					</li>
+					<li>
+						<router-link to="/phome/educationList">
+							<div class="scheme_img"><img src="../../../../assets/line_img.png" /></div>
+							<div class="scheme_title">在线学习</div>
+							<div class="scheme_text">在线学习是一个很好的渠道，大家都取得了很好的成绩。点击查看在线课</div>
+						</router-link>
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+	</div>
+	<!--E 在线教育-->
 </template>
 
-
 <script>
-import { Panel, Group, Radio } from 'vux'
-
 export default {
-  components: {
-    Panel,
-    Group,
-    Radio
-  },
-  methods: {
-    onImgError (item, $event) {
-      console.log(item, $event)
-    }
-  },
-  data() {
-    return {
-      heaher:"在线教育",
-      type: '1',
-      list:[{
-          src:'http://img1.kanshangjie.com/uploadfile/201711/2319/hangye-zhihuijioayu.jpg',
-          fallbackSrc:'1',
-          title:'视频教育',
-          desc:'网络教育是远程教育的现代化表现，以网络技术为基础，结合院校优秀教育资源，将院校最优秀的教师、最好的教学成果传播到四面八方，学生无论是在近处还是远方只要拥有网络及一定的计算机操作能力均可学习知识。'
-      },{
-          src:'http://a2.att.hudong.com/53/81/01300542707689140737818683586.jpg',
-          fallbackSrc:'2',
-          title:'书本教育',
-          desc:'网络教育运用计算机网络特有的数据库管理和双向交互功能，让系统对每个学生的资料、学习过程和阶段情况等实现完整的系统跟踪记录，同时根据不同学生的资料提出不同的个性化学习建议或计划，更利于学生的发展。'
-      },{
-          src:'http://imgsrc.baidu.com/image/c0%3Dshijue1%2C0%2C0%2C294%2C40/sign=1136654ed7c451dae2fb04a8de943813/80cb39dbb6fd5266daf5c104a118972bd50736c7.jpg',
-          fallbackSrc:'3',
-          title:'网络教育',
-          desc:'节源开流是现今社会发展所需，也是我们一直倡导的，网络教育通过平台进行教授、学习，很大程度上积累了成本，而这些费用可以用在为学生提供性价比更好的学习上，如招募更多的授课老师、使用更多更好的教学设备、减低学生的费用等。　'
-      }
-      
-      ]
-    }
-  }
-}
+	data() {
+		return {
+			
+		}
+	},
+	mounted() {
+		document.title="在线教育"
+	},
+	methods: {
+		
+	},
+	
+};
 </script>
+<style lang="less" scoped>
+.color_orange{
+	color: #ff991d;
+}
+.color_999{
+	color: #999;
+}
+.evaluation_out{
+	background-color: #fff;
+	padding-bottom: 0.3rem;
+}
+.evaluation_banner{
+	img{
+		width: 100%;
+	}
+}
+
+.evaluation_content{
+	padding: 0 0.25rem;
+	.evaluation_num{
+		margin-top: 0.2rem;
+	}
+	.scheme_list{
+		ul{
+			li{
+				box-shadow: 0 0 5px #ccc;
+				margin-top: 0.2rem;
+				border-radius: 0.1rem;
+				padding: 0.2rem;
+				padding-left: 1.8rem;
+				position: relative;		
+				min-height:1.4rem ;		
+				.scheme_img{
+					position: absolute;
+					left: 0.2rem;
+					top: 0.2rem;
+					width: 1.4rem;
+					height: 1.4rem;
+					overflow: hidden;
+					img{
+						width: 100%;
+					}
+				}
+				.scheme_title{
+					overflow: hidden;
+					text-overflow:ellipsis;
+					white-space: nowrap;
+					font-size: 0.28rem;
+				}
+				.scheme_text{
+					margin-top: 0.15rem;
+					font-size: 0.22rem;
+					color: #999;
+					line-height: 1.8em;
+					height: 3.5em;
+					display: -webkit-box;
+					-webkit-box-orient: vertical;
+					-webkit-line-clamp: 2;
+					overflow: hidden;
+				}
+			}
+		}
+	}
+}
+
+
+</style>

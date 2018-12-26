@@ -1,41 +1,79 @@
 <template>
-    <div>
-        <group>
-            <cell title="姓名" :value="name"></cell>
-            <cell title="帮教结果" value="良好"></cell>
-            <cell-form-preview :list="list">
-
-            </cell-form-preview>
-        </group>
-        
-    </div>
+	<!--S 帮教结果-->
+	<div>
+		<div class="result_img">
+			<img src="../../../../assets/persuasion_img.jpg" />
+		</div>
+		<div class="scheme_details">
+			<div class="scheme_details_title ov">
+				<div class="fl">
+					对12001的帮教结果
+				</div>
+				<img class="fl result_icon" src="../../../../assets/004.png"/>
+			</div>
+			<div class="scheme_details_data">创建时间：2018-02-02</div>
+			<div class="scheme_details_main">
+				<p>在档案册里，还有去年3月在西湖边抢劫的音乐少年小力。当得知小力是来杭州报考音乐学院的时候，很多杭州人为之惋惜。小力的案子移交给西湖区检察院审查起诉后，小力认识到自己的错误，他的家人也代为赔偿了被害人的损失，得到了被害人的谅解……综合这些因素，同时考虑小力是初犯、偶犯，西湖区检察院对其定罪不捕。小力如期参加了考试，并最终考上了大学。</p>
+				<p>虽然早已过了考察期，小力也如愿进了大学，但就在不久前，小力还是给“西子姐姐”写来了一封信，说他在大学的生活很充实，自己的表现也很不错，谢谢“西子姐姐”……</p>
+				<p>检察院未检科负责人郑蕾说，从2017年未检科成立至今，他们已帮教了十多名涉罪未成年人。他们每个人的成长经历不同、引发犯罪的原因不同，所以，“西子姐姐”对他们的帮教方案也力求个性化，取得了很好的效果。</p>
+			</div>
+		</div>
+		
+	</div>
+	<!--E 帮教结果-->
 </template>
+
 <script>
-    import {CellFormPreview,Group,Cell} from 'vux'
-    export default{
-        components:{
-            CellFormPreview,
-            Group,
-            Cell
-        },
-        data(){
-             return {
-                list: [{
-                    label: '劳动教育',
-                    value: '性格开朗，工作认真负责，细心，有很强的职责心和进取心,头脑灵活，不怕吃苦，理解潜力强，能够很好的处理同事的关系。'
-                }, {
-                    label: '谈话教育',
-                    value: '忠实诚信,讲原则，说到做到，决不推卸职责;有自制力，做事情始终坚持有始有终，从不半途而废;肯学习,有问题不逃避。'
-                }, {
-                    label: '违规违纪',
-                    value: '不迟到早退，严于律己。'
-                },{
-                    label:'社区服务',
-                    value:'本人性格开朗，为人细心，做事一丝不苟，能吃苦耐劳，工作脚踏实地，有较强的职责心，具有团队合作精神。'
-                }],
-                name:this.$store.state.USER_NAME
-            }
-        }
-    }
-    
+export default {
+	data() {
+		return {
+			
+		}
+	},
+	mounted() {
+		document.title="帮教结果"
+	},
+	methods: {
+		
+	},
+	
+};
 </script>
+<style lang="less" scoped>
+.result_icon{
+	width: 1rem;
+	margin-left: 0.2rem;
+}
+.result_img{
+	img{
+		width: 100%;
+	}
+}
+.color_orange{
+	color: #ff991d;
+}
+.color_999{
+	color: #999;
+}
+.scheme_details{
+	background-color: #fff;
+	padding: 0.2rem;
+	padding-bottom: 0.3rem;
+	.scheme_details_title{
+		font-size: 0.28rem;
+	}
+	.scheme_details_data{
+		font-size: 0.22rem;
+		color: #999;
+		margin-top: 0.14rem;
+	}
+	.scheme_details_main{
+		p{
+			text-indent: 2em;
+			margin-top: 0.2rem;
+			line-height: 1.8em;
+		}
+	}
+}
+
+</style>
