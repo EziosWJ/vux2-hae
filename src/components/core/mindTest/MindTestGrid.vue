@@ -26,7 +26,7 @@
 					<li>
 						<router-link to="/phome/mindTest">
 							<div class="evaluation_list_main">
-								<div class="evaluation_list_title">测试一：基础测评</div>
+								<div class="evaluation_list_title">测试二：心理测评</div>
 								<span>55人已完成</span>
 							</div>
 						</router-link>
@@ -34,7 +34,7 @@
 					<li>
 						<router-link to="/phome/mindTest">
 							<div class="evaluation_list_main">
-								<div class="evaluation_list_title">测试一：基础测评</div>
+								<div class="evaluation_list_title">测试三：安全测评</div>
 								<span>55人已完成</span>
 							</div>
 						</router-link>
@@ -42,7 +42,7 @@
 					<li>
 						<router-link to="/phome/mindTest">
 							<div class="evaluation_list_main">
-								<div class="evaluation_list_title">测试一：基础测评</div>
+								<div class="evaluation_list_title">测试四：健康测试</div>
 								<span>55人已完成</span>
 							</div>
 						</router-link>
@@ -50,7 +50,7 @@
 					<li>
 						<router-link to="/phome/mindTest">
 							<div class="evaluation_list_main">
-								<div class="evaluation_list_title">测试一：基础测评</div>
+								<div class="evaluation_list_title">测试五：其他测评</div>
 								<span>55人已完成</span>
 							</div>
 						</router-link>
@@ -68,8 +68,8 @@
 						<router-link to="/phome/mindTestResult">
 							<div class="adjusted_icon"><img src="../../../assets/by_icon.png" /></div>
 							<div class="adjusted_main">
-								<div class="adjusted_text">测试一：基础测试</div>
-								<div class="adjusted_name">李杰</div>
+								<div class="adjusted_text">测试一：基础测评</div>
+								<div class="adjusted_name">2019010101</div>
 							</div>
 							<div class="ov adjusted_info">
 								<div class="fl adjusted_time">2018-02-02</div>
@@ -81,8 +81,8 @@
 						<router-link to="/phome/mindTestResult">
 							<div class="adjusted_icon"><img src="../../../assets/by_no_icon.png" /></div>
 							<div class="adjusted_main">
-								<div class="adjusted_text">测试一：基础测试</div>
-								<div class="adjusted_name">李杰</div>
+								<div class="adjusted_text">测试二：心理测评</div>
+								<div class="adjusted_name">2019010101</div>
 							</div>
 							<div class="ov adjusted_info">
 								<div class="fl adjusted_time">2018-02-02</div>
@@ -94,8 +94,8 @@
 						<router-link to="/phome/mindTestResult">
 							<div class="adjusted_icon"><img src="../../../assets/by_icon.png" /></div>
 							<div class="adjusted_main">
-								<div class="adjusted_text">测试一：基础测试</div>
-								<div class="adjusted_name">李杰</div>
+								<div class="adjusted_text">测试三：安全测评</div>
+								<div class="adjusted_name">2019010101</div>
 							</div>
 							<div class="ov adjusted_info">
 								<div class="fl adjusted_time">2018-02-02</div>

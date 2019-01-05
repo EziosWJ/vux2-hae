@@ -10,7 +10,7 @@
 			<div class="block_title">联系方式</div>
 			<ul>
 				<li class="introduction_list1">
-					<a href="tel:0351-88866655">0351-88866655</a>
+					<a href="tel:0351-88866655">0351-6593118</a>
 				</li>
 				<li class="introduction_list2">jingfanggongzuoshi@163.com</li>
 				<li class="introduction_list3">地址：太原市晋源区人民检察院</li>
