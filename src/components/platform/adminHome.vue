@@ -65,6 +65,8 @@
 		<!--E 帮教人-->
 		
 		
+		
+		
 		<div class="bg_fff ov pdlr20 pdb20" v-show="current==1">
 			<ul>
 				<li class="mt20 box_shadow pd20 radius10">
@@ -160,49 +162,37 @@
 			</div>
 		</div>
 		<!--E 被帮教人-->
-
-		<!--S 其他服务-->
+		<!--S 消息提醒-->
 		<div class="block_box">
-			<div class="block_title">其他服务</div>
-			<div class="other_main">
+			<div class="pdb20 b_bom">
+				<div class="block_title">消息提醒</div>
+			</div>
+			<div class="msg_box">
 				<ul>
-					<!--<li >
-						<div class="other_list">
-							<router-link to="/phome/mindTest">
-								<div class="other_icon"><img src="../../assets/other_icon12.png" /></div>
-								<div class="other_text">心理评测</div>
-							</router-link>
-						</div>
-					</li>-->
-					<li >
-						<div class="other_list">
-							<router-link to="/phome/talkGrid">
-								<div class="other_icon"><img src="../../assets/other_icon6.png" /></div>
-								<div class="other_text">谈话教育</div>
-							</router-link>
-						</div>
+					<li>
+						<router-link to="/msgList">
+							<div class="msg_icon">
+								<img src="../../assets/msg_icon_blue.png" />
+								<div class="msg_num">3</div>
+							</div>
+							<div class="msg_big_title">被帮教人未按时完成提醒</div>
+							<div class="msg_small_text">3条未读</div>
+						</router-link>
 					</li>
-					<li >
-						<div class="other_list">
-							<router-link to="/phome/rewardPunishGrid">
-								<div class="other_icon"><img src="../../assets/other_icon2.png" /></div>
-								<div class="other_text">奖惩管理</div>
-							</router-link>
-						</div>
-					</li>
-					<li >
-						<div class="other_list">
-							<router-link to="/phome/revisitGrid">
-								<div class="other_icon"><img src="../../assets/other_icon1.png" /></div>
-								<div class="other_text">帮教回访</div>
-							</router-link>
-						</div>
+					<li>
+						<router-link to="/msgList">
+							<div class="msg_icon">
+								<img src="../../assets/msg_icon_yellow.png" />
+								<div class="msg_num">2</div>
+							</div>
+							<div class="msg_big_title">被帮教人已完成所有内容</div>
+							<div class="msg_small_text">2条未读</div>
+						</router-link>
 					</li>
 				</ul>
 			</div>
 		</div>
-		<!--E 其他服务-->
-
+		<!--E 消息提醒-->
 		<!--S 底部导航-->
 		<div class="foot_out">
 			<div class="foot_box">
@@ -374,34 +364,52 @@
 		top: 0.26rem;
 		font-size: 0.22rem;
 	}
-	/*S 其他服务*/
 	
-	.other_main {
-		ul {
-			overflow: hidden;
-			li {
-				float: left;
-				width: 33.3%;
-				box-sizing: border-box;
-				padding: 0 0.1rem;
-				text-align: center;
-				margin-top: 0.2rem;
-				font-size: 0.24rem;
-				.other_list {
-					background-color: #f4f4f4;
-					padding: 0.2rem 0;
+	/*S 消息*/
+	.msg_box{
+		ul{
+			li{
+				padding: 0.2rem 0;
+				padding-left: 1rem;
+				position: relative;
+				border-bottom: 1px solid #eee;
+				background: url(../../assets/aorrow_right.png) no-repeat right center;
+				background-size: 0.16rem auto;
+				.msg_icon{
+					position: absolute;
+					left: 0;
+					top:0.2rem;
+					img{
+						width: 0.8rem;
+					}
 				}
-				.other_text {
-					margin-top: 0.05rem;
+				.msg_big_title{
+					font-size: 0.28rem;
 				}
-				.other_icon img {
-					width: 56%;
-					margin: 0 auto;
+				.msg_num{
+					background-color: #ee1c25;
+					color: #fff;
+					position: absolute;
+					top: 0;
+					right: 0;
+					line-height: 0.3rem;
+					min-width: 0.3rem;
+					text-align: center;
+					border-radius: 0.15rem;
+					font-size: 0.24rem;
 				}
+				.msg_small_text{
+					font-size: 0.24rem;
+					color: #999;
+				}
+			}
+			li:last-child{
+				padding-bottom: 0;
+				border-bottom: 0;
 			}
 		}
 	}
-	/*E 其他服务*/
+	/*E 消息*/
 </style>
 <style lang="less" scoped>
 	.foot_out {

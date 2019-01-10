@@ -60,27 +60,27 @@
 			<ul>
 				<li class="box_shadow f28 ov pd20 mt20 radius10">
 					<div class="fl port">2019010110</div>	
-					<div class="fr small_btn"><router-link :to="{path:'/seeResult',query:{type:'1'}}">优秀</router-link></div>
+					<div class="fr"><router-link :to="{path:'/seeResult',query:{type:'1'}}"><img src="../../assets/004.png" style="width: 1.2rem;" /></router-link></div>
 				</li>
 				<li class="box_shadow f28 ov pd20 mt20 radius10">
 					<div class="fl port">2019010111</div>	
-					<div class="fr small_btn"><router-link :to="{path:'/seeResult',query:{type:'0'}}">良好</router-link></div>
+					<div class="fr "><router-link :to="{path:'/seeResult',query:{type:'0'}}"><img src="../../assets/003.png" style="width: 1.2rem;" /></router-link></div>
 				</li>
 				<li class="box_shadow f28 ov pd20 mt20 radius10">
 					<div class="fl port">2019010112</div>	
-					<div class="fr small_btn"><router-link :to="{path:'/seeResult',query:{type:'0'}}">良好</router-link></div>
+					<div class="fr "><router-link :to="{path:'/seeResult',query:{type:'0'}}"><img src="../../assets/003.png" style="width: 1.2rem;" /></router-link></div>
 				</li>
 				<li class="box_shadow f28 ov pd20 mt20 radius10">
 					<div class="fl port">2019010113</div>	
-					<div class="fr small_btn"><router-link :to="{path:'/seeResult',query:{type:'0'}}">良好</router-link></div>
+					<div class="fr "><router-link :to="{path:'/seeResult',query:{type:'0'}}"><img src="../../assets/003.png" style="width: 1.2rem;" /></router-link></div>
 				</li>
 				<li class="box_shadow f28 ov pd20 mt20 radius10">
 					<div class="fl port">2019010114</div>	
-					<div class="fr small_btn"><router-link :to="{path:'/seeResult',query:{type:'0'}}">良好</router-link></div>
+					<div class="fr "><router-link :to="{path:'/seeResult',query:{type:'0'}}"><img src="../../assets/003.png" style="width: 1.2rem;" /></router-link></div>
 				</li>
 				<li class="box_shadow f28 ov pd20 mt20 radius10">
 					<div class="fl port">2019010115</div>	
-					<div class="fr small_btn"><router-link :to="{path:'/seeResult',query:{type:'0'}}">良好</router-link></div>
+					<div class="fr "><router-link :to="{path:'/seeResult',query:{type:'0'}}"><img src="../../assets/003.png" style="width: 1.2rem;" /></router-link></div>
 				</li>
 			</ul>
 		</div>

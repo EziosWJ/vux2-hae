@@ -8,25 +8,18 @@
 			<div class="scheme_list">
 				<ul>
 					<li>
-						<router-link to="/phome/educationList">
+						<a href="http://www.tyjcywj.cn/videoList.html">
 							<div class="scheme_img"><img src="../../../../assets/line_img.png" /></div>
-							<div class="scheme_title">在线学习</div>
-							<div class="scheme_text">在线学习是一个很好的渠道，大家都取得了很好的成绩。点击查看在线课</div>
-						</router-link>
+							<div class="scheme_title">观看法制视频</div>
+							<div class="scheme_text">观看在线视频，学习法制知识，提高自我保护意识和帮助别人的能力。</div>
+						</a>
 					</li>
 					<li>
-						<router-link to="/phome/educationList">
-							<div class="scheme_img"><img src="../../../../assets/line_img.png" /></div>
-							<div class="scheme_title">在线学习</div>
-							<div class="scheme_text">在线学习是一个很好的渠道，大家都取得了很好的成绩。点击查看在线课</div>
-						</router-link>
-					</li>
-					<li>
-						<router-link to="/phome/educationList">
-							<div class="scheme_img"><img src="../../../../assets/line_img.png" /></div>
-							<div class="scheme_title">在线学习</div>
-							<div class="scheme_text">在线学习是一个很好的渠道，大家都取得了很好的成绩。点击查看在线课</div>
-						</router-link>
+						<a href="http://mp.weixin.qq.com/mp/homepage?__biz=MzU1NzY5ODczOQ==&hid=1&sn=8c10b2aa4c5ba78bb9ee37151287c43b&scene=18#wechat_redirect">
+							<div class="scheme_img"><img src="../../../../assets/line_img2.png" /></div>
+							<div class="scheme_title">在线案例学习</div>
+							<div class="scheme_text">通过真实案例，了解身边的法律知识，提高自我保护意识。</div>
+						</a>
 					</li>
 				</ul>
 			</div>

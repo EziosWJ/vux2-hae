@@ -26,7 +26,8 @@ import testResult2 from '../components/prosecution/testResult2.vue';//被帮教�
 import byParentsHome from '../components/platform/byParentsHome.vue';//家长首页
 import adminHome from '../components/platform/adminHome.vue';//管理员首页
 import inspectInfo from '../components/prosecution/inspectInfo.vue';//管理员首页
-
+import msgList from '../components/prosecution/msgList.vue';//消息列表
+import helpResults from '../components/prosecution/helpResults.vue';//帮教结果
 //===========================
 import MindTestGrid from '../components/core/mindTest/MindTestGrid.vue';
 import MindTestCompletion from '../components/core/mindTest/Completion.vue';
@@ -494,6 +495,14 @@ const routes = [{
 			{//检察官帮教信息
 				path: '/inspectInfo',
 				component: inspectInfo
+			},
+			{//消息列表
+				path: '/msgList',
+				component: msgList
+			},
+			{//帮教结果
+				path: '/helpResults',
+				component: helpResults
 			},
 		]
 	},
