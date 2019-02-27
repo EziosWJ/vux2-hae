@@ -5,7 +5,7 @@ import Vuex from 'vuex'
 import FastClick from 'fastclick'
 import router from './router'
 import Axios from 'axios'
-import qs from 'qs';
+import Qs from 'qs';
 import store from './store/store'
 import App from './App'
 import 'font-awesome/css/font-awesome.css'
@@ -19,21 +19,11 @@ require('./common/css/initial.css')//初始化css
 require('./common/js/rem.js')//页面缩放js
 
 
-Axios.interceptors.request.use(function (config) {
-    // 在发送请求之前做些什么
-	if(config.method === 'post')
-	config.transformRequest(data=>{
-		qs.stringify(data)
-		return data
-	})
-    // config.data = qs.stringify(config.data)
-    return config;
-  }, function (error) {
-    // 对请求错误做些什么
-    return Promise.reject(error);
-  });
-
-Axios.defaults.headers.post = {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
+Axios.defaults.transformRequest = function (data) {
+  data = Qs.stringify(data);
+  return data;
+};
+Axios.defaults.headers = {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'}
 Vue.prototype.$axios = Axios
 FastClick.attach(document.body)
 
