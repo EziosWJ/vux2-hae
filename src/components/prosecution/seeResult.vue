@@ -7,87 +7,28 @@
 		
 		<div >
 			<div class="see_scheme_list pd20">
-				<div class="ov">
-					<div class="main_linear see_scheme_date fl">2019-01-05至2019-02-04</div>
-				</div>
+				
 				<div class="evaluation_list">
 					<ul>
-						<li v-for="el in schemeList" v-if="type==1">
-							<div class="evaluation_list_main" v-if="el.pin">
-								<router-link :to="{path:'/phome/mindTestResult',query:{type:'55'}}">
-									<div class="evaluation_list_title pr">
-										{{el.name}}
-										<span class="type_text c_orange">已完成</span>
-									</div>
-									<div class="report_item_box pdb20 pr">
-										<div class="c_999 mt10">测评得分：{{el.fen}}分</div>
-										<div class="c_999 mt10">截止日期：{{el.endDate}}</div>
-										<div class="c_999 mt10">完成时间：{{el.subDate}}</div>
-										<img class="gou_icon" src="../../assets/gou.png" />
-									</div>
-								</router-link>
-							</div>
-							<div class="evaluation_list_main" v-else>
-								<router-link :to="{path:'/commentsScheme',query:{type:el.type}}">
-									<div class="evaluation_list_title pr">
-										{{el.name}}
-										<span class="type_text c_orange">已完成</span>
-									</div>
-									<div class="report_item_box pdb20 pr">
-										<div class="c_999 mt10">帮教人评分：{{el.fen}}分</div>
-										<div class="c_999 mt10">截止日期：{{el.endDate}}</div>
-										<div class="c_999 mt10">完成时间：{{el.subDate}}</div>
-										<img class="gou_icon" src="../../assets/gou.png" />
-									</div>
-								</router-link>
-							</div>
-						</li>
-						<li v-for="el in schemeList2" v-if="type==0">
-							<div class="evaluation_list_main" v-if="el.pin">
-								<router-link :to="{path:'/phome/mindTestResult',query:{type:'55'}}">
-									<div class="evaluation_list_title pr">
-										{{el.name}}
-										<span class="type_text c_orange">已完成</span>
-									</div>
-									<div class="report_item_box pdb20 pr">
-										<div class="c_999 mt10">测评得分：{{el.fen}}分</div>
-										<div class="c_999 mt10">截止日期：{{el.endDate}}</div>
-										<div class="c_999 mt10">完成时间：{{el.subDate}}</div>
-										<img class="gou_icon" src="../../assets/gou.png" />
-									</div>
-								</router-link>
-							</div>
-							<div class="evaluation_list_main" v-else>
-								<router-link :to="{path:'/commentsScheme',query:{type:el.type}}">
-									<div class="evaluation_list_title pr">
-										{{el.name}}
-										<span class="type_text c_orange">已完成</span>
-									</div>
-									<div class="report_item_box pdb20 pr">
-										<div class="c_999 mt10">帮教人评分：{{el.fen}}分</div>
-										<div class="c_999 mt10">截止日期：{{el.endDate}}</div>
-										<div class="c_999 mt10">完成时间：{{el.subDate}}</div>
-										<img class="gou_icon" src="../../assets/gou.png" />
-									</div>
-								</router-link>
-							</div>
-						</li>
-						<li>
+						<li v-for="el in EduplanList">
 							<div class="evaluation_list_main">
-								<router-link :to="{path:'/phome/mindTestResult',query:{type:'90'}}">
+								<router-link :to="{path:'/phome/mindTestResult',query:{type:el.score}}">
 									<div class="evaluation_list_title pr">
-										7、二次心理测评
+										{{el.name}}
 										<span class="type_text c_orange">已完成</span>
 									</div>
 									<div class="report_item_box pdb20 pr">
-										<div class="c_999 mt10">测评得分：90分</div>
-										<div class="c_999 mt10">截止日期：2018-12-15</div>
-										<div class="c_999 mt10">完成时间：2018-12-10</div>
+										<div class="c_999 mt10">测评得分：{{el.score}}分</div>
+										<div class="c_999 mt10">截止日期：{{el.dieDate}}</div>
+										<div class="c_999 mt10">完成时间：{{el.finishedDate}}</div>
 										<img class="gou_icon" src="../../assets/gou.png" />
 									</div>
 								</router-link>
 							</div>
+							
 						</li>
+						
+						
 					</ul>
 				</div>
 			</div>
@@ -223,17 +164,26 @@
 						fen: '75'
 					},
 				], //方案列表
+				EduplanList:[],
 			};
 		},
 
 		mounted() {
 			document.title = "被帮教人A的评测结果";
-			this.type = this.$route.query.type;
+			this.urId = this.$route.query.urId;
 			let userData = JSON.parse(sessionStorage.getItem("userData"));
 			this.userData = userData;
+			this.getEduplanListByUrId();
 		},
 		methods: {
-
+			getEduplanListByUrId(){
+				let urId=this.urId;
+				console.log(urId);
+				this.$axios.post('/api/eduplan/getEduplanListByUrId',{urId:urId}).then(resp=>{
+					this.EduplanList=resp.data.content.list;
+					console.log(resp.data);
+				})
+			}
 		},
 
 	};
