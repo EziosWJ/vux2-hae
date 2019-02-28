@@ -31,17 +31,18 @@
 								<img class="scheme_list_icon" src="../../assets/del_icon.png" @click="clickDelScheme(index,itemIndex)"/>
 							</div>
 							<group label-width="5em">
-								<datetime title="截止日期" v-model="item.date"  placeholder="请选择"></datetime>
+								<datetime title="截止日期" v-model="item.dieDate"  placeholder="请选择"></datetime>
 							</group>
 						</li>
 					</ul>
 				</div>
 			</div>
 		</div>
+		<from>
 		<div class="popup_box">
-			<popup-picker :show.sync="showPopupPicker" :show-cell="false" popup-title="选择帮教方案" :data="selectScheme" :show-name="true" v-model="scheme" @on-change="onChange"></popup-picker>
+			<popup-picker :show.sync="showPopupPicker" :show-cell="false"  popup-title="选择帮教方案" :data="selectScheme" :show-name="true" v-model="scheme" @on-change="onChange"></popup-picker>
 		</div>
-		
+		</from>
 		<div class="bom_btn_out">
 			<div class="bom_btn" style="z-index: 30;" @click="subScheme">
 				提交
@@ -63,24 +64,11 @@
 				dateList:[],//时间轴
 				dateListIndex:'',//需要添加方案对应时间的所以值
 				scheme:[''],//选择的方案
-				selectScheme:[[//选择方案列表
-					{name:'观看法制微电影',value:'0'},
-					{name:'法律法规学习',value:'1'},
-					{name:'初次心理测评',value:'3'},
-					{name:'晋源区二社区劳动服务',value:'4'},
-					{name:'法制案例学习',value:'5'},
-					{name:'在线学习心理常识',value:'6'},
-					{name:'阅读学习未成年保护法',value:'7'},
-					{name:'晋祠公园义务劳动服务',value:'8'},
-					{name:'第二次心理评测',value:'9'},
-					{name:'在线教育视频学习',value:'10'},
-					{name:'思想心得汇报',value:'11'},
-					{name:'志愿者服务',value:'12'},
-					{name:'亲子互动',value:'13'},
-					{name:'绿洲学法试题测试',value:'14'}
-				]],
+				selectScheme:[],
 				showPopupPicker: false,
 				userData: {}, //ucRole2检察官  ucRole3帮教人  ucRole4被帮教人  ucRole5家长
+				listArray:[],
+				array:[]
 			};
 		},
 		components: {
@@ -116,8 +104,16 @@
 			document.title = "制定2019010108的方案";
 			let userData = JSON.parse(sessionStorage.getItem("userData"));
 			this.userData = userData;
+			this.getSelectList()
+			this.urId = this.$route.query.urId;
 		},
 		methods: {
+			getSelectList(){
+					this.$axios.post('/api/com/taskList').then(resp=>{
+						this.selectScheme.push(resp.data)
+					console.log(this.selectScheme)
+					})
+			},
 			getDateList(){
 				let start = new Date(this.starDate).getTime();
 				let end = new Date(this.endDate).getTime();
@@ -163,13 +159,28 @@
 				this.dateListIndex = index;
 			},
 			onChange(val){
+				console.log(val)
 				//方案选择
 				let sel = this.selectScheme[0].filter(item => item.value==val[0])[0];
-				sel.date = "";
+				sel.dieDate = "";
 				this.dateList[this.dateListIndex].schemeList.push(sel);
 			},
 			subScheme(){
-				alert("提交成功！")
+				let arr = [];
+				let list = this.dateList;
+				for(let i =0;i<list.length;i++){
+					if(list[i].schemeList.length){
+						for(let n =0;n<list[i].schemeList.length;n++){
+							delete list[i].schemeList[n].value
+							arr.push(list[i].schemeList[n]);
+						}
+					}
+				}
+				console.log(arr);
+				this.$axios.post('/api/eduplan/putEduplan',{epCustom:JSON.stringify(arr),epStartTime:this.starDate,epEndTime:this.endDate,urId:this.urId}).then(resp=>{
+						console.log(resp)
+				})
+				
 			},
 			timestampToTime(timestamp,type) {//将时间戳转化为日期格式
 		    //时间戳为10位需*1000，时间戳为13位的话不需乘1000

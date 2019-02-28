@@ -13,20 +13,15 @@
 				<img class="by_help_icon" src="../../assets/a001.png"/>
 				<ul  class="ov">
 					
-					<li v-for="el in HelperList"><div class="by_help_list"><router-link to="/fixedScheme">{{el.value}}</router-link></div></li>
+					<li v-for="el in HelperList" v-if="el.urState==''"><div class="by_help_list"><router-link :to="{path:'/fixedScheme',query:{urId:el.urId}}" >{{el.urName}}</router-link></div></li>
+					
 
 				</ul>
 			</div>
 			<div class="by_help_box mt20 box_shadow radius10 pr by_help_box3">
 				<img class="by_help_icon" src="../../assets/a003.png"/>
 				<ul class="ov">
-					<li><div class="by_help_list"><router-link to="/seeProgramme">2019010115</router-link></div></li>
-					<li><div class="by_help_list"><router-link to="/seeProgramme">2019010116</router-link></div></li>
-					<li><div class="by_help_list"><router-link to="/seeProgramme">2019010117</router-link></div></li>
-					<li><div class="by_help_list"><router-link to="/seeProgramme">2019010118</router-link></div></li>
-					<li><div class="by_help_list"><router-link to="/seeProgramme">2019010119</router-link></div></li>
-					<li><div class="by_help_list"><router-link to="/seeProgramme">2019010120</router-link></div></li>
-					<li><div class="by_help_list"><router-link to="/seeProgramme">2019010121</router-link></div></li>
+					<li v-for="el in HelperList" v-if="el.urState==1"><div class="by_help_list"><router-link to="/seeProgramme">{{el.urName}}</router-link></div></li>
 				</ul>
 			</div>
 			<div class="by_help_box mt20 box_shadow radius10 pr by_help_box4">
@@ -35,13 +30,7 @@
 					优秀5人/良好2人/及格8人/不及格1人
 				</div>
 				<ul class="ov">
-					<li><div class="by_help_list"><router-link :to="{path:'/seeResult',query:{type:'1'}}">2019010122</router-link></div></li>
-					<li><div class="by_help_list"><router-link :to="{path:'/seeResult',query:{type:'1'}}">2019010123</router-link></div></li>
-					<li><div class="by_help_list"><router-link :to="{path:'/seeResult',query:{type:'1'}}">2019010124</router-link></div></li>
-					<li><div class="by_help_list"><router-link :to="{path:'/seeResult',query:{type:'1'}}">2019010125</router-link></div></li>
-					<li><div class="by_help_list"><router-link :to="{path:'/seeResult',query:{type:'1'}}">2019010126</router-link></div></li>
-					<li><div class="by_help_list"><router-link :to="{path:'/seeResult',query:{type:'1'}}">2019010127</router-link></div></li>
-					<li><div class="by_help_list"><router-link :to="{path:'/seeResult',query:{type:'1'}}">2019010128</router-link></div></li>
+					<li v-for="el in HelperList" v-if="el.urState==2"><div class="by_help_list"><router-link :to="{path:'/seeResult',query:{type:'1'}}">{{el.urName}}</router-link></div></li>
 					<li>
 						<div class="help_list_more">
 							<router-link to="/helpersMore">更多</router-link>
@@ -143,17 +132,16 @@
 			document.title = "检察官首页";
 			let userData = JSON.parse(sessionStorage.getItem("userData"));
 			this.userData = userData;
-			this.HelperList = [{name:'自己帮教',value:'9'},{name:'帮教人A',value:'0'},{name:'帮教人B',value:'1'},{name:'帮教人C',value:'2'}];
 			this.getByTheHelperList();
 		},
 		methods: {
 			
 			getByTheHelperList(){
-				let userData = sessionStorage.getItem("userData");
-				console.log(userData)
-				this.$axios.post('/api/com/getByTheHelperList',{ucId:userData.ucId,ucRole:userData.ucRole})
+				let userData = JSON.parse(sessionStorage.getItem("userData"))
+				this.$axios.post("/api/com/getByTheHelperList",{ucId:userData.ucId,ucRole:userData.ucRole})
 				.then(resp=>{
-					console.log(resp.data);
+					this.HelperList = resp.data.content.list;
+					console.log(this.HelperList)
 				})
 			}
 		},

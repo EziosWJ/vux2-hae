@@ -12,18 +12,14 @@
 			<div class="by_help_box mt20 box_shadow radius10 pr by_help_box2">
 				<img class="by_help_icon" src="../../assets/a001.png"/>
 				<ul class="ov">
-					<li><div class="by_help_list"><router-link to="/fixedScheme">2019010101</router-link></div></li>
-					<li><div class="by_help_list"><router-link to="/fixedScheme">2019010102</router-link></div></li>
+					<li v-for="el in HelperList" v-if="el.urState==null"><div class="by_help_list" ><router-link :to="{path:'/fixedScheme',query:{urId:el.urId}}">{{el.urName}}</router-link></div></li>
+					
 				</ul>
 			</div>
 			<div class="by_help_box mt20 box_shadow radius10 pr by_help_box3">
 				<img class="by_help_icon" src="../../assets/a003.png"/>
 				<ul class="ov">
-					<li><div class="by_help_list"><router-link to="/seeProgramme">2019010108</router-link></div></li>
-					<li><div class="by_help_list"><router-link to="/seeProgramme">2019010109</router-link></div></li>
-					<li><div class="by_help_list"><router-link to="/seeProgramme">2019010110</router-link></div></li>
-					<li><div class="by_help_list"><router-link to="/seeProgramme">2019010111</router-link></div></li>
-					<li><div class="by_help_list"><router-link to="/seeProgramme">2019010112</router-link></div></li>
+					<li v-for="el in HelperList" v-if="el.urState==1"><div class="by_help_list" ><router-link to="/seeProgramme">{{el.urName}}</router-link></div></li>
 				</ul>
 			</div>
 			<div class="by_help_box mt20 box_shadow radius10 pr by_help_box4">
@@ -32,8 +28,7 @@
 					优秀5人/良好2人/及格8人/不及格1人
 				</div>
 				<ul class="ov">
-					<li><div class="by_help_list"><router-link :to="{path:'/seeResult',query:{type:'1'}}">2019010115</router-link></div></li>
-					<li><div class="by_help_list"><router-link :to="{path:'/seeResult',query:{type:'1'}}">2019010116</router-link></div></li>
+					<li v-for="el in HelperList" v-if="el.urState==2"><div class="by_help_list" ><router-link :to="{path:'/seeResult',query:{type:'1'}}">{{el.urName}}</router-link></div></li>
 				</ul>
 			</div>
 		</div>
@@ -124,6 +119,7 @@
 				people:[''],//安排帮教人
 				peopleList:[[{name:'帮教人A',value:'0'},{name:'帮教人B',value:'1'},{name:'帮教人C',value:'2'}]],//选择帮教人列表
 				showPopupPicker: false,
+				HelperList:[]
 			};
 		},
 		components: {
@@ -133,9 +129,18 @@
 			document.title = "帮教人";
 			let userData = JSON.parse(sessionStorage.getItem("userData"));
 			this.userData = userData;
+			this.getByTheHelperList();
 		},
 		methods: {
-			
+			getByTheHelperList(){
+				let userData = JSON.parse(sessionStorage.getItem("userData"))
+				console.log(userData)
+				this.$axios.post("/api/com/getByTheHelperList",{ucId:userData.ucId,ucRole:userData.ucRole})
+				.then(resp=>{
+					this.HelperList = resp.data.content.list;
+					console.log(this.HelperList)
+				})
+			}
 			
 		},
 
