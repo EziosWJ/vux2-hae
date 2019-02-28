@@ -178,7 +178,9 @@
 				}
 				console.log(arr);
 				this.$axios.post('/api/eduplan/putEduplan',{epCustom:JSON.stringify(arr),epStartTime:this.starDate,epEndTime:this.endDate,urId:this.urId}).then(resp=>{
-						console.log(resp)
+						if(resp.code=="200"){
+							alert("提交成功")
+						}
 				})
 				
 			},
