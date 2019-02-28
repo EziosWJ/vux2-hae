@@ -172,7 +172,9 @@
 					console.log(resp.data);
 					this.task = resp.data.content.record;
 					console.log(this.task);
-					
+					if(resp.data.code==200){
+						alert("提交成功！");
+					}
 				})
 			}
 		},

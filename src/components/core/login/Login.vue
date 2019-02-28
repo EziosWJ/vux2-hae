@@ -72,7 +72,7 @@ export default {
 						console.log(`权限为ucRole:${ucRole}${ucAccid}`);
 						this.$store.dispatch('setRole', {ucRole,ucId,ucAccid,ucToken,ucCustom})
 						alert("欢迎！" + resp.data.content.uc.ucAccid + "!");
-						this.$store.dispatch('im/initNimSDK');
+						// this.$store.dispatch('im/initNimSDK');
 						let userData = JSON.stringify(resp.data.content.uc);
 						sessionStorage.setItem("userData", userData);
 						if(resp.data.content.uc.ucRole==2) {

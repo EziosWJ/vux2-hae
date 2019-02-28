@@ -19,7 +19,7 @@
 			<div class="by_help_box mt20 box_shadow radius10 pr by_help_box3">
 				<img class="by_help_icon" src="../../assets/a003.png"/>
 				<ul class="ov">
-					<li v-for="el in HelperList" v-if="el.urState==1"><div class="by_help_list" ><router-link to="/seeProgramme">{{el.urName}}</router-link></div></li>
+					<li v-for="el in HelperList" v-if="el.urState==1"><div class="by_help_list" ><router-link :to="{path:'/seeProgramme',query:{urId:el.urId}}">{{el.urName}}</router-link></div></li>
 				</ul>
 			</div>
 			<div class="by_help_box mt20 box_shadow radius10 pr by_help_box4">
@@ -28,7 +28,7 @@
 					优秀5人/良好2人/及格8人/不及格1人
 				</div>
 				<ul class="ov">
-					<li v-for="el in HelperList" v-if="el.urState==2"><div class="by_help_list" ><router-link :to="{path:'/seeResult',query:{type:'1'}}">{{el.urName}}</router-link></div></li>
+					<li v-for="el in HelperList" v-if="el.urState==2"><div class="by_help_list" ><router-link :to="{path:'/seeResult',query:{urId:el.urId}}">{{el.urName}}</router-link></div></li>
 				</ul>
 			</div>
 		</div>

@@ -30,7 +30,9 @@
 					<div class="evaluation_list">
 						<ul>
 							<li v-for="el in EduplanList" :class="{'no_star':el.state==1}">
+								
 								<div class="evaluation_list_main" v-if="el.state==null">
+									<router-link :to="{path:'/commentsScheme',query:{id:el.id}}">
 									<div class="evaluation_list_title pr">
 										{{el.name}}
 										<span class="type_text c_999">未完成</span>
@@ -38,9 +40,10 @@
 									<div class="report_item_box pdb20">
 										<div class="c_999 mt10">截止日期：{{el.dieDate}}</div>
 									</div>
+									</router-link>
 								</div>
 								<div class="evaluation_list_main" v-else>
-									<router-link :to="{path:'/commentsScheme',query:{state:el.state,id:el.id}}">
+									<router-link :to="{path:'/commentsScheme',query:{id:el.id}}">
 										<div class="evaluation_list_title pr">
 											{{el.name}}
 										
