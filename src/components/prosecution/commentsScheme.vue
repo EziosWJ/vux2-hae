@@ -148,7 +148,7 @@
 			this.userData = userData;
 			this.id = this.$route.query.id;
 			// this.getTask('EDUP201902280003');
-			this.getTask(id);
+			this.getTask(this.id);
 		},
 		methods: {
 			clickShowInput(){

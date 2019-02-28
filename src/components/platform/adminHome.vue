@@ -18,11 +18,11 @@
 		<!--S 帮教人-->
 		<div class="bg_fff ov pdlr20 pdb20" v-show="current==0" >
 			<ul>
-				<li class="mt20 box_shadow pd20 radius10">
+				<li v-for="le in procuratorList" class="mt20 box_shadow pd20 radius10">
 					<div class="helpers_main radius10">
 						<router-link to="/inspectInfo">
 							<div class="b_bom_x pdb20 ov">
-								<div class="fl f28 port">JCG001</div>
+								<div class="fl f28 port">{{le.ucName}}</div>
 								<div class="fr small_btn">查看</div>
 							</div>
 							<div class="mt20 ov text_center">
@@ -32,34 +32,8 @@
 						</router-link>
 					</div>
 				</li>
-				<li class="mt20 box_shadow pd20 radius10">
-					<div class="helpers_main radius10">
-						<router-link to="/inspectInfo">
-							<div class="b_bom_x pdb20 ov">
-								<div class="fl f28 port">JCG002</div>
-								<div class="fr small_btn">查看</div>
-							</div>
-							<div class="mt20 ov text_center">
-								<div class="helpers_main_info fl f26 ">帮教中6</div>
-								<div class="helpers_main_info fl f26 ">已帮教7</div>
-							</div>
-						</router-link>
-					</div>
-				</li>
-				<li class="mt20 box_shadow pd20 radius10">
-					<div class="helpers_main radius10">
-						<router-link to="/inspectInfo">
-							<div class="b_bom_x pdb20 ov">
-								<div class="fl f28 port">JCG003</div>
-								<div class="fr small_btn">查看</div>
-							</div>
-							<div class="mt20 ov text_center">
-								<div class="helpers_main_info fl f26 ">帮教中5</div>
-								<div class="helpers_main_info fl f26 ">已帮教8</div>
-							</div>
-						</router-link>
-					</div>
-				</li>
+				
+				
 			</ul>
 		</div>
 		<!--E 帮教人-->
@@ -69,11 +43,11 @@
 		
 		<div class="bg_fff ov pdlr20 pdb20" v-show="current==1">
 			<ul>
-				<li class="mt20 box_shadow pd20 radius10">
+				<li v-for="el in HelperList" class="mt20 box_shadow pd20 radius10">
 					<div class="helpers_main radius10">
 						<router-link to="/helpersInfo">
 							<div class="b_bom_x pdb20 ov">
-								<div class="fl f28 port">BJR001</div>
+								<div class="fl f28 port">{{el.ucName}}</div>
 								<div class="fr small_btn">查看</div>
 							</div>
 							<div class="mt20 ov text_center">
@@ -83,34 +57,7 @@
 						</router-link>
 					</div>
 				</li>
-				<li class="mt20 box_shadow pd20 radius10">
-					<div class="helpers_main radius10">
-						<router-link to="/helpersInfo">
-							<div class="b_bom_x pdb20 ov">
-								<div class="fl f28 port">BJR002</div>
-								<div class="fr small_btn">查看</div>
-							</div>
-							<div class="mt20 ov text_center">
-								<div class="helpers_main_info fl f26 ">帮教中6</div>
-								<div class="helpers_main_info fl f26 ">已帮教7</div>
-							</div>
-						</router-link>
-					</div>
-				</li>
-				<li class="mt20 box_shadow pd20 radius10">
-					<div class="helpers_main radius10">
-						<router-link to="/helpersInfo">
-							<div class="b_bom_x pdb20 ov">
-								<div class="fl f28 port">BJR003</div>
-								<div class="fr small_btn">查看</div>
-							</div>
-							<div class="mt20 ov text_center">
-								<div class="helpers_main_info fl f26 ">帮教中5</div>
-								<div class="helpers_main_info fl f26 ">已帮教8</div>
-							</div>
-						</router-link>
-					</div>
-				</li>
+			
 			</ul>
 		</div>
 		
@@ -119,25 +66,15 @@
 			<div class="by_help_box mt20 box_shadow radius10 pr by_help_box2">
 				<img class="by_help_icon" src="../../assets/a001.png"/>
 				<ul class="ov">
-					<li><div class="by_help_list"><router-link to="/fixedScheme">2019010101</router-link></div></li>
-					<li><div class="by_help_list"><router-link to="/fixedScheme">2019010102</router-link></div></li>
-					<li><div class="by_help_list"><router-link to="/fixedScheme">2019010103</router-link></div></li>
-					<li><div class="by_help_list"><router-link to="/fixedScheme">2019010104</router-link></div></li>
-					<li><div class="by_help_list"><router-link to="/fixedScheme">2019010105</router-link></div></li>
-					<li><div class="by_help_list"><router-link to="/fixedScheme">2019010106</router-link></div></li>
-					<li><div class="by_help_list"><router-link to="/fixedScheme">2019010107</router-link></div></li>
+					<li v-for="el in ByTheHelperList" v-if="el.urState==null"><div class="by_help_list"><router-link to="/fixedScheme">{{el.urName}}</router-link></div></li>
+					
 				</ul>
 			</div>
 			<div class="by_help_box mt20 box_shadow radius10 pr by_help_box3">
 				<img class="by_help_icon" src="../../assets/a003.png"/>
 				<ul class="ov">
-					<li><div class="by_help_list"><router-link to="/seeProgramme">2019010108</router-link></div></li>
-					<li><div class="by_help_list"><router-link to="/seeProgramme">2019010109</router-link></div></li>
-					<li><div class="by_help_list"><router-link to="/seeProgramme">2019010110</router-link></div></li>
-					<li><div class="by_help_list"><router-link to="/seeProgramme">2019010111</router-link></div></li>
-					<li><div class="by_help_list"><router-link to="/seeProgramme">2019010112</router-link></div></li>
-					<li><div class="by_help_list"><router-link to="/seeProgramme">2019010113</router-link></div></li>
-					<li><div class="by_help_list"><router-link to="/seeProgramme">2019010114</router-link></div></li>
+					<li v-for="el in ByTheHelperList" v-if="el.urState=='1'"><div class="by_help_list"><router-link :to="{path:'seeProgramme',query:{urId:el.urId}}">{{el.urName}}</router-link></div></li>
+					
 				</ul>
 			</div>
 			<div class="by_help_box mt20 box_shadow radius10 pr by_help_box4">
@@ -146,13 +83,8 @@
 					优秀5人/良好2人/及格8人/不及格1人
 				</div>
 				<ul class="ov">
-					<li><div class="by_help_list"><router-link :to="{path:'/seeResult',query:{type:'1'}}">2019010115</router-link></div></li>
-					<li><div class="by_help_list"><router-link :to="{path:'/seeResult',query:{type:'1'}}">2019010116</router-link></div></li>
-					<li><div class="by_help_list"><router-link :to="{path:'/seeResult',query:{type:'1'}}">2019010117</router-link></div></li>
-					<li><div class="by_help_list"><router-link :to="{path:'/seeResult',query:{type:'1'}}">2019010118</router-link></div></li>
-					<li><div class="by_help_list"><router-link :to="{path:'/seeResult',query:{type:'1'}}">2019010119</router-link></div></li>
-					<li><div class="by_help_list"><router-link :to="{path:'/seeResult',query:{type:'1'}}">2019010120</router-link></div></li>
-					<li><div class="by_help_list"><router-link :to="{path:'/seeResult',query:{type:'1'}}">2019010121</router-link></div></li>
+					<li v-for="el in ByTheHelperList" v-if="el.urState=='2'"><div class="by_help_list"><router-link :to="{path:'/seeResult',query:{urId:el.urId}}">{{el.urName}}</router-link></div></li>
+				
 					<li>
 						<div class="help_list_more">
 							<router-link to="/helpersMore">更多</router-link>
@@ -238,6 +170,9 @@
 				people:[''],//安排帮教人
 				peopleList:[[{name:'自己帮教',value:'9'},{name:'帮教人A',value:'0'},{name:'帮教人B',value:'1'},{name:'帮教人C',value:'2'}]],//选择帮教人列表
 				showPopupPicker: false,
+				procuratorList:[],
+				HelperList:[],
+				ByTheHelperList:[],
 			};
 		},
 
@@ -245,9 +180,40 @@
 			document.title = "检察官首页";
 			let userData = JSON.parse(sessionStorage.getItem("userData"));
 			this.userData = userData;
+			this.getProcuratorList();
+			this.getHelperList();
+			this.getByTheHelperList();
 		},
 		methods: {
 			
+			getProcuratorList(){
+				let userData =JSON.parse(sessionStorage.getItem("userData"));
+				console.log(userData.ucRole);
+				this.$axios.post('/api/com/getProcuratorList',{ucRole:userData.ucRole})
+				.then(resp=>{
+					this.procuratorList = resp.data.content.list;
+					console.log(resp.data);
+				})
+			},
+			getHelperList(){
+				let userData =JSON.parse(sessionStorage.getItem("userData"));
+				console.log(userData.ucRole);
+				this.$axios.post('/api/com/getHelperList',{ucRole:userData.ucRole})
+				.then(resp=>{
+					this.HelperList = resp.data.content.list;
+					console.log(resp.data);
+				})
+			},
+			//被帮教人
+			getByTheHelperList(){
+				let userData =JSON.parse(sessionStorage.getItem("userData"));
+				console.log(userData.ucRole);
+				this.$axios.post('/api/com/getByTheHelperList',{ucId:userData.ucId,ucRole:userData.ucRole})
+				.then(resp=>{
+					this.ByTheHelperList = resp.data.content.list;
+					console.log(resp.data);
+				})
+			}
 		},
 
 	};
