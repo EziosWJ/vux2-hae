@@ -32,6 +32,7 @@ export default {
 		
 		let userData = JSON.parse(sessionStorage.getItem("userData"));
 		this.userData = userData;
+		this.login();
 		if(userData){
 			this.userData = userData;
 			if (this.userData.ucRole==2) {

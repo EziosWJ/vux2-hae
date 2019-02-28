@@ -16,7 +16,7 @@
 		<!--E 帮教人和被帮教人-->
 
 		<!--S 帮教人-->
-		<div class="bg_fff ov pdlr20 pdb20" v-show="current==0">
+		<div class="bg_fff ov pdlr20 pdb20" v-show="current==0" >
 			<ul>
 				<li class="mt20 box_shadow pd20 radius10">
 					<div class="helpers_main radius10">

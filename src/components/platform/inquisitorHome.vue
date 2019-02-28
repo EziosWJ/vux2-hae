@@ -11,14 +11,10 @@
 		<div class="by_help_out pdlr20 bg_fff ov">
 			<div class="by_help_box mt20 box_shadow radius10 pr by_help_box2">
 				<img class="by_help_icon" src="../../assets/a001.png"/>
-				<ul class="ov">
-					<li><div class="by_help_list"><router-link to="/fixedScheme">2019010108</router-link></div></li>
-					<li><div class="by_help_list"><router-link to="/fixedScheme">2019010109</router-link></div></li>
-					<li><div class="by_help_list"><router-link to="/fixedScheme">2019010110</router-link></div></li>
-					<li><div class="by_help_list"><router-link to="/fixedScheme">2019010111</router-link></div></li>
-					<li><div class="by_help_list"><router-link to="/fixedScheme">2019010112</router-link></div></li>
-					<li><div class="by_help_list"><router-link to="/fixedScheme">2019010113</router-link></div></li>
-					<li><div class="by_help_list"><router-link to="/fixedScheme">2019010114</router-link></div></li>
+				<ul  class="ov">
+					
+					<li v-for="el in HelperList"><div class="by_help_list"><router-link to="/fixedScheme">{{el.value}}</router-link></div></li>
+
 				</ul>
 			</div>
 			<div class="by_help_box mt20 box_shadow radius10 pr by_help_box3">
@@ -137,6 +133,7 @@
 				people:[''],//安排帮教人
 				peopleList:[[{name:'自己帮教',value:'9'},{name:'帮教人A',value:'0'},{name:'帮教人B',value:'1'},{name:'帮教人C',value:'2'}]],//选择帮教人列表
 				showPopupPicker: false,
+				HelperList:[]
 			};
 		},
 		components: {
@@ -146,9 +143,19 @@
 			document.title = "检察官首页";
 			let userData = JSON.parse(sessionStorage.getItem("userData"));
 			this.userData = userData;
+			this.HelperList = [{name:'自己帮教',value:'9'},{name:'帮教人A',value:'0'},{name:'帮教人B',value:'1'},{name:'帮教人C',value:'2'}];
+			this.getByTheHelperList();
 		},
 		methods: {
 			
+			getByTheHelperList(){
+				let userData = sessionStorage.getItem("userData");
+				console.log(userData)
+				this.$axios.post('/api/com/getByTheHelperList',{ucId:userData.ucId,ucRole:userData.ucRole})
+				.then(resp=>{
+					console.log(resp.data);
+				})
+			}
 		},
 
 	};
