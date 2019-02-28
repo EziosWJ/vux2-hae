@@ -46,13 +46,13 @@
 			<div class="ov pd20 b_bom">
 				<div class="block_title fl">帮教方案</div>
 				<div class="fr">
-					
+					2019-01-05至2019-06-04
 				</div>
 			</div>
 			<div >
 				<div class="see_scheme_list pd20">
 					<div class="ov">
-						<div class="main_linear see_scheme_date fl"></div>
+						<div class="main_linear see_scheme_date fl">2019-01-05至2019-02-04</div>
 					</div>
 					<div class="evaluation_list">
 						<ul>
@@ -112,9 +112,43 @@
 							</li> 
 						</ul>
 					</div>
-					
 				</div>
-	
+				<div class="see_scheme_list pd20">
+					<div class="ov">
+						<div class="main_linear see_scheme_date fl">2019-01-05至2019-02-04</div>
+					</div>
+					<div class="evaluation_list">
+						<ul>
+							<li v-for="el in schemeList" :class="{'no_star':el.type==0}">
+								<div class="evaluation_list_main" v-if="el.type==0">
+									<div class="evaluation_list_title pr">
+										{{el.name}}
+										<span class="type_text c_999">未开始</span>
+									</div>
+									<div class="report_item_box pdb20">
+										<div class="c_999 mt10">截止日期：{{el.endDate}}</div>
+									</div>
+								</div>
+								<div class="evaluation_list_main" v-else>
+									<router-link :to="{path:'/commentsScheme',query:{type:el.type}}">
+										<div class="evaluation_list_title pr">
+											{{el.name}}
+											<span class="type_text main_color" v-if="el.type==1">进行中</span>
+											<span class="type_text c_orange" v-else-if="el.type==2 || el.type==4">已完成</span>
+											<span class="type_text c_red " v-else-if="el.type==3">未完成</span>
+										</div>
+										<div class="report_item_box pdb20 pr">
+											<div class="c_999 mt10" v-if="el.type==2 || el.type==4">帮教人评分：{{el.fen}}分</div>
+											<div class="c_999 mt10">截止日期：{{el.endDate}}</div>
+											<div class="c_999 mt10" v-if="el.type==2 || el.type==4">完成时间：{{el.subDate}}</div>
+											<img v-if="el.type==2 || el.type==4" class="gou_icon" src="../../assets/gou.png" />
+										</div>
+									</router-link>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
 			</div>
 			
 		</div>
