@@ -49,8 +49,8 @@
 										<img class="result_icon" src="../../assets/004.png" />
 									</div>
 									<div class="report_item_box pdb20 pr" v-else>
-										<div class="c_999 mt10">帮教均分：75分</div>
-										<img class="result_icon" src="../../assets/003.png" />
+										<div class="c_999 mt10">帮教均分：{{finalScore}}分</div>
+										<!-- <img class="result_icon" src="../../assets/003.png" /> -->
 									</div>
 								</div>
 							</router-link>
@@ -76,6 +76,7 @@
 			return {
 				userData: {}, //ucRole2检察官  ucRole3帮教人  ucRole4被帮教人  ucRole5家长
 				type: '',
+				finalScore: 0,
 				schemeList: [{
 						name: "1、观看法制微电影",
 						type: '4',
@@ -165,6 +166,7 @@
 					},
 				], //方案列表
 				EduplanList:[],
+				score:0,
 			};
 		},
 
@@ -181,6 +183,24 @@
 				console.log(urId);
 				this.$axios.post('/api/eduplan/getEduplanListByUrId',{urId:urId}).then(resp=>{
 					this.EduplanList=resp.data.content.list;
+					for (let index = 0; index < this.EduplanList.length; index++) {
+						console.log("this.EduplanList[index].score:"+this.EduplanList[index].score);
+						
+						this.score += Number(this.EduplanList[index].score);
+
+						console.log(this.score);
+						
+					}
+					console.log(this.EduplanList.length);
+					let a = this.score;
+					let b = this.EduplanList.length;
+					
+					console.log(a+b);
+					
+					this.finalScore = (this.score)/(this.EduplanList.length);
+					console.log("pjf:"+this.finalScore);
+					
+					
 					console.log(resp.data);
 				})
 			}

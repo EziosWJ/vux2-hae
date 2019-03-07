@@ -13,7 +13,7 @@
 			<div class="bg_fff mt20" >
 				<div class="ov pd20 b_bom">
 					<div class="fl f26">
-						{{task.name}}
+						任务：{{task.name}}
 					</div>
 				</div>
 				<div class="pd20 comments_text">
@@ -71,11 +71,12 @@
 		<div class="bg_fff mt20" v-if="task.state==2">
 			<div class="ov pd20 b_bom">
 				<div class="fl f26">
-					分数：<span class="c_red">{{task.score}}</span>
+					任务：{{task.name}}
 				</div>
 			</div>
 			<div class="pd20 comments_text">
-				{{task.content}}
+				分数：<span class="c_red">{{task.score}}</span><br><br>
+				完成内容：{{task.content}}
 			</div>
 		</div>
 		<!--E 已评价-->

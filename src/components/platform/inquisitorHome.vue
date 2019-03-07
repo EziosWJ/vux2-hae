@@ -13,7 +13,7 @@
 				<img class="by_help_icon" src="../../assets/a001.png"/>
 				<ul  class="ov">
 					
-					<li v-for="el in HelperList" v-if="el.urState==''"><div class="by_help_list"><router-link :to="{path:'/fixedScheme',query:{urId:el.urId}}" >{{el.urName}}</router-link></div></li>
+					<li v-for="el in HelperList" v-if="el.urState==0"><div class="by_help_list"><router-link :to="{path:'/fixedScheme',query:{urId:el.urId}}" >{{el.urName}}</router-link></div></li>
 					
 
 				</ul>
