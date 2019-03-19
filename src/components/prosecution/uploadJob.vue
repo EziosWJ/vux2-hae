@@ -11,48 +11,66 @@
 			上传照片
 		</div>
 		<div class="job_img_box ov">
-			<div class="job_img">
+			<div class="job_img" >
 				<div class="job_img_main">
-					<img src="../../assets/introduction_img.png"/>
-				</div>
-			</div>
-			<div class="job_img">
-				<div class="job_img_main">
-					<img src="../../assets/introduction_img.png"/>
+					<!-- <img :src="imgList.src"/> -->
 				</div>
 			</div>
 			<div class="job_img">
 				<div class="job_img_add">
-					<input type="file"/>
+					<input type="file" id="upload_file" ref="file" @change="handlerFile"/>
 				</div>
 			</div>
 		</div>
+					<p id="imgs"></p>
 		<div class="bom_btn_out">
-			<div class="bom_btn">提交</div>
+			<div class="bom_btn" @click="uploadFile">提交</div>
 		</div>
 	</div>
 	<!--E 上传作业-->
 </template>
 
 <script>
+import axios from 'axios'
 	export default {
 		data() {
 			return {
-				userData: {}, //ucRole2检察官  ucRole3帮教人  ucRole4被帮教人  ucRole5家长
-				
+				imgList:[],
+				file:''
 			};
 		},
 
 		mounted() {
 			document.title = "上传作业";
-			let userData = JSON.parse(sessionStorage.getItem("userData"));
-			this.userData = userData;
+
 		},
 		methods: {
-			
-		},
+			handlerFile(e){
+				this.file = e.target.files[0];
+			},
+			uploadFile(){
+				let formData = new FormData();
+				formData.append("file",this.file);
+				formData.append("id","name");
+				console.log(formData.get("file"));
+				// let instance = axios.create();
+				// this.$upload.post('/api/com/upload',formData).then(resp=>{
+				// 	console.log(resp.data);
+				// })
+				var xhr = new XMLHttpRequest();
+				xhr.onreadystatechange=()=>{
+					if (xhr.readyState==4 && xhr.status==200){
+						console.log(xhr.response);
+						document.getElementById("imgs").innerText = "上传成功！" + xhr.responseText;
+					}
+				}
+				xhr.open('POST', '/api/com/upload', true);
+				xhr.send(formData);
+			}
+		}
 
 	};
+
 </script>
 
 <style lang="less" scoped>

@@ -18,7 +18,12 @@ Vue.prototype.$MessageBox = MessageBox;
 require('./common/css/initial.css')//初始化css
 require('./common/js/rem.js')//页面缩放js
 
-
+var instance = Axios.create({
+	baseURL:'',
+	timeout:5000,
+	headers:{"Content-Type":"multipart/form-data"}
+  });
+  Vue.prototype.$upload = instance
 Axios.defaults.transformRequest = function (data) {
   data = Qs.stringify(data);
   return data;
