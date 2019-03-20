@@ -22,75 +22,42 @@
 			<!--E 暂无方案-->
 			
 			<div class="programme_title line30 pd20 b_bom">
-				<span class="f28">12001的方案</span><span class="f26 c_666 ml10">(共8条计划，已完成3条)</span>
+				<span class="f28">{{userData.ucCustom}}的方案</span><span class="f26 c_666 ml10">:</span>
 			</div>
 			<div class="evaluation_list pd20">
-				<ul>
-					<li>
-						<div class="evaluation_list_main">
-							<router-link :to="{path:'/commentsScheme',query:{type:4}}">
-								<div class="evaluation_list_title pr">
-									1、观看法制微电影
-									<span class="type_text c_orange">已完成</span>
+									
+					<div class="evaluation_list">
+						<ul>
+							<li v-for="el in EduplanList" :class="{'no_star':el.state==1}">
+								
+								<div class="evaluation_list_main" v-if="el.state==null">
+									<div class="evaluation_list_title pr">
+										{{el.name}}
+										<span class="type_text c_999">未完成</span>
+									</div>
+									<div class="report_item_box pdb20">
+										<div class="c_999 mt10">截止日期：{{el.dieDate}}</div>
+									</div>
 								</div>
-								<div class="report_item_box pdb20 pr">
-									<div class="c_999 mt10">帮教人评分：85分</div>
-									<div class="c_999 mt10">完成日期：2018-11-20</div>
-									<div class="c_999 mt10">截止日期：2018-11-25</div>
-									<img class="gou_icon" src="../../assets/gou.png"/>
+								<div class="evaluation_list_main" v-else>
+										<div class="evaluation_list_title pr">
+											{{el.name}}
+										
+											<span class="type_text c_orange" v-if="el.state==2">已完成</span>
+											<span class="type_text c_red " v-else-if="el.state==1">未完成</span>
+										</div>
+										<div class="report_item_box pdb20 pr">
+										
+											<div class="c_999 mt10">截止日期：{{el.dieDate}}</div>
+											<div class="c_999 mt10" v-if="el.state==2">完成时间：{{el.finishedDate}}</div>
+											<img v-if="el.state==2" class="gou_icon" src="../../assets/gou.png" />
+										</div>
 								</div>
-							</router-link>
-						</div>
-					</li>
-					<li>
-						<div class="evaluation_list_main">
-							<router-link to="/phome/mindTestResult">
-								<div class="evaluation_list_title ellipsis pr">
-									2、初次心理评测
-									<span class="type_text c_orange">已完成</span>
-								</div>
-								<div class="report_item_box pdb20">
-									<div class="c_999 mt10">测评得分：85分</div>
-									<div class="c_999 mt10">完成日期：2018-11-20</div>
-									<div class="c_999 mt10">截止日期：2018-11-25</div>
-									<img class="gou_icon" src="../../assets/gou.png"/>
-								</div>
-							</router-link>
-						</div>
-					</li>
-					<li>
-						<div class="evaluation_list_main">
-							<router-link :to="{path:'/commentsScheme',query:{type:3}}">
-								<div class="evaluation_list_title ellipsis pr">
-									3、晋源二社区劳动服务
-									<span class="type_text c_red">未完成</span>
-								</div>
-								<div class="report_item_box pdb20">
-									<div class="c_999 mt10">截止日期：2018-12-10</div>
-								</div>
-							</router-link>
-						</div>
-					</li>
-					<li>
-						<div class="evaluation_list_main">
-							<router-link :to="{path:'/commentsScheme',query:{type:1}}">
-								<div class="evaluation_list_title ellipsis pr">
-									4、法律法规学习
-									<span class="type_text main_color">进行中</span>
-								</div>
-								<div class="report_item_box pdb20">
-									<div class="c_999 mt10">截止日期：2018-12-10</div>
-								</div>
-							</router-link>
-						</div>
-					</li>
-				</ul>
+							</li>
+						</ul>
+					</div>
 			</div>
-			<div class="pdb30">
-				<div class="small_btn ma">
-					<router-link to="/myProgramme">查看全部</router-link>
-				</div>
-			</div>
+
 			
 		</div>
 			
@@ -188,27 +155,44 @@
 			return {
 				userData: {}, //ucRole2检察官  ucRole3帮教人  ucRole4被帮教人  ucRole5家长
 				imgList: [], //轮播列表
-				otherList: [{
-					name: '奖惩记录',
-					path: '/phome/rewardsPenalties/rewardsPenalties',
-					icon: require('../../assets/other_icon2.png')
-				}, {
-					name: '帮教结果',
-					path: '/phome/result',
-					icon: require('../../assets/other_icon9.png')
-				}], 
+				EduplanList:[],
+				otherList: [
+					{
+						name: '奖惩记录',
+						path: '/phome/rewardsPenalties/rewardsPenalties',
+						icon: require('../../assets/other_icon2.png')
+					}, 
+					{
+						name: '留言反馈',
+						path: '/phome/revisitGrid',
+						icon: require('../../assets/other_icon1.png')
+					}, 
+					{
+						name: '帮教结果',
+						path: '/phome/result',
+						icon: require('../../assets/other_icon9.png')
+					}
+			    ], 
 			};
 		},
 		components: {
 			Swiper
 		},
 		mounted() {
-			document.title = "12001的家长";
+			document.title = this.userData.ucCustom + "的家长";
 			let userData = JSON.parse(sessionStorage.getItem("userData"));
 			this.userData = userData;
+			this.getEduplanListByUrId();
 		},
 		methods: {
-
+			getEduplanListByUrId(){
+				let ucId=this.userData.ucCustom;
+				console.log(ucId);
+				this.$axios.post('/api/eduplan/getEduplanListByUcId',{ucId:ucId}).then(resp=>{
+					this.EduplanList=resp.data.content.list;
+					console.log(resp.data);
+				})
+			}
 		},
 
 	};
@@ -244,7 +228,7 @@
 			overflow: hidden;
 			li {
 				float: left;
-				width: 50%;
+				width: 33%;
 				box-sizing: border-box;
 				padding: 0 0.1rem;
 				text-align: center;

@@ -32,9 +32,9 @@
 					</li>
 					<li >
 						<div class="other_list">
-							<router-link to="/phome/revisitGrid">
+							<router-link :to="{path:'/phome/revisitGrid',query:{urId:urId}}">
 								<div class="other_icon"><img src="../../assets/other_icon1.png" /></div>
-								<div class="other_text">帮教回访</div>
+								<div class="other_text">家长留言</div>
 							</router-link>
 						</div>
 					</li>
@@ -163,6 +163,7 @@
 					},
 				], //方案列表
 				EduplanList:[],
+				urId:''
 			};
 		},
 

@@ -22,7 +22,7 @@
 				</div>
 			</div>
 		</div>
-					<p id="imgs"></p>
+		<p id="imgs"></p>
 		<div class="bom_btn_out">
 			<div class="bom_btn" @click="uploadFile">提交</div>
 		</div>
@@ -53,19 +53,27 @@ import axios from 'axios'
 				formData.append("file",this.file);
 				formData.append("id","name");
 				console.log(formData.get("file"));
-				// let instance = axios.create();
+				let instance = axios.create();
+				let config = {
+					header : {
+						'Content-Type' : 'multipart/form-data'
+					}
+				}
+				instance.post('/api/com/upload',formData,config).then(resp=>{
+					console.log(resp.data);
+				})
 				// this.$upload.post('/api/com/upload',formData).then(resp=>{
 				// 	console.log(resp.data);
 				// })
-				var xhr = new XMLHttpRequest();
-				xhr.onreadystatechange=()=>{
-					if (xhr.readyState==4 && xhr.status==200){
-						console.log(xhr.response);
-						document.getElementById("imgs").innerText = "上传成功！" + xhr.responseText;
-					}
-				}
-				xhr.open('POST', '/api/com/upload', true);
-				xhr.send(formData);
+				// var xhr = new XMLHttpRequest();
+				// xhr.onreadystatechange=()=>{
+				// 	if (xhr.readyState==4 && xhr.status==200){
+				// 		console.log(xhr.response);
+				// 		document.getElementById("imgs").innerText = "上传成功！" + xhr.responseText;
+				// 	}
+				// }
+				// xhr.open('POST', '/api/com/upload', true);
+				// xhr.send(formData);
 			}
 		}
 

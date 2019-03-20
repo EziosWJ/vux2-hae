@@ -2,64 +2,41 @@
 	<!--S 帮教回访-->
 	<div class="evaluation_out leave_out">
 		<div class="evaluation_banner">
-			<img src="../../../../assets/inquisitor_banner.jpg" v-if="userData.ucRole==2 || userData.ucRole==1" />
+			<img src="../../../../assets/inquisitor_banner.jpg" v-if="userData.ucRole==2 || userData.ucRole==1 || userData.ucRole ==5" />
 			<img src="../../../../assets/education_banner.jpg" v-else-if="userData.ucRole==3" />
 		</div>
 		<div class="evaluation_tab">
 			<ul>
-				<li @click="active=0" :class="{'active':active==0}">新建回访</li>
-				<li @click="active=1" :class="{'active':active==1}">回访记录</li>
+				<li @click="active=0" :class="{'active':active==0}">新建留言</li>
+				<li @click="active=1" :class="{'active':active==1}">留言记录</li>
 			</ul>
 		</div>
-		<div class="evaluation_content " v-show="active==0">			
+		<div class="evaluation_content " v-show="active==0&&userData.ucRole==5">			
 			<group label-width="5em">
 				<div class="diversion_results"><h3>信息填写</h3></div>
-				<popup-picker title="被帮教人" :data="tutoredPersonsList" v-model="tutoredPersons" placeholder="请选择"></popup-picker>
-				<popup-picker title="帮教人" :data="channelPeopleList" v-model="channelPeople" placeholder="请选择"></popup-picker>
-				<x-input title="回访主题"  v-model="theme" text-align="right" placeholder="请输入回访主题"></x-input>
-				<datetime title="回访日期" v-model="deductionDate" placeholder="请选择"></datetime>
+				<x-input title="留言主题"  v-model="te.teName" text-align="right" placeholder="请输入留言主题"></x-input>
 			</group>
 			<div class="diversion_results diversion_results_title ov">
-				<div class="fl">回访结果</div>
+				<div class="fl">留言</div>
 			</div>
 			<div class="diversion_textarea">
-				<textarea placeholder="请输入回访内容和结果"></textarea>
+				<textarea placeholder="请输入留言" v-model="te.teContent"></textarea>
 			</div>
-			<div class="persuasion_btn">提交</div>
+			<div class="persuasion_btn" @click="putTalk">提交</div>
 		</div>
 		<!--S 回访记录-->
 		<div class="evaluation_content evaluation_content2" v-show="active==1">
-			<div class="evaluation_num">共3条内容</div>
+			<!-- <div class="evaluation_num">共{{talkList.length}}条内容</div> -->
 			<div class="evaluation_list">
 				<ul>
-					<li>
+					<li v-for="(item, index) in talkList" :key="index">
 						<div class="persuasion_top ov">
-							<div class="fl persuasion_name">对<span class="color_orange">2019010101</span>家长的回访</div>
-							<div class="fr persuasion_by_name">帮教人：BJR001</div>
+							<div class="fl persuasion_name"><span class="color_orange"></span>{{item.teName}}</div>
+							<div class="fr persuasion_by_name">被帮教人{{item.urId}} 的家长</div>
 						</div>
 						<div class="persuasion_bom ov">
-							<div class="fl persuasion_time">2018-02-02</div>
-							<div class="fr adjusted_btn"><router-link to="/esultsVisit">查看结果</router-link></div>
-						</div>
-					</li>
-					<li>
-						<div class="persuasion_top ov">
-							<div class="fl persuasion_name">对<span class="color_orange">2019010102</span>家长的回访</div>
-							<div class="fr persuasion_by_name">帮教人：BJR002</div>
-						</div>
-						<div class="persuasion_bom ov">
-							<div class="fl persuasion_time">2018-02-02</div>
-							<div class="fr adjusted_btn"><router-link to="/esultsVisit">查看结果</router-link></div>
-						</div>
-					</li>
-					<li>
-						<div class="persuasion_top ov">
-							<div class="fl persuasion_name">对<span class="color_orange">2019010103</span>家长的回访</div>
-							<div class="fr persuasion_by_name">帮教人：BJR003</div>
-						</div>
-						<div class="persuasion_bom ov">
-							<div class="fl persuasion_time">2018-02-02</div>
-							<div class="fr adjusted_btn"><router-link to="/esultsVisit">查看结果</router-link></div>
+							<div class="fl persuasion_time">{{item.teDate}}</div>
+							<div class="fr adjusted_btn"><router-link :to="{path:'/esultsVisit',query:{id:item.teId}}">查看结果</router-link></div>
 						</div>
 					</li>
 				</ul>
@@ -77,7 +54,9 @@
 		data() {
 			return {
 				userData: {},
-				active: 0,
+				talkList:[],
+				te:{urId:''},
+				active: 1,
 				theme:'',//回访主题
 				tutoredPersons: [], //被帮教人
 				tutoredPersonsList: [
@@ -98,12 +77,36 @@
 			Datetime
 		},
 		mounted() {
-			document.title = "帮教回访";
+			document.title = "帮教留言";
 			let userData = JSON.parse(sessionStorage.getItem("userData"));
 			this.userData = userData;
+			this.te.urId = userData.ucCustom
+			if(userData.ucRole!=5){
+				this.te.urId = this.$route.query.urId
+			}
+			this.getTalkList()
 		},
 		methods: {
-
+			putTalk(){
+				let te = this.te
+				this.$axios.post('/api/record/putTalk',te).then(resp=>{
+					if(resp.data.code==200){
+						alert("留言成功！")
+					}else if(resp.data.code==555){
+						alert("留言失败！")
+					}
+				})
+			},
+			getTalkList(){
+				let urId = this.te.urId;
+				this.$axios.post('/api/record/getTalkList',{urId:urId}).then(resp=>{
+					if(resp.data.code==200){
+						this.talkList = resp.data.content.list
+					}else if(resp.data.code==555){
+						alert("没有留言")
+					}
+				})
+			}
 		},
 
 	};

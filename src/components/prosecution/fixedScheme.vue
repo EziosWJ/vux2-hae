@@ -63,7 +63,7 @@
 				endDate:'',
 				dateList:[],//时间轴
 				dateListIndex:'',//需要添加方案对应时间的所以值
-				scheme:[''],//选择的方案
+				scheme:['0'],//选择的方案
 				selectScheme:[],
 				showPopupPicker: false,
 				userData: {}, //ucRole2检察官  ucRole3帮教人  ucRole4被帮教人  ucRole5家长
@@ -161,7 +161,10 @@
 			onChange(val){
 				console.log(val)
 				//方案选择
-				let sel = this.selectScheme[0].filter(item => item.value==val[0])[0];
+				let schemeData = this.selectScheme[0].filter(item=>item.value==val[0])[0];
+				let sel = {};
+				sel.name = schemeData.name;
+				sel.type=schemeData.value;
 				sel.dieDate = "";
 				this.dateList[this.dateListIndex].schemeList.push(sel);
 			},
