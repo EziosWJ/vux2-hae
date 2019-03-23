@@ -86,14 +86,14 @@
 						</div>
 						<div class="foot_text active">首页</div>
 					</li>
-					<li>
+					<!-- <li>
 						<router-link to="/pperson">
 							<div class="foot_icon">
 								<img src="../../assets/foot_icon2.png" />
 							</div>
 							<div class="foot_text">通讯</div>
 						</router-link>
-					</li>
+					</li> -->
 					<li>
 						<router-link to="/pmine">
 							<div class="foot_icon">
@@ -341,7 +341,7 @@
 			overflow: hidden;
 			li {
 				float: left;
-				width: 33.3%;
+				width: 50%;
 				text-align: center;
 				padding: 0.07rem 0;
 				font-size: 0.2rem;
