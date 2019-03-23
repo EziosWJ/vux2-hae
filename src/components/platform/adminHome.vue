@@ -67,7 +67,6 @@
 				<img class="by_help_icon" src="../../assets/a001.png"/>
 				<ul class="ov">
 					<li v-for="el in ByTheHelperList" v-if="el.urState==null"><div class="by_help_list"><router-link :to="{path:'/fixedScheme',query:{urId:el.urId}}">{{el.urName}}</router-link></div></li>
-					
 				</ul>
 			</div>
 			<div class="by_help_box mt20 box_shadow radius10 pr by_help_box3">
@@ -80,14 +79,14 @@
 			<div class="by_help_box mt20 box_shadow radius10 pr by_help_box4">
 				<img class="by_help_icon" src="../../assets/a004.png"/>
 				<div class="help_statistics">
-					优秀5人/良好2人/及格8人/不及格1人
+					
 				</div>
 				<ul class="ov">
 					<li v-for="el in ByTheHelperList" v-if="el.urState=='2'"><div class="by_help_list"><router-link :to="{path:'/seeResult',query:{urId:el.urId}}">{{el.urName}}</router-link></div></li>
 				
 					<li>
 						<div class="help_list_more">
-							<router-link to="/helpersMore">更多</router-link>
+							<!-- <router-link to="/helpersMore">更多</router-link> -->
 						</div>
 					</li>
 				</ul>
@@ -95,7 +94,7 @@
 		</div>
 		<!--E 被帮教人-->
 		<!--S 消息提醒-->
-		<div class="block_box">
+		<!-- <div class="block_box">
 			<div class="pdb20 b_bom">
 				<div class="block_title">消息提醒</div>
 			</div>
@@ -123,7 +122,7 @@
 					</li>
 				</ul>
 			</div>
-		</div>
+		</div> -->
 		<!--E 消息提醒-->
 		<!--S 底部导航-->
 		<div class="foot_out">

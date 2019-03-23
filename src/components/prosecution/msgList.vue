@@ -4,25 +4,27 @@
 		<div class="msg_table_out">
 			<div class="msg_table">
 				<ul>
-					<li :class="{'active':current==0}" @click="current=0">未完成消息(6)</li>
-					<li :class="{'active':current==1}" @click="current=1">完成帮教(2)</li>
+					<li :class="{'active':current==0}" @click="current=0">未完成任务({{reminderUnCompletedList.length}})</li>
+					<li :class="{'active':current==1}" @click="current=1">完成任务({{reminderCompletedList.length}})</li>
 				</ul>
 			</div>
 		</div>
 		
 		<div class="msg_list" v-show="current==0">
 			<ul>
-				<li>
+				<li v-for="(item, index) in reminderUnCompletedList" :key="index">
 					<div class="msg_list_icon">
 						<img src="../../assets/msg_icon_blue.png"/>
 					</div>
 					<div class="msg_list_title ov pdr20 ">
 						未按时完成提醒
-						<div class="fr f24" style="margin-top: 0.05rem;">2019-01-05 10:55</div>
+						<div class="fr f24" style="margin-top: 0.05rem;"></div>
 					</div>
-					<div class="msg_list_small">帮教人201812120002未按时完成新项目帮教人201812120002未按时完成新项目</div>
+					<div class="msg_list_small">被帮教人：{{item.urName}}</div>
+					<div class="msg_list_small">未按时完成：{{item.name}}</div>
+					<div class="msg_list_small">截止日期：{{item.dieDate}}</div>
 				</li>
-				<li>
+				<!-- <li class="is_see">
 					<div class="msg_list_icon">
 						<img src="../../assets/msg_icon_blue.png"/>
 					</div>
@@ -31,40 +33,21 @@
 						<div class="fr f24" style="margin-top: 0.05rem;">2019-01-05 10:55</div>
 					</div>
 					<div class="msg_list_small">帮教人201812120002未按时完成新项目帮教人201812120002未按时完成新项目</div>
-				</li>
-				<li class="is_see">
-					<div class="msg_list_icon">
-						<img src="../../assets/msg_icon_blue.png"/>
-					</div>
-					<div class="msg_list_title ov pdr20">
-						未按时完成提醒
-						<div class="fr f24" style="margin-top: 0.05rem;">2019-01-05 10:55</div>
-					</div>
-					<div class="msg_list_small">帮教人201812120002未按时完成新项目帮教人201812120002未按时完成新项目</div>
-				</li>
+				</li> -->
 			</ul>
 		</div>
 		<div class="msg_list" v-show="current==1">
 			<ul>
-				<li>
+				<li v-for="(item, index) in reminderCompletedList" :key="index">
 					<div class="msg_list_icon">
 						<img src="../../assets/msg_icon_yellow.png"/>
 					</div>
 					<div class="msg_list_title ov pdr20">
-						未按时完成提醒
-						<div class="fr f24" style="margin-top: 0.05rem;">2019-01-05 10:55</div>
+						完成提醒
+						<div class="fr f24" style="margin-top: 0.05rem;">{{item.finishedDate}}</div>
 					</div>
-					<div class="msg_list_small">帮教人201812120002未按时完成新项目帮教人201812120002未按时完成新项目</div>
-				</li>
-				<li>
-					<div class="msg_list_icon">
-						<img src="../../assets/msg_icon_yellow.png"/>
-					</div>
-					<div class="msg_list_title ov pdr20">
-						未按时完成提醒
-						<div class="fr f24" style="margin-top: 0.05rem;">2019-01-05 10:55</div>
-					</div>
-					<div class="msg_list_small">帮教人201812120002未按时完成新项目帮教人201812120002未按时完成新项目</div>
+					<div class="msg_list_small">被帮教人：{{item.urName}}</div>
+					<div class="msg_list_small">完成任务：{{item.name}}</div>
 				</li>
 			</ul>
 		</div>
@@ -77,6 +60,8 @@
 		data() {
 			return {
 				current:0,
+				reminderCompletedList : [],
+				reminderUnCompletedList : []
 			}
 		},
 
@@ -85,9 +70,34 @@
 			this.type = this.$route.query.type;
 			let userData = JSON.parse(sessionStorage.getItem("userData"));
 			this.userData = userData;
+			this.reminderCompleted();
+			this.reminderUnCompleted();
 		},
 		methods: {
-
+			reminderCompleted(){
+				let userData = this.userData
+				this.$axios.post('/api/com/reminderCompleted',userData).then(resp=>{
+					console.log(resp.data.content.list)
+					if(resp.data.code==200){
+						this.reminderCompletedList = resp.data.content.list
+						// alert("查询成功！")
+					}else if(resp.data.code==555){
+						//alert("失败！")
+					}
+				})
+			},
+			reminderUnCompleted(){
+				let userData = this.userData
+				this.$axios.post('/api/com/reminderUnCompleted',userData).then(resp=>{
+					console.log(resp.data.content.list)
+					if(resp.data.code==200){
+						this.reminderUnCompletedList = resp.data.content.list
+						// alert("查询成功！")
+					}else if(resp.data.code==555){
+						//alert("失败！")
+					}
+				})
+			}
 		},
 
 	};

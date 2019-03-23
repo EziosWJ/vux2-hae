@@ -11,9 +11,9 @@
 			上传照片
 		</div>
 		<div class="job_img_box ov">
-			<div class="job_img" >
+			<div class="job_img" v-for="(item, index) in test" :key="index" >
 				<div class="job_img_main">
-					<!-- <img :src="imgList.src"/> -->
+					<img :src="item.orCustom"/>
 				</div>
 			</div>
 			<div class="job_img">
@@ -22,7 +22,6 @@
 				</div>
 			</div>
 		</div>
-		<p id="imgs"></p>
 		<div class="bom_btn_out">
 			<div class="bom_btn" @click="uploadFile">提交</div>
 		</div>
@@ -36,7 +35,8 @@ import axios from 'axios'
 		data() {
 			return {
 				imgList:[],
-				file:''
+				file:'',
+				test:[]
 			};
 		},
 
@@ -53,27 +53,32 @@ import axios from 'axios'
 				formData.append("file",this.file);
 				formData.append("id","name");
 				console.log(formData.get("file"));
-				let instance = axios.create();
-				let config = {
-					header : {
-						'Content-Type' : 'multipart/form-data'
-					}
-				}
-				instance.post('/api/com/upload',formData,config).then(resp=>{
-					console.log(resp.data);
-				})
+				// let instance = axios.create();
+				// let config = {
+				// 	header : {
+				// 		'Content-Type' : 'multipart/form-data'
+				// 	}
+				// }
+				// instance.post('/api/com/upload',formData,config).then(resp=>{
+				// 	console.log(resp.data);
+				// })
 				// this.$upload.post('/api/com/upload',formData).then(resp=>{
 				// 	console.log(resp.data);
 				// })
-				// var xhr = new XMLHttpRequest();
-				// xhr.onreadystatechange=()=>{
-				// 	if (xhr.readyState==4 && xhr.status==200){
-				// 		console.log(xhr.response);
-				// 		document.getElementById("imgs").innerText = "上传成功！" + xhr.responseText;
-				// 	}
-				// }
-				// xhr.open('POST', '/api/com/upload', true);
-				// xhr.send(formData);
+				var xhr = new XMLHttpRequest();
+				let _this = this;
+				xhr.onreadystatechange=()=>{
+					if (xhr.readyState==4 && xhr.status==200){
+						console.log(xhr.response);
+						// document.getElementById("imgs").innerText = "上传成功！" + xhr.responseText;
+						let or = JSON.parse(xhr.responseText);
+						console.log(or);
+						
+						_this.test.push(or);
+					}
+				}
+				xhr.open('POST', '/api/com/upload', true);
+				xhr.send(formData);
 			}
 		}
 

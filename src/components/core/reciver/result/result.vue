@@ -1,22 +1,27 @@
 <template>
 	<!--S 帮教结果-->
 	<div>
-		<div class="result_img">
+		<div class="result_img" >
 			<img src="../../../../assets/persuasion_img.jpg" />
 		</div>
-		<div class="scheme_details">
+		<div class="scheme_details" v-show="eduplan.epContent!=''&&eduplan.epContent!=null">
 			<div class="scheme_details_title ov">
 				<div class="fl">
-					对12001的帮教结果
+					您的帮教结果
 				</div>
-				<img class="fl result_icon" src="../../../../assets/004.png"/>
+							
+			<div class="fr"><img style="width: 1.1rem;" src="../../../../assets/004.png" v-show="finalScore>=90"></div>
+			<div class="fr"><img style="width: 1.1rem;" src="../../../../assets/003.png" v-show="finalScore>=80&&finalScore<90"></div>
+			<div class="fr"><img style="width: 1.1rem;" src="../../../../assets/002.png" v-show="finalScore>=60&&finalScore<80"></div>
+			<div class="fr"><img style="width: 1.1rem;" src="../../../../assets/001.png" v-show="finalScore<60"></div>
 			</div>
-			<div class="scheme_details_data">创建时间：2018-02-02</div>
+			<!-- <div class="scheme_details_data">创建时间：2018-02-02</div> -->
 			<div class="scheme_details_main">
-				<p>在档案册里，还有去年3月在西湖边抢劫的音乐少年小力。当得知小力是来杭州报考音乐学院的时候，很多杭州人为之惋惜。小力的案子移交给西湖区检察院审查起诉后，小力认识到自己的错误，他的家人也代为赔偿了被害人的损失，得到了被害人的谅解……综合这些因素，同时考虑小力是初犯、偶犯，西湖区检察院对其定罪不捕。小力如期参加了考试，并最终考上了大学。</p>
-				<p>虽然早已过了考察期，小力也如愿进了大学，但就在不久前，小力还是给“西子姐姐”写来了一封信，说他在大学的生活很充实，自己的表现也很不错，谢谢“西子姐姐”……</p>
-				<p>检察院未检科负责人郑蕾说，从2017年未检科成立至今，他们已帮教了十多名涉罪未成年人。他们每个人的成长经历不同、引发犯罪的原因不同，所以，“西子姐姐”对他们的帮教方案也力求个性化，取得了很好的效果。</p>
+				<p>评语：{{eduplan.epContent}}</p>
 			</div>
+		</div>
+		<div v-show="eduplan.epContent==''||eduplan.epContent==null">
+			请等待结果！
 		</div>
 		
 	</div>
@@ -27,14 +32,25 @@
 export default {
 	data() {
 		return {
-			
+			userData:{},
+			eduplan:{},
+			finalScore:0
 		}
 	},
 	mounted() {
 		document.title="帮教结果"
+		let userData = JSON.parse(sessionStorage.getItem("userData"));
+		this.userData = userData;
+		let ucId = userData.ucId
+		this.getEduplan(ucId)
 	},
 	methods: {
-		
+			getEduplan(ucId){
+				this.$axios.post('/api/eduplan/getEduplanByUrId',{urId:ucId}).then(resp=>{
+					this.eduplan = resp.data.content.record
+					this.finalScore = this.eduplan.epTitle
+				})
+			},
 	},
 	
 };

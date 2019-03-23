@@ -39,7 +39,7 @@
 				<div class="evaluation_list">
 					<ul>
 						<li>
-							<router-link to="/helpResults">
+							<router-link :to="{path:'/helpResults',query:{epId:EduplanList[0].epId,score:finalScore}}">
 								<div class="evaluation_list_main">
 									<div class="evaluation_list_title pr">
 										帮教结果
@@ -50,7 +50,10 @@
 									</div>
 									<div class="report_item_box pdb20 pr" v-else>
 										<div class="c_999 mt10">帮教均分：{{finalScore}}分</div>
-										<!-- <img class="result_icon" src="../../assets/003.png" /> -->
+										<img class="result_icon" src="../../assets/004.png" v-show="finalScore>=90"/>
+										<img class="result_icon" src="../../assets/003.png" v-show="finalScore>=80&&finalScore<90"/>
+										<img class="result_icon" src="../../assets/002.png" v-show="finalScore>=60&&finalScore<80"/>
+										<img class="result_icon" src="../../assets/001.png" v-show="finalScore<60"/>
 									</div>
 								</div>
 							</router-link>
@@ -77,94 +80,6 @@
 				userData: {}, //ucRole2检察官  ucRole3帮教人  ucRole4被帮教人  ucRole5家长
 				type: '',
 				finalScore: 0,
-				schemeList: [{
-						name: "1、观看法制微电影",
-						type: '4',
-						endDate: '2018-11-02',
-						subDate: '2018-11-01',
-						fen: '90'
-					},
-					{
-						name: "2、法律法规学习",
-						type: '4',
-						endDate: '2018-12-02',
-						subDate: '2018-12-01',
-						fen: '85'
-					},
-					{
-						name: "3、初次心理测评",
-						type: '4',
-						endDate: '2018-12-05',
-						subDate: '2018-12-02',
-						fen: '55',
-						pin: true
-					},
-					{
-						name: "4、法律法规学习",
-						type: '4',
-						endDate: '2018-12-14',
-						subDate: '2018-12-03',
-						fen: '85'
-					},
-					{
-						name: "5、在线学习心理常识",
-						type: '4',
-						endDate: '2018-12-20',
-						subDate: '2018-12-04',
-						fen: '85'
-					},
-					{
-						name: "6、晋祠公园义务劳动服务",
-						type: '4',
-						endDate: '2018-12-20',
-						subDate: '2018-12-05',
-						fen: '85'
-					},
-				], //方案列表
-				schemeList2: [{
-						name: "1、观看法制微电影",
-						type: '4',
-						endDate: '2018-11-02',
-						subDate: '2018-11-01',
-						fen: '80'
-					},
-					{
-						name: "2、法律法规学习",
-						type: '4',
-						endDate: '2018-12-02',
-						subDate: '2018-12-01',
-						fen: '75'
-					},
-					{
-						name: "3、初次心理测评",
-						type: '4',
-						endDate: '2018-12-05',
-						subDate: '2018-12-02',
-						fen: '55',
-						pin: true
-					},
-					{
-						name: "4、法律法规学习",
-						type: '4',
-						endDate: '2018-12-14',
-						subDate: '2018-12-03',
-						fen: '85'
-					},
-					{
-						name: "5、在线学习心理常识",
-						type: '4',
-						endDate: '2018-12-20',
-						subDate: '2018-12-04',
-						fen: '75'
-					},
-					{
-						name: "6、晋祠公园义务劳动服务",
-						type: '4',
-						endDate: '2018-12-20',
-						subDate: '2018-12-05',
-						fen: '75'
-					},
-				], //方案列表
 				EduplanList:[],
 				score:0,
 			};
@@ -197,7 +112,7 @@
 					
 					console.log(a+b);
 					
-					this.finalScore = (this.score)/(this.EduplanList.length);
+					this.finalScore = Math.ceil((this.score)/(this.EduplanList.length));
 					console.log("pjf:"+this.finalScore);
 					
 					

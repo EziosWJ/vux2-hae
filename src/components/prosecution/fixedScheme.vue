@@ -184,6 +184,9 @@
 						if(resp.data.code=="200"){
 							alert("提交成功")
 						}
+						setTimeout(() => {
+							this.$router.go(-1)
+						}, 1000);
 				})
 				
 			},

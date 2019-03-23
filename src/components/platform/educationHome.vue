@@ -5,7 +5,7 @@
 			<img class="wid100" src="../../assets/education_banner.jpg"/>
 		</div>
 		<div class="pd20 bg_fff b_bom">
-			共9位被帮教人
+			共{{HelperList.length}}位被帮教人
 		</div>
 		<!--S 被帮教人-->
 		<div class="by_help_out pdlr20 bg_fff ov">
@@ -25,7 +25,7 @@
 			<div class="by_help_box mt20 box_shadow radius10 pr by_help_box4">
 				<img class="by_help_icon" src="../../assets/a004.png"/>
 				<div class="help_statistics">
-					优秀5人/良好2人/及格8人/不及格1人
+					<!-- 优秀5人/良好2人/及格8人/不及格1人 -->
 				</div>
 				<ul class="ov">
 					<li v-for="el in HelperList" v-if="el.urState==2"><div class="by_help_list" ><router-link :to="{path:'/seeResult',query:{urId:el.urId}}">{{el.urName}}</router-link></div></li>
@@ -55,20 +55,20 @@
 						<router-link to="/msgList">
 							<div class="msg_icon">
 								<img src="../../assets/msg_icon_blue.png" />
-								<div class="msg_num">3</div>
+								<!-- <div class="msg_num">3</div> -->
 							</div>
-							<div class="msg_big_title">被帮教人未按时完成提醒</div>
-							<div class="msg_small_text">3条未读</div>
+							<div class="msg_big_title">被帮教人未按时完成情况</div>
+							<div class="msg_small_text">点击查看</div>
 						</router-link>
 					</li>
 					<li>
 						<router-link to="/msgList">
 							<div class="msg_icon">
 								<img src="../../assets/msg_icon_yellow.png" />
-								<div class="msg_num">2</div>
+								<!-- <div class="msg_num">2</div> -->
 							</div>
-							<div class="msg_big_title">被帮教人已完成所有内容</div>
-							<div class="msg_small_text">2条未读</div>
+							<div class="msg_big_title">被帮教人已完成所有情况</div>
+							<div class="msg_small_text">点击查看</div>
 						</router-link>
 					</li>
 				</ul>

@@ -22,7 +22,7 @@
 			<!--E 暂无方案-->
 			
 			<div class="programme_title line30 pd20 b_bom">
-				<span class="f28">我的方案</span><span class="f26 c_666 ml10">(共8条计划，已完成3条)</span>
+				<span class="f28">我的方案</span><span class="f26 c_666 ml10">(共{{EduplanList.length}}个任务)</span>
 			</div>
 			<div >
 				<div class="see_scheme_list pd20">
@@ -164,10 +164,6 @@
 				userData: {}, //ucRole2检察官  ucRole3帮教人  ucRole4被帮教人  ucRole5家长
 				imgList: [], //轮播列表
 				otherList: [{
-					name: '心理评测',
-					path: '/phome/MindTestGrid',
-					icon: require('../../assets/other_icon12.png')
-				},{
 					name: '在线教育',
 					path: '/phome/education',
 					icon: require('../../assets/other_icon13.png')
@@ -236,7 +232,7 @@
 			overflow: hidden;
 			li {
 				float: left;
-				width: 25%;
+				width: 33%;
 				box-sizing: border-box;
 				padding: 0 0.1rem;
 				text-align: center;

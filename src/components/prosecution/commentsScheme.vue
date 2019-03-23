@@ -3,7 +3,6 @@
 	<div>
 
 				<!--完成任务-->
-		<!-- <div v-if="(userData.ucRole==4  )&&  task.state=='1' && showInput"> -->
 		<div v-if="(userData.ucRole==4)  && task.state==1"> 
 			
 			<div class="bg_fff mt20" >
@@ -19,11 +18,11 @@
 				上传照片
 			</div>
 			<div class="job_img_box ov">
-				<!-- <div class="job_img" >
+				<div class="job_img" v-for="(item, index) in imgList" :key="index">
 					<div class="job_img_main">
-						 <img :src="imgList.src"/> 
+						 <img :src="item.orCustom"/> 
 					</div>
-				</div> -->
+				</div>
 				<div class="job_img">
 					<div class="job_img_add">
 						<input type="file" id="upload_file" ref="file" @change="uploadFile"/>
@@ -158,6 +157,7 @@
 				task:{},
 				score:'',
 				imges:[],
+				imgList:[]
 			};
 		},
 		components: {
@@ -212,6 +212,7 @@
 					if(resp.data.code==555){
 						alert("还未到完成时间！");
 					}
+					this.$router.go(-1)
 				})
 			},
 			handlerFile(e){
@@ -228,11 +229,14 @@
 				// 	console.log(resp.data);
 				// })
 				var xhr = new XMLHttpRequest();
+				let _this = this
 				xhr.onreadystatechange=()=>{
 					if (xhr.readyState==4 && xhr.status==200){
 						console.log(xhr.response);
 						//document.getElementById("imgs").innerText = "上传成功！" + xhr.responseText;
 						alert("上传成功！");
+						let img = JSON.parse(xhr.responseText)
+						_this.imgList.push(img)
 					}
 				}
 				xhr.open('POST', '/api/com/upload', true);
