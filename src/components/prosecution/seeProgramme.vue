@@ -16,15 +16,15 @@
 					</li>-->
 					<li >
 						<div class="other_list">
-							<router-link to="/phome/talkGrid">
+							<router-link :to="{path:'/phome/talkGrid',query:{urId:urId}}">
 								<div class="other_icon"><img src="../../assets/other_icon6.png" /></div>
-								<div class="other_text">谈话教育</div>
+								<div class="other_text">回访教育</div>
 							</router-link>
 						</div>
 					</li>
 					<li >
 						<div class="other_list">
-							<router-link to="/phome/rewardPunishGrid">
+							<router-link :to="{path:'/phome/rewardPunishGrid',query:{urId:urId}}">
 								<div class="other_icon"><img src="../../assets/other_icon2.png" /></div>
 								<div class="other_text">奖惩管理</div>
 							</router-link>

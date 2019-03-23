@@ -7,57 +7,43 @@
 		</div>
 		<div class="evaluation_tab">
 			<ul>
-				<li @click="active=0" :class="{'active':active==0}">新建谈话</li>
-				<li @click="active=1" :class="{'active':active==1}">谈话记录</li>
+				<li @click="active=0" :class="{'active':active==0}">新建回访</li>
+				<li @click="active=1" :class="{'active':active==1}">回访记录</li>
 			</ul>
 		</div>
 		<div class="evaluation_content " v-show="active==0">			
 			<group label-width="5em">
 				<div class="diversion_results"><h3>信息填写</h3></div>
-				<popup-picker title="被帮教人" :data="tutoredPersonsList" v-model="tutoredPersons" placeholder="请选择"></popup-picker>
-				<popup-picker title="登记人" :data="channelPeopleList" v-model="channelPeople" placeholder="请选择"></popup-picker>
-				<datetime title="日期选择" v-model="deductionDate" placeholder="请选择"></datetime>
+					
+				<datetime title="日期选择" v-model="revisit.irCreateDate" placeholder="请选择"></datetime>
 			</group>
 			<div class="diversion_results diversion_results_title ov">
 				<div class="fl">谈话记录</div>
 			</div>
 			<div class="diversion_textarea">
-				<textarea placeholder="请输入谈话记录"></textarea>
+				<textarea placeholder="请输入回访记录" v-model="revisit.irContent"></textarea>
 			</div>
-			<div class="persuasion_btn">提交</div>
+			<div class="persuasion_btn" @click="getEduplanListByUrId">提交</div>
 		</div>
 		<!--S 谈话记录-->
 		<div class="evaluation_content evaluation_content2" v-show="active==1">
-			<div class="evaluation_num">共3条内容</div>
+			<!--<div class="evaluation_num">共3条内容</div>-->
 			<div class="evaluation_list">
 				<ul>
-					<li>
+					<li v-for="el in revisitList">
 						<div class="persuasion_top ov">
-							<div class="fl persuasion_name">被帮教人：2019010101</div>
+							<div class="fl persuasion_name">被帮教人：{{el.irReciver}}</div>
+						</div>
+						<div class="persuasion_top ov">
+							<div class="fl persuasion_name">谈话记录：{{el.irContent}}</div>
 						</div>
 						<div class="persuasion_bom ov">
-							<div class="fl persuasion_time">2018-02-02</div>
-							<div class="fr adjusted_btn"><router-link to="/esultsVisit">谈话记录</router-link></div>
+							<div class="fl persuasion_time">{{el.irCreateDate}}</div>
+							<!--<div class="fr adjusted_btn"><router-link to="/esultsVisit">回访记录</router-link></div>-->
 						</div>
 					</li>
-					<li>
-						<div class="persuasion_top ov">
-							<div class="fl persuasion_name">被帮教人：2019010102</div>
-						</div>
-						<div class="persuasion_bom ov">
-							<div class="fl persuasion_time">2018-02-02</div>
-							<div class="fr adjusted_btn"><router-link to="/esultsVisit">谈话记录</router-link></div>
-						</div>
-					</li>
-					<li>
-						<div class="persuasion_top ov">
-							<div class="fl persuasion_name">被帮教人：2019010103</div>
-						</div>
-						<div class="persuasion_bom ov">
-							<div class="fl persuasion_time">2018-02-02</div>
-							<div class="fr adjusted_btn"><router-link to="/esultsVisit">谈话记录</router-link></div>
-						</div>
-					</li>
+					
+				
 				</ul>
 			</div>
 		</div>
@@ -84,6 +70,8 @@
 				], //登记人列表
 				deductionDate: '', //请假日期
 				diversionResultsList: null, //疏导结果
+				revisit:{},
+				revisitList:[]
 			}
 		},
 		components: {
@@ -95,9 +83,24 @@
 			document.title = "谈话教育";
 			let userData = JSON.parse(sessionStorage.getItem("userData"));
 			this.userData = userData;
+			this.urId=this.$route.query.urId;
+			this.revisit.irReciver = this.$route.query.urId;
+			this.revisit.irLeader=this.userData.ucId;
+			this.getInterviewList();
 		},
 		methods: {
-
+				getEduplanListByUrId(){
+				let revisit = this.revisit
+				this.$axios.post('/api/eduplan/putInterview',revisit).then(resp=>{
+					alert(resp.data.msg);
+					this.$router.go(-1)
+				})
+			},
+			getInterviewList(){
+				this.$axios.post('/api/eduplan/getInterviewList',{urId:this.urId}).then(resp=>{
+					this.revisitList=resp.data.content.list;
+				})
+			}
 		},
 
 	};

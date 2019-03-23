@@ -14,7 +14,7 @@ module.exports = {
 			'/api/**': {
 				//target: 'http://www.tyjcywj.cn:8080/helpTeach',
 				//target: 'http://localhost:8080/helpTeach',
-				target: 'http://192.168.1.10:8080/helpTeach',
+				target: 'http://192.168.1.251:8080/helpTeach',
 				changeOrigin: true,
 				pathRewrite: {
 					'^/api': ''
@@ -24,7 +24,7 @@ module.exports = {
 		},
 
 		// Various Dev Server settings
-		host: '192.168.1.10', // can be overwritten by process.env.HOST
+		host: '192.168.1.251', // can be overwritten by process.env.HOST
 		port: 80, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
 		autoOpenBrowser: true,
 		errorOverlay: true,
