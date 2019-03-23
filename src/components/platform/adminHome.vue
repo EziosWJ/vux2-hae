@@ -15,20 +15,18 @@
 		</div>
 		<!--E 帮教人和被帮教人-->
 
-		<!--S 帮教人-->
+		<!--S检察官-->
 		<div class="bg_fff ov pdlr20 pdb20" v-show="current==0" >
 			<ul>
 				<li v-for="le in procuratorList" class="mt20 box_shadow pd20 radius10">
 					<div class="helpers_main radius10">
-						<router-link to="/inspectInfo">
+						<router-link :to="{path:'/inspectInfo',query:{ucId:le.ucId,ucRole:le.ucRole}}">
+					
 							<div class="b_bom_x pdb20 ov">
 								<div class="fl f28 port">{{le.ucName}}</div>
 								<div class="fr small_btn">查看</div>
 							</div>
-							<div class="mt20 ov text_center">
-								<div class="helpers_main_info fl f26 ">帮教中3</div>
-								<div class="helpers_main_info fl f26 ">已帮教8</div>
-							</div>
+							
 						</router-link>
 					</div>
 				</li>
@@ -45,15 +43,12 @@
 			<ul>
 				<li v-for="el in HelperList" class="mt20 box_shadow pd20 radius10">
 					<div class="helpers_main radius10">
-						<router-link to="/helpersInfo">
+						<router-link :to="{path:'/helpersInfo',query:{ucId:el.ucId,ucRole:el.ucRole}}">
 							<div class="b_bom_x pdb20 ov">
 								<div class="fl f28 port">{{el.ucName}}</div>
 								<div class="fr small_btn">查看</div>
 							</div>
-							<div class="mt20 ov text_center">
-								<div class="helpers_main_info fl f26 ">帮教中3</div>
-								<div class="helpers_main_info fl f26 ">已帮教8</div>
-							</div>
+						
 						</router-link>
 					</div>
 				</li>
@@ -78,9 +73,7 @@
 			</div>
 			<div class="by_help_box mt20 box_shadow radius10 pr by_help_box4">
 				<img class="by_help_icon" src="../../assets/a004.png"/>
-				<div class="help_statistics">
-					
-				</div>
+			
 				<ul class="ov">
 					<li v-for="el in ByTheHelperList" v-if="el.urState=='2'"><div class="by_help_list"><router-link :to="{path:'/seeResult',query:{urId:el.urId}}">{{el.urName}}</router-link></div></li>
 				

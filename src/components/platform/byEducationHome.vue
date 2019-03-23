@@ -177,6 +177,7 @@
 					icon: require('../../assets/other_icon9.png')
 				}], 
 				EduplanList:[],
+			
 			};
 		},
 		components: {
@@ -187,6 +188,7 @@
 			let userData = JSON.parse(sessionStorage.getItem("userData"));
 			this.userData = userData;
 			this.getEduplanListByUrId();
+
 		},
 		methods: {
 			getEduplanListByUrId(){

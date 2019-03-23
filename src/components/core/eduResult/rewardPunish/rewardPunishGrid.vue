@@ -14,30 +14,56 @@
 		<div class="evaluation_content " v-show="active==0">			
 			<group label-width="5em">
 				<div class="diversion_results"><h3>信息填写</h3></div>
-				<popup-picker title="被帮教人" :data="tutoredPersonsList" v-model="tutoredPersons" placeholder="请选择"></popup-picker>
-				<x-input title="奖惩主题"  v-model="theme" text-align="right" placeholder="请输入奖惩主题"></x-input>
-				<datetime title="奖惩日期" v-model="deductionDate" placeholder="请选择"></datetime>
+				<popup-picker title="奖惩分类" :data="tutoredPersonsList" v-model="reword.rpName" placeholder="请选择"></popup-picker>
+				<x-input title="奖惩主题"  v-model="reword.rpTitle" text-align="right" placeholder="请输入奖惩主题"></x-input>
+				<datetime title="奖惩日期" v-model="reword.rpCreateDate" placeholder="请选择"></datetime>
 			</group>
 			<div class="diversion_results diversion_results_title ov">
 				<div class="fl">奖惩内容</div>
 			</div>
 			<div class="diversion_textarea">
-				<textarea placeholder="请输入描述内容"></textarea>
+				<textarea placeholder="请输入描述内容" v-model="reword.rpContent"></textarea>
 			</div>
-			<div class="persuasion_btn">提交</div>
+			<div class="persuasion_btn" @click="saveReword">提交</div>
 		</div>
 		<!--S 奖惩记录-->
 		<div class="evaluation_content evaluation_content2" v-show="active==1">
-			<div class="evaluation_num">共3条内容</div>
+			<!--<div class="evaluation_num">共3条内容</div>-->
 			<div class="evaluation_list">
 				<ul>
-					<li>
+					<li v-for="el in rewordList" v-if="el.rpName=='惩罚'">
 						<div class="ov">
-							<div class="fl persuasion_name">对2019010101的<span class="color_main">奖励</span></div>
-							<div class="fr adjusted_btn"><router-link to="/esultsVisit">详细结果</router-link></div>
+							<div class="persuasion_top ov">
+							<div class="fl persuasion_name">对{{el.rpReciver}}的<span class="color_red">惩罚</span></div></div>
+							<div class="persuasion_top ov">
+							<div class="fl persuasion_name">奖惩主题：{{el.rpTitle}}</div>
+						</div>
+						<div class="persuasion_top ov">
+							<div class="fl persuasion_name">奖惩内容：{{el.rpContent}}</div>
+						</div>
+							<div class="persuasion_bom ov">
+							<div class="fl persuasion_time">{{el.rpCreateDate}}</div>
+							<!--<div class="fr adjusted_btn"><router-link to="/esultsVisit">回访记录</router-link></div>-->
+						</div>
 						</div>
 					</li>
-					<li>
+					<li v-for="el in rewordList" v-if="el.rpName=='奖励'">
+						<div class="ov">
+							<div class="persuasion_top ov">
+							<div class="fl persuasion_name">对{{el.rpReciver}}的<span class="color_main">奖励</span></div></div>
+							<div class="persuasion_top ov">
+							<div class="fl persuasion_name">奖惩主题：{{el.rpTitle}}</div>
+						</div>
+						<div class="persuasion_top ov">
+							<div class="fl persuasion_name">奖惩内容：{{el.rpContent}}</div>
+						</div>
+							<div class="persuasion_bom ov">
+							<div class="fl persuasion_time">{{el.rpCreateDate}}</div>
+							<!--<div class="fr adjusted_btn"><router-link to="/esultsVisit">回访记录</router-link></div>-->
+						</div>
+						</div>
+					</li>
+					<!--<li>
 						<div class=" ov">
 							<div class="fl persuasion_name">对2019010102的<span class="color_red">惩罚</span></div>
 							<div class="fr adjusted_btn"><router-link to="/esultsVisit">详细结果</router-link></div>
@@ -48,7 +74,7 @@
 							<div class="fl persuasion_name">对2019010103的<span class="color_main">奖励</span></div>
 							<div class="fr adjusted_btn"><router-link to="/esultsVisit">详细结果</router-link></div>
 						</div>
-					</li>
+					</li>-->
 				</ul>
 			</div>
 		</div>
@@ -68,7 +94,7 @@
 				theme:'',//回访主题
 				tutoredPersons: [], //被帮教人
 				tutoredPersonsList: [
-					['2019010101', '2019010102', '2019010103', '2019010104']
+					['奖励', '惩罚']
 				], //被帮教人列表
 				channelPeople: [], //登记人
 				channelPeopleList: [
@@ -76,6 +102,9 @@
 				], //登记人列表
 				deductionDate: '', //请假日期
 				diversionResultsList: null, //疏导结果
+				reword:{},
+				urId:'',
+				rewordList:[]
 			}
 		},
 		components: {
@@ -88,9 +117,25 @@
 			document.title = "奖惩管理";
 			let userData = JSON.parse(sessionStorage.getItem("userData"));
 			this.userData = userData;
+			this.urId=this.$route.query.urId;
+			this.reword.rpReciver=this.urId;
+			this.reword.rpCustom=this.userData.ucId;
+			this.getRewordList();
 		},
 		methods: {
-
+			saveReword(){	
+				this.$axios.post('/api/eduplan/putRewardPunish',this.reword).then(resp=>{
+					alert(resp.data.msg);
+					this.$router.go(-1)
+					//console.log(resp.data);
+				})
+			},
+			getRewordList(){
+				this.$axios.post('/api/eduplan/getRewordList',{urId:this.urId}).then(resp=>{
+					this.rewordList=resp.data.content.list;
+				})
+			}
+		
 		},
 
 	};
