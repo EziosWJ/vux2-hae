@@ -8,7 +8,7 @@
 			<div class="by_help_box mt20 box_shadow radius10 pr by_help_box2">
 				<img class="by_help_icon" src="../../assets/a001.png"/>
 				<ul class="ov">
-					<li v-for="el in ByTheHelperList" v-if="el.urState==null"><div class="by_help_list"><router-link :to="{path:'/fixedScheme',query:{urId:el.urId}}">{{el.urName}}</router-link></div></li>
+					<li v-for="el in ByTheHelperList" v-if="el.urState=='0'"><div class="by_help_list"><router-link :to="{path:'/fixedScheme',query:{urId:el.urId}}">{{el.urName}}</router-link></div></li>
 					
 				</ul>
 			</div>
@@ -27,7 +27,7 @@
 				
 					<li>
 						<div class="help_list_more">
-							<router-link to="/helpersMore">更多</router-link>
+							<!-- <router-link to="/helpersMore">更多</router-link> -->
 						</div>
 					</li>
 				</ul>
