@@ -95,6 +95,7 @@
 					}else if(resp.data.code==555){
 						alert("留言失败！")
 					}
+					this.$router.go(-1)
 				})
 			},
 			getTalkList(){

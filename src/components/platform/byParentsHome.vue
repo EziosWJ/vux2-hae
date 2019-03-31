@@ -157,21 +157,21 @@
 				imgList: [], //轮播列表
 				EduplanList:[],
 				otherList: [
-					{
-						name: '奖惩记录',
-						path: '/phome/rewardsPenalties/rewardsPenalties',
-						icon: require('../../assets/other_icon2.png')
-					}, 
+					// {
+					// 	name: '奖惩记录',
+					// 	path: '/phome/rewardsPenalties/rewardsPenalties',
+					// 	icon: require('../../assets/other_icon2.png')
+					// }, 
 					{
 						name: '留言反馈',
 						path: '/phome/revisitGrid',
 						icon: require('../../assets/other_icon1.png')
 					}, 
-					{
-						name: '帮教结果',
-						path: '/phome/result',
-						icon: require('../../assets/other_icon9.png')
-					}
+					// {
+					// 	name: '帮教结果',
+					// 	path: '/phome/result',
+					// 	icon: require('../../assets/other_icon9.png')
+					// }
 			    ], 
 			};
 		},
@@ -228,7 +228,7 @@
 			overflow: hidden;
 			li {
 				float: left;
-				width: 33%;
+				width: 25%;
 				box-sizing: border-box;
 				padding: 0 0.1rem;
 				text-align: center;
