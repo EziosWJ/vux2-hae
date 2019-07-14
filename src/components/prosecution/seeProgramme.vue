@@ -44,7 +44,11 @@
 		<!--E 其他服务-->
 		<div class="mt20 bg_fff">
 			<div class="ov pd20 b_bom">
-				<div class="block_title fl">帮教方案</div>
+				<div class="block_title fl">
+					帮教方案
+
+				</div>
+					<span class="type_text c_orange" style="float:right" @click="redoEduplanTask">重置帮教计划</span>
 				
 			</div>
 			<div >
@@ -70,13 +74,15 @@
 											<span class="type_text c_orange" v-if="el.state==2">已完成</span>
 											<span class="type_text c_red " v-else-if="el.state==1">未完成</span>
 										</div>
+									</router-link>
 										<div class="report_item_box pdb20 pr">
 										
-											<div class="c_999 mt10">截止日期：{{el.dieDate}}</div>
+											<div class="c_999 mt10">截止日期：{{el.dieDate}}
+												<span class="type_text c_red " v-if="el.state==1" style="float:right" @click='delEduplanTask(el)' >删除</span>
+											</div>
 											<div class="c_999 mt10" v-if="el.state==2">完成时间：{{el.finishedDate}}</div>
 											<img v-if="el.state==2" class="gou_icon" src="../../assets/gou.png" />
 										</div>
-									</router-link>
 								</div>
 							</li> 
 						</ul>
@@ -182,8 +188,24 @@
 					this.EduplanList=resp.data.content.list;
 					console.log(resp.data);
 				})
+			},
+			delEduplanTask(task){
+				this.$axios.post('/api/eduplan/delEduplanTaskById',{id:task.id}).then(resp=>{
+					alert("删除" + task.name + "成功！");
+					this.getEduplanListByUrId();
+					console.log(resp.data);
+				})
+				
+			},
+			redoEduplanTask(){
+				this.$axios.post('/api/eduplan/redoEduplanTask',{urId:this.urId}).then(resp=>{
+					alert("重置计划成功！");
+					setTimeout(() => {
+						this.$router.go(-1)
+					}, 1000);
+				})
+				
 			}
-
 		},
 
 	};
