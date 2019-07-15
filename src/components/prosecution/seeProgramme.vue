@@ -56,7 +56,7 @@
 					
 					<div class="evaluation_list">
 						<ul>
-							<li v-for="el in EduplanList" :class="{'no_star':el.state==1}">
+							<li v-for="(el,index) in EduplanList" :class="{'no_star':el.state==1}" :key="index">
 								<div class="evaluation_list_main" v-if="el.state==null">
 									<div class="evaluation_list_title pr">
 										{{el.name}}

@@ -15,7 +15,7 @@
 		</div>
 
 		<div class="date_list_box" v-if="dateList.length">
-			<div class="date_list_main pr" v-for="(el,index) in dateList">
+			<div class="date_list_main pr" v-for="(el,index) in dateList" :key="index">
 				<div>
 					<div class="date_list_text fl">
 						{{el.startDate}}至{{el.endDate}}
@@ -25,7 +25,7 @@
 				</div>
 				<div class="scheme_list_box" v-if="el.schemeList.length">
 					<ul>
-						<li class="box_shadow radius10 bg_fff" v-for="(item,itemIndex) in el.schemeList">
+						<li class="box_shadow radius10 bg_fff" v-for="(item,itemIndex) in el.schemeList" :key="itemIndex">
 							<div class="scheme_list_top ov pr b_bom_x">
 								<div class="scheme_list_name f28">{{item.name}}</div>
 								<img class="scheme_list_icon" src="../../assets/del_icon.png" @click="clickDelScheme(index,itemIndex)"/>
